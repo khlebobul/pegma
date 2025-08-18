@@ -23,12 +23,23 @@ dev_dependencies:
   intl_translation: ^0.20.1
   build_runner: ^2.4.15
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path_ios: "assets/logo/logo-light.png"
+  image_path_ios_dark_transparent: "assets/logo/logo-dark.png"
+  remove_alpha_ios: true
+  ios: true
+  image_path: "assets/logo/logo-light.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  adaptive_icon_foreground: "assets/logo/logo-light.png"
+  adaptive_icon_background: "#ffffff"
+
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons
-    - assets/images
+    - assets/icons/
+    - assets/images/
 
   # fonts:
   # - family: RobotoMono
