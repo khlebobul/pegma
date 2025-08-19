@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
-class RulesScreen extends StatelessWidget {
-  const RulesScreen({super.key});
+class StoryScreen extends StatelessWidget {
+  const StoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class RulesScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'rules screen',
+          'story screen',
           style: TextStyle(fontSize: 18, color: Colors.black87),
         ),
       ),
