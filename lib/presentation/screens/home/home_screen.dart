@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pegma/core/themes/app_theme.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,19 +7,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
+    final theme = UIThemes.of(context);
+    return Scaffold(
+      backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
         title: 'pegma',
         showBackButton: false,
         showMenuButton: true,
       ),
-      body: Center(
-        child: Text(
-          'home screen',
-          style: TextStyle(fontSize: 18, color: Colors.black87),
-        ),
-      ),
+      body: Center(child: Text('home screen')),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pegma/core/themes/app_theme.dart';
 import '../../../core/router/app_router.dart';
 
 class SideMenuScreen extends StatelessWidget {
@@ -7,8 +8,9 @@ class SideMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = UIThemes.of(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.bgColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -71,8 +73,9 @@ class _MenuListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = UIThemes.of(context);
     return ListTile(
-      title: Text(title),
+      title: Text(title, style: theme.menuTextStyle),
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 24.0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pegma/core/themes/app_theme.dart';
 import '../../../core/router/app_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,11 +17,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = UIThemes.of(context);
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.bgColor,
       elevation: 0,
       centerTitle: false,
-      title: Text(title),
+      title: Text(title, style: theme.basicTextStyle),
       titleSpacing: 16,
       automaticallyImplyLeading: false,
       actions: [
