@@ -66,10 +66,7 @@ class StoryParagraph extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         text,
-        style: theme.basicTextStyle.copyWith(
-          color: theme.secondaryTextColor,
-          height: 1.5,
-        ),
+        style: theme.basicTextStyle.copyWith(color: theme.secondaryTextColor),
       ),
     );
   }
