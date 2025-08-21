@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../../core/router/app_router.dart';
 
@@ -19,10 +21,22 @@ class SideMenuScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('pegma'),
-                  IconButton(
-                    onPressed: () => context.pop(),
-                    icon: const Icon(Icons.close),
+                  Text(
+                    'pegma',
+                    style: theme.basicTextStyle.copyWith(
+                      color: theme.secondaryTextColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => context.pop(),
+                    child: SvgPicture.asset(
+                      CustomIcons.close,
+                      width: 20,
+                      colorFilter: ColorFilter.mode(
+                        theme.textColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                   ),
                 ],
               ),

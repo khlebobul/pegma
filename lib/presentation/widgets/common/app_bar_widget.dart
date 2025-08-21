@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../../core/router/app_router.dart';
 
@@ -24,23 +26,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: false,
       title: Text(title, style: theme.basicTextStyle),
       titleSpacing: 16,
+
       automaticallyImplyLeading: false,
       actions: [
         if (showBackButton)
-          IconButton(
-            onPressed: () {
-              if (context.canPop()) {
-                context.pop();
-              } else {
-                context.go(AppRouter.home);
-              }
-            },
-            icon: const Icon(Icons.close, color: Colors.black87),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go(AppRouter.home);
+                }
+              },
+              child: SvgPicture.asset(
+                CustomIcons.close,
+                width: 20,
+                colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+              ),
+            ),
           )
         else if (showMenuButton)
-          IconButton(
-            onPressed: () => context.push(AppRouter.sideMenu),
-            icon: const Icon(Icons.menu, color: Colors.black87),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: GestureDetector(
+              onTap: () => context.push(AppRouter.sideMenu),
+              child: SvgPicture.asset(
+                CustomIcons.burgerMenu,
+                width: 20,
+                colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+              ),
+            ),
           ),
       ],
     );
