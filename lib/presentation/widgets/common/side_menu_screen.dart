@@ -22,7 +22,7 @@ class SideMenuScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'pegma',
+                    AboutConstants.appName,
                     style: theme.basicTextStyle.copyWith(
                       color: theme.secondaryTextColor,
                     ),

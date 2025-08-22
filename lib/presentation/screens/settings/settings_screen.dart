@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
@@ -11,7 +12,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
-        title: 'pegma',
+        title: AboutConstants.appName,
         showBackButton: true,
         showMenuButton: false,
       ),

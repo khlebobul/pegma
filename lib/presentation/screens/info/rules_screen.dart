@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../widgets/common/app_bar_widget.dart';
+import '../../widgets/common/info_paragraph.dart';
 
 class RulesScreen extends StatelessWidget {
   const RulesScreen({super.key});
@@ -14,7 +15,7 @@ class RulesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: const CustomAppBar(
-        title: 'pegma',
+        title: AboutConstants.appName,
         showBackButton: true,
         showMenuButton: false,
       ),
@@ -23,15 +24,15 @@ class RulesScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            RuleParagraph(
+            InfoParagraph(
               text:
                   'the board has holes filled with pegs, usually with the center hole empty.',
             ),
-            RuleParagraph(
+            InfoParagraph(
               text:
                   'move: a peg jumps over an adjacent peg (horizontally or vertically) into an empty hole right beyond it. the jumped peg is removed.',
             ),
-            RuleParagraph(
+            InfoParagraph(
               text:
                   'goal: remove as many pegs as possible, ideally leaving only one — in the center.',
             ),
@@ -40,25 +41,6 @@ class RulesScreen extends StatelessWidget {
             SizedBox(height: 50),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class RuleParagraph extends StatelessWidget {
-  final String text;
-
-  const RuleParagraph({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = UIThemes.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Text(
-        text,
-        style: theme.basicTextStyle.copyWith(color: theme.secondaryTextColor),
       ),
     );
   }
