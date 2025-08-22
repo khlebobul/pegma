@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/utils/useful_methods.dart';
+import 'package:pegma/generated/l10n.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/custom_toggle.dart';
 import '../../widgets/common/action_button.dart';
@@ -43,7 +44,7 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.generalPadding,
               ),
-              child: _buildSectionTitle('language', theme),
+              child: _buildSectionTitle(S.of(context).language, theme),
             ),
             const SizedBox(height: 16),
             _buildLanguageOptions(theme, ref, selectedLanguage),
@@ -103,7 +104,7 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     String selectedLanguage,
   ) {
-    final languages = ['english', 'russian', 'more lang'];
+    final languages = ['english', 'russian'];
 
     return SizedBox(
       height: 40,
