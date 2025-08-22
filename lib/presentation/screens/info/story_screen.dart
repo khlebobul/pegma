@@ -19,7 +19,7 @@ class StoryScreen extends StatelessWidget {
         showMenuButton: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(GeneralConsts.generalPadding),
+        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [

@@ -12,7 +12,7 @@ class UIThemes {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'RobotoMono',
+      fontFamily: 'FreeDraw',
       scaffoldBackgroundColor: LightModeColors.background,
       dividerColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
@@ -37,7 +37,7 @@ class UIThemes {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      fontFamily: 'RobotoMono',
+      fontFamily: 'FreeDraw',
       scaffoldBackgroundColor: DarkModeColors.background,
       dividerColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
@@ -65,20 +65,12 @@ class UIThemes {
 
   // text styles
   // main menu
-  TextStyle get menuTextStyle => TextStyle(
-    fontSize: 40,
-    // TODO
-    // fontFamily: 'RobotoMono',
-    color: textColor,
-  );
+  TextStyle get menuTextStyle =>
+      TextStyle(fontSize: 25, fontFamily: 'FreeDraw', color: textColor);
 
   // basic text
-  TextStyle get basicTextStyle => TextStyle(
-    fontSize: 30,
-    // TODO
-    // fontFamily: 'RobotoMono',
-    color: textColor,
-  );
+  TextStyle get basicTextStyle =>
+      TextStyle(fontSize: 20, fontFamily: 'FreeDraw', color: textColor);
 
   // Colors
   Color get bgColor =>

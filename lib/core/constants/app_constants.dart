@@ -12,7 +12,8 @@ class Images {
 
 class GeneralConsts {
   // Paddings
-  static const double generalPadding = 16.0;
+  static const double horizontalPadding = 16.0;
+  static const double verticalPadding = 8.0;
 
   // App information
   // TODO update
@@ -20,8 +21,8 @@ class GeneralConsts {
   static const String email = 'khlebobul@gmail.com';
   static const String appNameDescription =
       'the name "pegma" is a play on words that combines:\n"peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.';
-  static const String fontFactText =
-      'fun fact: the font for the app was created by me';
+  static const String credits =
+      'credits: thanks to ryvett for the font "free draw! font (free, 2.0)"';
 
   // Share
   // TODO update

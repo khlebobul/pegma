@@ -51,11 +51,10 @@ flutter:
     - assets/icons/
     - assets/images/
 
-  # fonts:
-  # - family: RobotoMono
-  #   fonts:
-  #     - asset: assets/fonts/roboto_mono.ttf
-  #       weight: 400
+  fonts:
+  - family: FreeDraw
+    fonts:
+      - asset: assets/fonts/free-draw-font-free-2-0.ttf
 
 flutter_intl:
   enabled: true

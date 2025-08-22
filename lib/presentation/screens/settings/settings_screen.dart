@@ -42,7 +42,7 @@ class SettingsScreen extends ConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.generalPadding,
+                horizontal: GeneralConsts.horizontalPadding,
               ),
               child: _buildSectionTitle(S.of(context).language, theme),
             ),
@@ -53,14 +53,14 @@ class SettingsScreen extends ConsumerWidget {
 
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.generalPadding,
+                horizontal: GeneralConsts.horizontalPadding,
               ),
               child: _buildSectionTitle('others', theme),
             ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.generalPadding,
+                horizontal: GeneralConsts.horizontalPadding,
               ),
               child: _buildToggleOption('dark theme', isDarkTheme, (value) {
                 themeNotifier.toggleTheme();
@@ -69,7 +69,7 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.generalPadding,
+                horizontal: GeneralConsts.horizontalPadding,
               ),
               child: _buildToggleOption('stopwatch', settings.soundEnabled, (
                 value,
@@ -81,7 +81,7 @@ class SettingsScreen extends ConsumerWidget {
 
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.generalPadding,
+                horizontal: GeneralConsts.horizontalPadding,
               ),
 
               child: _buildFooterActions(theme, context),
@@ -111,7 +111,7 @@ class SettingsScreen extends ConsumerWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(
-          horizontal: GeneralConsts.generalPadding,
+          horizontal: GeneralConsts.horizontalPadding,
         ),
         itemCount: languages.length,
         separatorBuilder: (context, index) => const SizedBox(width: 24),
@@ -174,13 +174,13 @@ class SettingsScreen extends ConsumerWidget {
         ActionButton(
           title: 'report bug',
           onTap: () => sendEmail(context, GeneralConsts.email, 'report bug'),
-          padding: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.only(bottom: GeneralConsts.verticalPadding),
         ),
         ActionButton(
           title: 'request feature',
           onTap: () =>
               sendEmail(context, GeneralConsts.email, 'request feature'),
-          padding: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.only(bottom: GeneralConsts.verticalPadding),
         ),
         ActionButton(
           title: 'share feedback',

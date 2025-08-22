@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
@@ -20,7 +21,9 @@ class ActionButton extends StatelessWidget {
     final theme = UIThemes.of(context);
 
     return Padding(
-      padding: padding ?? const EdgeInsets.only(bottom: 4.0),
+      padding:
+          padding ??
+          const EdgeInsets.only(bottom: GeneralConsts.verticalPadding / 4),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,

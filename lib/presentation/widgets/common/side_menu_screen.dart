@@ -17,7 +17,7 @@ class SideMenuScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(GeneralConsts.verticalPadding * 2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -43,7 +43,9 @@ class SideMenuScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: GeneralConsts.verticalPadding / 2,
+                ),
                 children: [
                   _MenuListItem(
                     title: 'settings',
@@ -92,8 +94,8 @@ class _MenuListItem extends StatelessWidget {
       title: Text(title, style: theme.menuTextStyle),
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(
-        horizontal: 24.0,
-        vertical: 8.0,
+        horizontal: GeneralConsts.horizontalPadding,
+        vertical: GeneralConsts.verticalPadding,
       ),
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,

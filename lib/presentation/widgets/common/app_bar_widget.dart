@@ -34,7 +34,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (showBackButton)
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(
+              right: GeneralConsts.horizontalPadding,
+            ),
             child: GestureDetector(
               onTap: () {
                 if (context.canPop()) {
@@ -52,7 +54,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           )
         else if (showMenuButton)
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(
+              right: GeneralConsts.horizontalPadding,
+            ),
             child: GestureDetector(
               onTap: () => context.push(AppRouter.sideMenu),
               child: SvgPicture.asset(

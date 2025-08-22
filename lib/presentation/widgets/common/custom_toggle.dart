@@ -15,8 +15,7 @@ class CustomToggle extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(!value),
       child: SizedBox(
-        width: 68,
-        height: 35,
+        width: 50,
         child: SvgPicture.asset(
           value ? CustomIcons.toggleOn : CustomIcons.toggleOff,
           fit: BoxFit.contain,

@@ -40,15 +40,19 @@ class AboutScreen extends StatelessWidget {
         showMenuButton: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(GeneralConsts.generalPadding),
+        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InfoParagraph(
               text: GeneralConsts.appNameDescription,
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: const EdgeInsets.only(
+                bottom: GeneralConsts.verticalPadding,
+              ),
             ),
+
+            const SizedBox(height: 12),
 
             ActionButton(title: 'rate the app', onTap: _rateApp),
             ActionButton(title: 'share with friends', onTap: _shareApp),
@@ -61,12 +65,16 @@ class AboutScreen extends StatelessWidget {
               onTap: () => _launchUrl(GeneralConsts.telegramUrl),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
 
             InfoParagraph(
-              text: GeneralConsts.fontFactText,
-              padding: const EdgeInsets.only(bottom: 24),
+              text: GeneralConsts.credits,
+              padding: const EdgeInsets.only(
+                bottom: GeneralConsts.verticalPadding,
+              ),
             ),
+
+            const SizedBox(height: 12),
 
             ActionButton(
               title: 'github repository',
