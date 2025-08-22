@@ -18,6 +18,8 @@ dependencies:
   share_plus: ^10.1.2
   url_launcher: ^6.3.1
   url_launcher_ios: ^6.3.2
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
 
 dev_dependencies:
@@ -27,6 +29,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.1
   intl_translation: ^0.20.1
   build_runner: ^2.4.15
+  riverpod_generator: ^2.6.2
+  riverpod_lint: ^2.6.1
 
 flutter_launcher_icons:
   android: "launcher_icon"

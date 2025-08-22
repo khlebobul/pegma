@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/utils/useful_methods.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/custom_toggle.dart';
 import '../../widgets/common/action_button.dart';
+import '../../providers/settings/theme_provider.dart';
+import '../../providers/settings/language_provider.dart';
+import '../../providers/settings/settings_provider.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-  bool isDarkTheme = false;
-  bool isStopwatchEnabled = true;
-  String selectedLanguage = 'english';
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = UIThemes.of(context);
+    final themeNotifier = ref.watch(themeNotifierProvider.notifier);
+    final themeMode = ref.watch(themeNotifierProvider);
+
+    final currentLocale = ref.watch(languageNotifierProvider);
+    final settings = ref.watch(settingsNotifierProvider);
+    final settingsNotifier = ref.watch(settingsNotifierProvider.notifier);
+
+    final isDarkTheme = themeMode == ThemeMode.dark;
+    final selectedLanguage = currentLocale.languageCode == 'en'
+        ? 'english'
+        : 'russian';
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -40,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: _buildSectionTitle('language', theme),
             ),
             const SizedBox(height: 16),
-            _buildLanguageOptions(theme),
+            _buildLanguageOptions(theme, ref, selectedLanguage),
 
             const SizedBox(height: 40),
 
@@ -56,9 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 horizontal: GeneralConsts.generalPadding,
               ),
               child: _buildToggleOption('dark theme', isDarkTheme, (value) {
-                setState(() {
-                  isDarkTheme = value;
-                });
+                themeNotifier.toggleTheme();
               }, theme),
             ),
             const SizedBox(height: 16),
@@ -66,12 +70,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.generalPadding,
               ),
-              child: _buildToggleOption('stopwatch', isStopwatchEnabled, (
+              child: _buildToggleOption('stopwatch', settings.soundEnabled, (
                 value,
               ) {
-                setState(() {
-                  isStopwatchEnabled = value;
-                });
+                settingsNotifier.toggleSound();
               }, theme),
             ),
             const Spacer(),
@@ -81,7 +83,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 horizontal: GeneralConsts.generalPadding,
               ),
 
-              child: _buildFooterActions(theme),
+              child: _buildFooterActions(theme, context),
             ),
           ],
         ),
@@ -96,7 +98,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildLanguageOptions(UIThemes theme) {
+  Widget _buildLanguageOptions(
+    UIThemes theme,
+    WidgetRef ref,
+    String selectedLanguage,
+  ) {
     final languages = ['english', 'russian', 'more lang'];
 
     return SizedBox(
@@ -109,20 +115,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
         itemCount: languages.length,
         separatorBuilder: (context, index) => const SizedBox(width: 24),
         itemBuilder: (context, index) {
-          return _buildLanguageOption(languages[index], theme);
+          return _buildLanguageOption(
+            languages[index],
+            theme,
+            ref,
+            selectedLanguage,
+          );
         },
       ),
     );
   }
 
-  Widget _buildLanguageOption(String language, UIThemes theme) {
+  Widget _buildLanguageOption(
+    String language,
+    UIThemes theme,
+    WidgetRef ref,
+    String selectedLanguage,
+  ) {
     final isSelected = selectedLanguage == language;
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          selectedLanguage = language;
-        });
+        if (language == 'english') {
+          ref.read(languageNotifierProvider.notifier).setEnglish();
+        } else if (language == 'russian') {
+          ref.read(languageNotifierProvider.notifier).setRussian();
+        }
       },
       child: Text(
         language,
@@ -148,7 +166,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildFooterActions(UIThemes theme) {
+  Widget _buildFooterActions(UIThemes theme, BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

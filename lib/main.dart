@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pegma/core/themes/app_theme.dart';
-import 'core/router/app_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'app.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
-      theme: UIThemes.lightTheme(),
-      darkTheme: UIThemes.darkTheme(),
-      // themeMode: themeMode,
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    return const App();
   }
 }
