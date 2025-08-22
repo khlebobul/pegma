@@ -10,10 +10,14 @@ class Images {
   static const String rulesScheme = 'assets/images/rules_scheme.svg';
 }
 
-class AboutConstants {
+class GeneralConsts {
+  // Paddings
+  static const double generalPadding = 16.0;
+
   // App information
   // TODO update
   static const String appName = 'pegma';
+  static const String email = 'khlebobul@gmail.com';
   static const String appNameDescription =
       'the name "pegma" is a play on words that combines:\n"peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.';
   static const String fontFactText =

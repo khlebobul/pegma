@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
-        title: AboutConstants.appName,
+        title: GeneralConsts.appName,
         showBackButton: false,
         showMenuButton: true,
       ),

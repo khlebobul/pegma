@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/info_paragraph.dart';
+import '../../widgets/common/action_button.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -17,7 +18,7 @@ class AboutScreen extends StatelessWidget {
   }
 
   Future<void> _shareApp() async {
-    await Share.share(AboutConstants.shareText);
+    await Share.share(GeneralConsts.shareText);
   }
 
   Future<void> _rateApp() async {
@@ -34,81 +35,59 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: const CustomAppBar(
-        title: AboutConstants.appName,
+        title: GeneralConsts.appName,
         showBackButton: true,
         showMenuButton: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(GeneralConsts.generalPadding),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InfoParagraph(
-              text: AboutConstants.appNameDescription,
+              text: GeneralConsts.appNameDescription,
               padding: const EdgeInsets.only(bottom: 24),
             ),
 
-            _buildActionTile(context, 'rate the app', _rateApp),
-            _buildActionTile(context, 'share with friends', _shareApp),
-            _buildActionTile(
-              context,
-              'project website',
-              () => _launchUrl(AboutConstants.projectWebsite),
+            ActionButton(title: 'rate the app', onTap: _rateApp),
+            ActionButton(title: 'share with friends', onTap: _shareApp),
+            ActionButton(
+              title: 'project website',
+              onTap: () => _launchUrl(GeneralConsts.projectWebsite),
             ),
-            _buildActionTile(
-              context,
-              'telegram',
-              () => _launchUrl(AboutConstants.telegramUrl),
+            ActionButton(
+              title: 'telegram',
+              onTap: () => _launchUrl(GeneralConsts.telegramUrl),
             ),
 
             const SizedBox(height: 24),
 
             InfoParagraph(
-              text: AboutConstants.fontFactText,
+              text: GeneralConsts.fontFactText,
               padding: const EdgeInsets.only(bottom: 24),
             ),
 
-            _buildActionTile(
-              context,
-              'github repository',
-              () => _launchUrl(AboutConstants.githubRepository),
+            ActionButton(
+              title: 'github repository',
+              onTap: () => _launchUrl(GeneralConsts.githubRepository),
             ),
-            _buildActionTile(
-              context,
-              'follow me on x (twitter)',
-              () => _launchUrl(AboutConstants.twitterUrl),
+            ActionButton(
+              title: 'follow me on x (twitter)',
+              onTap: () => _launchUrl(GeneralConsts.twitterUrl),
             ),
-            _buildActionTile(
-              context,
-              'check my website',
-              () => _launchUrl(AboutConstants.personalWebsite),
+            ActionButton(
+              title: 'check my website',
+              onTap: () => _launchUrl(GeneralConsts.personalWebsite),
             ),
-            _buildActionTile(
-              context,
-              'my other apps',
-              () => _launchUrl(AboutConstants.otherAppsUrl),
+            ActionButton(
+              title: 'my other apps',
+              onTap: () => _launchUrl(GeneralConsts.otherAppsUrl),
             ),
 
             const SizedBox(height: 50),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildActionTile(
-    BuildContext context,
-    String title,
-    VoidCallback onTap,
-  ) {
-    final theme = UIThemes.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4.0),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: onTap,
-        child: Text(title, style: theme.basicTextStyle),
       ),
     );
   }

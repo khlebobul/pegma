@@ -14,12 +14,12 @@ class StoryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: const CustomAppBar(
-        title: AboutConstants.appName,
+        title: GeneralConsts.appName,
         showBackButton: true,
         showMenuButton: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(GeneralConsts.generalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
