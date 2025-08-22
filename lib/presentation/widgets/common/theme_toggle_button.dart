@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../providers/settings/theme_provider.dart';
 
@@ -45,7 +43,7 @@ class ThemeToggleButton extends ConsumerWidget {
               width: iconSize + 16,
               height: iconSize + 16,
               decoration: BoxDecoration(
-                color: theme.highlightColor.withOpacity(0.1),
+                color: theme.highlightColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(
@@ -126,4 +124,3 @@ class FloatingThemeToggle extends ConsumerWidget {
     );
   }
 }
-

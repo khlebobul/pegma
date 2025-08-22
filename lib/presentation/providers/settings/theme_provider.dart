@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'theme_provider.g.dart';
 
 @riverpod
 class ThemeNotifier extends _$ThemeNotifier {
+  static const String _themeKey = 'theme_mode';
+
   @override
   ThemeMode build() {
+    _loadTheme();
     return ThemeMode.system;
   }
 
-  void setThemeMode(ThemeMode mode) {
-    state = mode;
+  Future<void> _loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    final themeIndex = prefs.getInt(_themeKey) ?? ThemeMode.system.index;
+    state = ThemeMode.values[themeIndex];
   }
 
-  void toggleTheme() {
+  Future<void> _saveTheme(ThemeMode mode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_themeKey, mode.index);
+  }
+
+  Future<void> setThemeMode(ThemeMode mode) async {
+    state = mode;
+    await _saveTheme(mode);
+  }
+
+  Future<void> toggleTheme() async {
+    ThemeMode newMode;
     switch (state) {
       case ThemeMode.light:
-        state = ThemeMode.dark;
+        newMode = ThemeMode.dark;
         break;
       case ThemeMode.dark:
-        state = ThemeMode.light;
+        newMode = ThemeMode.light;
         break;
       case ThemeMode.system:
-        state = ThemeMode.light;
+        newMode = ThemeMode.light;
         break;
     }
+    state = newMode;
+    await _saveTheme(newMode);
   }
 
   bool get isDarkMode => state == ThemeMode.dark;
