@@ -16,7 +16,29 @@ class HomeScreen extends StatelessWidget {
         showBackButton: false,
         showMenuButton: true,
       ),
-      body: Center(child: Text('home screen')),
+      body: GridView.builder(
+        padding: const EdgeInsets.symmetric(
+          horizontal: GeneralConsts.horizontalPadding,
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          childAspectRatio: 1.0,
+        ),
+        itemCount: 40,
+        itemBuilder: (context, index) {
+          final number = index + 1;
+          return GestureDetector(
+            onTap: () {
+              // TODO
+            },
+            child: Center(
+              child: Text(number.toString(), style: theme.menuTextStyle),
+            ),
+          );
+        },
+      ),
     );
   }
 }

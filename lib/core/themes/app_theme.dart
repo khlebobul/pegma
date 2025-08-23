@@ -66,7 +66,7 @@ class UIThemes {
   // text styles
   // main menu
   TextStyle get menuTextStyle => TextStyle(
-    fontSize: 25,
+    fontSize: 30,
     fontFamily: 'Pegma',
     color: textColor,
     fontWeight: FontWeight.bold,
