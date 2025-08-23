@@ -18,7 +18,7 @@ class AboutScreen extends StatelessWidget {
   }
 
   Future<void> _shareApp() async {
-    await Share.share(GeneralConsts.shareText);
+    await SharePlus.instance.share(ShareParams(text: GeneralConsts.shareText));
   }
 
   Future<void> _rateApp() async {

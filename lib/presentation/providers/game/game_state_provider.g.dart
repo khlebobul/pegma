@@ -12,14 +12,14 @@ String _$gameStateNotifierHash() => r'd465a6298a4980790fbe1bd74bd6494139197b82';
 @ProviderFor(GameStateNotifier)
 final gameStateNotifierProvider =
     AutoDisposeNotifierProvider<GameStateNotifier, GameState>.internal(
-  GameStateNotifier.new,
-  name: r'gameStateNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$gameStateNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      GameStateNotifier.new,
+      name: r'gameStateNotifierProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$gameStateNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$GameStateNotifier = AutoDisposeNotifier<GameState>;
 // ignore_for_file: type=lint
