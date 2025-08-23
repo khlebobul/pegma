@@ -55,9 +55,9 @@ flutter:
     - assets/images/
 
   fonts:
-  - family: FreeDraw
+  - family: Pegma
     fonts:
-      - asset: assets/fonts/free-draw-font-free-2-0.ttf
+      - asset: assets/fonts/pegma-app.ttf
 
 flutter_intl:
   enabled: true

@@ -1,5 +1,4 @@
 # pegma
 
-### credits
 
-Thanks to RYvett for the [Free Draw! Font (Free, 2.0)](https://fontstruct.com/fontstructions/show/2202136/free-draw-font-free-2-0)
+Fun fact: I made the font specifically for this app myself for uniqueness and fun with [fontstruct](https://fontstruct.com/fontstructions/show/2728315/pegma-app)

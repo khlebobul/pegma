@@ -12,7 +12,7 @@ class UIThemes {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'FreeDraw',
+      fontFamily: 'Pegma',
       scaffoldBackgroundColor: LightModeColors.background,
       dividerColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
@@ -37,7 +37,7 @@ class UIThemes {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      fontFamily: 'FreeDraw',
+      fontFamily: 'Pegma',
       scaffoldBackgroundColor: DarkModeColors.background,
       dividerColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
@@ -65,12 +65,22 @@ class UIThemes {
 
   // text styles
   // main menu
-  TextStyle get menuTextStyle =>
-      TextStyle(fontSize: 25, fontFamily: 'FreeDraw', color: textColor);
+  TextStyle get menuTextStyle => TextStyle(
+    fontSize: 25,
+    fontFamily: 'Pegma',
+    color: textColor,
+    fontWeight: FontWeight.bold,
+    wordSpacing: 5,
+  );
 
   // basic text
-  TextStyle get basicTextStyle =>
-      TextStyle(fontSize: 20, fontFamily: 'FreeDraw', color: textColor);
+  TextStyle get basicTextStyle => TextStyle(
+    fontSize: 20,
+    fontFamily: 'Pegma',
+    color: textColor,
+    fontWeight: FontWeight.bold,
+    wordSpacing: 10,
+  );
 
   // Colors
   Color get bgColor =>
