@@ -124,3 +124,4 @@ class FloatingThemeToggle extends ConsumerWidget {
     );
   }
 }
+

@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+import 'package:talker_riverpod_logger/talker_riverpod_logger.dart';
 import 'app.dart';
 
+final talker = TalkerFlutter.init(
+  settings: TalkerSettings(
+    enabled: true,
+    colors: {
+      'error': AnsiPen()..red(),
+      'info': AnsiPen()..magenta(),
+      'debug': AnsiPen()..magenta(),
+      'riverpod-update': AnsiPen()..yellow(),
+      'sql': AnsiPen()..cyan(),
+      'success': AnsiPen()..green(),
+      'riverpod-add': AnsiPen()..cyan(),
+    },
+  ),
+);
+
 void main() {
-  runApp(const ProviderScope(child: MainApp()));
+  runApp(
+    ProviderScope(
+      observers: [
+        TalkerRiverpodObserver(
+          talker: talker,
+          settings: const TalkerRiverpodLoggerSettings(
+            printProviderAdded: true,
+            printProviderUpdated: true,
+            printProviderDisposed: true,
+          ),
+        ),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends ConsumerWidget {

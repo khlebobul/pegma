@@ -6,6 +6,7 @@ import 'core/router/app_router.dart';
 import 'presentation/providers/settings/theme_provider.dart';
 import 'presentation/providers/settings/language_provider.dart';
 import 'generated/l10n.dart';
+import 'main.dart' show talker;
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -14,6 +15,9 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeNotifierProvider);
     final locale = ref.watch(languageNotifierProvider);
+
+    // Log theme and locale changes
+    talker.info('App build with theme: $themeMode, locale: $locale');
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
