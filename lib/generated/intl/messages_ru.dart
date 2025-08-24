@@ -20,8 +20,70 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static String m0(appName) =>
+      "название ${appName} - это игра слов, которая объединяет: \"peg\" (колышек, фишка) - основной элемент игры и \"theorema\", что связано с математической строгостью и логикой.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about": MessageLookupByLibrary.simpleMessage("о приложении"),
+    "appDescription": m0,
+    "darkTheme": MessageLookupByLibrary.simpleMessage("темная тема"),
+    "funFact": MessageLookupByLibrary.simpleMessage(
+      "интересный факт: я сделал шрифт специально для этого приложения сам — для уникальности и ради веселья ",
+    ),
+    "githubRepository": MessageLookupByLibrary.simpleMessage(
+      "репозиторий github",
+    ),
+    "inThe19thCenturyTheGameSpreadAcrossEuropeAnd":
+        MessageLookupByLibrary.simpleMessage(
+          "в 19 веке игра распространилась по европе и англии, став популярным развлечением в аристократических кругах. современные версии существуют в виде компьютерных игр, мобильных приложений и онлайн-головоломок.",
+        ),
     "language": MessageLookupByLibrary.simpleMessage("язык"),
+    "myOtherApps": MessageLookupByLibrary.simpleMessage(
+      "мои другие приложения",
+    ),
+    "myWebsite": MessageLookupByLibrary.simpleMessage("мой сайт"),
+    "others": MessageLookupByLibrary.simpleMessage("другое"),
+    "pegSolitaireIsNotOnlyAGameButAlsoA": MessageLookupByLibrary.simpleMessage(
+      "«peg solitaire» — это не только игра, но и объект математического изучения. комбинаторики и логики использовали ее для исследования стратегий, оптимальных ходов и методов решения задач.",
+    ),
+    "pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn":
+        MessageLookupByLibrary.simpleMessage(
+          "игра «peg solitaire» или «солитер на фишках» возникла в европе в 17 веке и быстро стала популярной во франции.",
+        ),
+    "projectWebsite": MessageLookupByLibrary.simpleMessage("сайт проекта"),
+    "rateTheApp": MessageLookupByLibrary.simpleMessage("оценить приложение"),
+    "reportBug": MessageLookupByLibrary.simpleMessage("сообщить об ошибке"),
+    "requestFeature": MessageLookupByLibrary.simpleMessage("запросить функцию"),
+    "rules": MessageLookupByLibrary.simpleMessage("правила"),
+    "rulesOne": MessageLookupByLibrary.simpleMessage(
+      "доска имеет отверстия, заполненные фишками, обычно центральное отверстие пустое.",
+    ),
+    "rulesThree": MessageLookupByLibrary.simpleMessage(
+      "цель: убрать как можно больше фишек, в идеале оставить только одну — в центре.",
+    ),
+    "rulesTwo": MessageLookupByLibrary.simpleMessage(
+      "ход: фишка перепрыгивает через соседнюю фишку (по горизонтали или вертикали) в пустое отверстие сразу за ней. перепрыгнутая фишка убирается.",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("настройки"),
+    "shareFeedback": MessageLookupByLibrary.simpleMessage("оставить отзыв"),
+    "shareWithFriends": MessageLookupByLibrary.simpleMessage(
+      "поделиться с друзьями",
+    ),
+    "stopwatch": MessageLookupByLibrary.simpleMessage("секундомер"),
+    "story": MessageLookupByLibrary.simpleMessage("история"),
+    "telegram": MessageLookupByLibrary.simpleMessage("телеграм"),
+    "theClassicBoardHasACrossShape77Squares33":
+        MessageLookupByLibrary.simpleMessage(
+          "классическая доска имеет форму креста: 7×7 клеток, 33 из них заняты фишками, центральная клетка пустая. кроме классической формы, существуют круглые, треугольные и другие нестандартные доски с разным количеством фишек.",
+        ),
+    "theEarliestDocumentedMentionOfTheGameIsIn1687":
+        MessageLookupByLibrary.simpleMessage(
+          "самое раннее упоминание об игре датируется 1687 годом — в книге французского писателя бернара лебонна, где описана доска с 33 отверстиями.",
+        ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
+      "цель — убрать все фишки, оставив только одну в центре. интересный факт: для классической доски с 33 фишками существует только один идеальный путь решения, хотя игроки часто находят множество промежуточных вариаций.",
+    ),
+    "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
   };
 }

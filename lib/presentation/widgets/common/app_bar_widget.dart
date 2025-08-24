@@ -38,6 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               right: GeneralConsts.horizontalPadding,
             ),
             child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: () {
                 if (context.canPop()) {
                   context.pop();
@@ -58,6 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               right: GeneralConsts.horizontalPadding,
             ),
             child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: () => context.push(AppRouter.sideMenu),
               child: SvgPicture.asset(
                 CustomIcons.burgerMenu,

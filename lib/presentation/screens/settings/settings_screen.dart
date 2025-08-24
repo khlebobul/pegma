@@ -27,7 +27,7 @@ class SettingsScreen extends ConsumerWidget {
     final isDarkTheme = themeMode == ThemeMode.dark;
     final selectedLanguage = currentLocale.languageCode == 'en'
         ? 'english'
-        : 'russian';
+        : 'русский';
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -55,14 +55,16 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.horizontalPadding,
               ),
-              child: _buildSectionTitle('others', theme),
+              child: _buildSectionTitle(S.of(context).others, theme),
             ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.horizontalPadding,
               ),
-              child: _buildToggleOption('dark theme', isDarkTheme, (value) {
+              child: _buildToggleOption(S.of(context).darkTheme, isDarkTheme, (
+                value,
+              ) {
                 themeNotifier.toggleTheme();
               }, theme),
             ),
@@ -71,11 +73,14 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.horizontalPadding,
               ),
-              child: _buildToggleOption('stopwatch', settings.soundEnabled, (
-                value,
-              ) {
-                settingsNotifier.toggleSound();
-              }, theme),
+              child: _buildToggleOption(
+                S.of(context).stopwatch,
+                settings.soundEnabled,
+                (value) {
+                  settingsNotifier.toggleSound();
+                },
+                theme,
+              ),
             ),
             const Spacer(),
 
@@ -104,7 +109,7 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     String selectedLanguage,
   ) {
-    final languages = ['english', 'russian'];
+    final languages = ['english', 'русский'];
 
     return SizedBox(
       height: 40,
@@ -139,7 +144,7 @@ class SettingsScreen extends ConsumerWidget {
       onTap: () {
         if (language == 'english') {
           ref.read(languageNotifierProvider.notifier).setEnglish();
-        } else if (language == 'russian') {
+        } else if (language == 'русский') {
           ref.read(languageNotifierProvider.notifier).setRussian();
         }
       },
@@ -172,18 +177,18 @@ class SettingsScreen extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ActionButton(
-          title: 'report bug',
+          title: S.of(context).reportBug,
           onTap: () => sendEmail(context, GeneralConsts.email, 'report bug'),
           padding: const EdgeInsets.only(bottom: GeneralConsts.verticalPadding),
         ),
         ActionButton(
-          title: 'request feature',
+          title: S.of(context).requestFeature,
           onTap: () =>
               sendEmail(context, GeneralConsts.email, 'request feature'),
           padding: const EdgeInsets.only(bottom: GeneralConsts.verticalPadding),
         ),
         ActionButton(
-          title: 'share feedback',
+          title: S.of(context).shareFeedback,
           onTap: () =>
               sendEmail(context, GeneralConsts.email, 'share feedback'),
         ),

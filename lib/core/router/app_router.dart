@@ -6,7 +6,7 @@ import '../../presentation/screens/game/game_screen.dart';
 import '../../presentation/screens/settings/settings_screen.dart';
 import '../../presentation/screens/info/about_screen.dart';
 import '../../presentation/screens/info/rules_screen.dart';
-import '../../presentation/widgets/common/side_menu_screen.dart';
+import '../../presentation/screens/home/side_menu_screen.dart';
 
 class AppRouter {
   static const String home = '/';

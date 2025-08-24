@@ -58,6 +58,236 @@ class S {
   String get language {
     return Intl.message('language', name: 'language', desc: '', args: []);
   }
+
+  /// `the name {appName} is a play on words that combines: "peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.`
+  String appDescription(String appName) {
+    return Intl.message(
+      'the name $appName is a play on words that combines: "peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.',
+      name: 'appDescription',
+      desc: 'Description of the app name meaning',
+      args: [appName],
+    );
+  }
+
+  /// `rate the app`
+  String get rateTheApp {
+    return Intl.message('rate the app', name: 'rateTheApp', desc: '', args: []);
+  }
+
+  /// `share with friends`
+  String get shareWithFriends {
+    return Intl.message(
+      'share with friends',
+      name: 'shareWithFriends',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `project website`
+  String get projectWebsite {
+    return Intl.message(
+      'project website',
+      name: 'projectWebsite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `telegram`
+  String get telegram {
+    return Intl.message('telegram', name: 'telegram', desc: '', args: []);
+  }
+
+  /// `fun fact: i made the font specifically for this app myself for uniqueness and fun with `
+  String get funFact {
+    return Intl.message(
+      'fun fact: i made the font specifically for this app myself for uniqueness and fun with ',
+      name: 'funFact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `github repository`
+  String get githubRepository {
+    return Intl.message(
+      'github repository',
+      name: 'githubRepository',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `my website`
+  String get myWebsite {
+    return Intl.message('my website', name: 'myWebsite', desc: '', args: []);
+  }
+
+  /// `my other apps`
+  String get myOtherApps {
+    return Intl.message(
+      'my other apps',
+      name: 'myOtherApps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `x (twitter)`
+  String get xTwitter {
+    return Intl.message('x (twitter)', name: 'xTwitter', desc: '', args: []);
+  }
+
+  /// `the board has holes filled with pegs, usually with the center hole empty.`
+  String get rulesOne {
+    return Intl.message(
+      'the board has holes filled with pegs, usually with the center hole empty.',
+      name: 'rulesOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `move: a peg jumps over an adjacent peg (horizontally or vertically) into an empty hole right beyond it. the jumped peg is removed.`
+  String get rulesTwo {
+    return Intl.message(
+      'move: a peg jumps over an adjacent peg (horizontally or vertically) into an empty hole right beyond it. the jumped peg is removed.',
+      name: 'rulesTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `goal: remove as many pegs as possible, ideally leaving only one — in the center.`
+  String get rulesThree {
+    return Intl.message(
+      'goal: remove as many pegs as possible, ideally leaving only one — in the center.',
+      name: 'rulesThree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `peg solitaire, or solitaire on pegs, originated in europe in the 17th century and quickly became popular in france.`
+  String get pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn {
+    return Intl.message(
+      'peg solitaire, or solitaire on pegs, originated in europe in the 17th century and quickly became popular in france.',
+      name: 'pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the earliest documented mention of the game is in 1687 in a book by french writer bernard lebonn, describing a board with 33 holes.`
+  String get theEarliestDocumentedMentionOfTheGameIsIn1687 {
+    return Intl.message(
+      'the earliest documented mention of the game is in 1687 in a book by french writer bernard lebonn, describing a board with 33 holes.',
+      name: 'theEarliestDocumentedMentionOfTheGameIsIn1687',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the classic board has a cross shape: 7×7 squares, 33 filled with pegs, the center square empty. besides the classic shape, there are circular, triangular, and other non-standard boards with different numbers of pegs.`
+  String get theClassicBoardHasACrossShape77Squares33 {
+    return Intl.message(
+      'the classic board has a cross shape: 7×7 squares, 33 filled with pegs, the center square empty. besides the classic shape, there are circular, triangular, and other non-standard boards with different numbers of pegs.',
+      name: 'theClassicBoardHasACrossShape77Squares33',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.`
+  String get theGoalIsToRemoveAllPegsLeavingOnlyOne {
+    return Intl.message(
+      'the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.',
+      name: 'theGoalIsToRemoveAllPegsLeavingOnlyOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `peg solitaire is not only a game but also a subject of mathematical study. combinatorialists and logicians have used it to explore strategies, optimal moves, and problem-solving techniques.`
+  String get pegSolitaireIsNotOnlyAGameButAlsoA {
+    return Intl.message(
+      'peg solitaire is not only a game but also a subject of mathematical study. combinatorialists and logicians have used it to explore strategies, optimal moves, and problem-solving techniques.',
+      name: 'pegSolitaireIsNotOnlyAGameButAlsoA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.`
+  String get inThe19thCenturyTheGameSpreadAcrossEuropeAnd {
+    return Intl.message(
+      'in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.',
+      name: 'inThe19thCenturyTheGameSpreadAcrossEuropeAnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `settings`
+  String get settings {
+    return Intl.message('settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `rules`
+  String get rules {
+    return Intl.message('rules', name: 'rules', desc: '', args: []);
+  }
+
+  /// `story`
+  String get story {
+    return Intl.message('story', name: 'story', desc: '', args: []);
+  }
+
+  /// `about`
+  String get about {
+    return Intl.message('about', name: 'about', desc: '', args: []);
+  }
+
+  /// `others`
+  String get others {
+    return Intl.message('others', name: 'others', desc: '', args: []);
+  }
+
+  /// `dark theme`
+  String get darkTheme {
+    return Intl.message('dark theme', name: 'darkTheme', desc: '', args: []);
+  }
+
+  /// `stopwatch`
+  String get stopwatch {
+    return Intl.message('stopwatch', name: 'stopwatch', desc: '', args: []);
+  }
+
+  /// `report bug`
+  String get reportBug {
+    return Intl.message('report bug', name: 'reportBug', desc: '', args: []);
+  }
+
+  /// `request feature`
+  String get requestFeature {
+    return Intl.message(
+      'request feature',
+      name: 'requestFeature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `share feedback`
+  String get shareFeedback {
+    return Intl.message(
+      'share feedback',
+      name: 'shareFeedback',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

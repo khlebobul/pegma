@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/generated/l10n.dart';
 import '../../../core/router/app_router.dart';
 
 class SideMenuScreen extends StatelessWidget {
@@ -48,25 +49,25 @@ class SideMenuScreen extends StatelessWidget {
                 ),
                 children: [
                   _MenuListItem(
-                    title: 'settings',
+                    title: S.of(context).settings,
                     onTap: () {
                       context.go(AppRouter.settings);
                     },
                   ),
                   _MenuListItem(
-                    title: 'rules',
+                    title: S.of(context).rules,
                     onTap: () {
                       context.go(AppRouter.rules);
                     },
                   ),
                   _MenuListItem(
-                    title: 'story',
+                    title: S.of(context).story,
                     onTap: () {
                       context.go(AppRouter.story);
                     },
                   ),
                   _MenuListItem(
-                    title: 'about',
+                    title: S.of(context).about,
                     onTap: () {
                       context.go(AppRouter.about);
                     },

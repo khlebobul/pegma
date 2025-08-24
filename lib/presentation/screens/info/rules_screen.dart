@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/generated/l10n.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/info_paragraph.dart';
 
@@ -23,18 +24,18 @@ class RulesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children:  [
             InfoParagraph(
               text:
-                  'the board has holes filled with pegs, usually with the center hole empty.',
+                  S.of(context).rulesOne,
             ),
             InfoParagraph(
               text:
-                  'move: a peg jumps over an adjacent peg (horizontally or vertically) into an empty hole right beyond it. the jumped peg is removed.',
+                  S.of(context).rulesTwo,
             ),
             InfoParagraph(
               text:
-                  'goal: remove as many pegs as possible, ideally leaving only one — in the center.',
+                  S.of(context).rulesThree,
             ),
 
             _RulesImage(),

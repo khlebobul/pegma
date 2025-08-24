@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/generated/l10n.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/info_paragraph.dart';
 
@@ -22,30 +23,30 @@ class StoryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children:  [
             InfoParagraph(
               text:
-                  'peg solitaire, or solitaire on pegs, originated in europe in the 17th century and quickly became popular in france.',
+                  S.of(context).pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn,
             ),
             InfoParagraph(
               text:
-                  'the earliest documented mention of the game is in 1687 in a book by french writer bernard lebonn, describing a board with 33 holes.',
+                  S.of(context).theEarliestDocumentedMentionOfTheGameIsIn1687,
             ),
             InfoParagraph(
               text:
-                  'the classic board has a cross shape: 7×7 squares, 33 filled with pegs, the center square empty. besides the classic shape, there are circular, triangular, and other non-standard boards with different numbers of pegs.',
+                  S.of(context).theClassicBoardHasACrossShape77Squares33,
             ),
             InfoParagraph(
               text:
-                  'the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.',
+                  S.of(context).theGoalIsToRemoveAllPegsLeavingOnlyOne,
             ),
             InfoParagraph(
               text:
-                  'peg solitaire is not only a game but also a subject of mathematical study. combinatorialists and logicians have used it to explore strategies, optimal moves, and problem-solving techniques.',
+                  S.of(context).pegSolitaireIsNotOnlyAGameButAlsoA,
             ),
             InfoParagraph(
               text:
-                  'in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.',
+                  S.of(context).inThe19thCenturyTheGameSpreadAcrossEuropeAnd,
             ),
             SizedBox(height: 50),
           ],
