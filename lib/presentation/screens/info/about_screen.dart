@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:share_plus/share_plus.dart';
@@ -22,9 +25,10 @@ class AboutScreen extends StatelessWidget {
   }
 
   Future<void> _rateApp() async {
-    // TODO update
     await _launchUrl(
-      'https://play.google.com/store/apps/details?id=com.example.pegma',
+      Platform.isIOS
+          ? GeneralConsts.rateAppStore
+          : GeneralConsts.rateGooglePlay,
     );
   }
 
@@ -46,7 +50,8 @@ class AboutScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InfoParagraph(
-              text: GeneralConsts.appNameDescription,
+              text:
+                  'the name ${GeneralConsts.appName} is a play on words that combines: "peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.',
               padding: const EdgeInsets.only(
                 bottom: GeneralConsts.verticalPadding,
               ),
@@ -67,10 +72,28 @@ class AboutScreen extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            InfoParagraph(
-              text: GeneralConsts.credits,
+            Padding(
               padding: const EdgeInsets.only(
                 bottom: GeneralConsts.verticalPadding,
+              ),
+              child: RichText(
+                text: TextSpan(
+                  style: theme.basicTextStyle.copyWith(
+                    color: theme.secondaryTextColor,
+                  ),
+                  children: [
+                    const TextSpan(
+                      text:
+                          'fun fact: i made the font specifically for this app myself for uniqueness and fun with ',
+                    ),
+                    TextSpan(
+                      text: GeneralConsts.fontstruct,
+                      style: theme.basicTextStyle,
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => _launchUrl(GeneralConsts.fontUrl),
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -90,7 +113,11 @@ class AboutScreen extends StatelessWidget {
             ),
             ActionButton(
               title: 'my other apps',
-              onTap: () => _launchUrl(GeneralConsts.otherAppsUrl),
+              onTap: () => _launchUrl(
+                Platform.isIOS
+                    ? GeneralConsts.otherAppsAppStoreLink
+                    : GeneralConsts.otherAppsGooglePlayLink,
+              ),
             ),
 
             const SizedBox(height: 50),

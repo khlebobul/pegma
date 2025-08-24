@@ -16,26 +16,32 @@ class GeneralConsts {
   static const double verticalPadding = 8.0;
 
   // App information
-  // TODO update
   static const String appName = 'pegma';
+  static const String fontstruct = 'fontstruct';
   static const String email = 'khlebobul@gmail.com';
-  static const String appNameDescription =
-      'the name "pegma" is a play on words that combines:\n"peg" (peg, token) is the main element of the game and "theorema", which is associated with mathematical rigor and logic.';
-  static const String credits =
-      'fun fact: i made the font specifically for this app myself for uniqueness and fun with fontstruct';
 
   // Share
-  // TODO update
   static const String shareText =
-      'Check out Pegma - a classic peg solitaire game! Play the timeless puzzle game on your mobile device.';
+      'Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device';
 
   // URLs
+  static const String projectWebsite = 'https://pegma.vercel.app';
+  static const String telegramUrl = 'https://t.me/khlebobul_dev';
+  static const String githubRepository = 'https://github.com/khlebobul/pegma';
+  static const String twitterUrl = 'https://twitter.com/khlebobul';
+  static const String personalWebsite = 'https://khlebobul.github.io';
+  static const String fontUrl =
+      'https://fontstruct.com/fontstructions/show/2728315/pegma-app';
+
   // TODO update
-  static const String projectWebsite = 'https://pegma.example.com';
-  static const String telegramUrl = 'https://t.me/telegram';
-  static const String githubRepository = 'https://github.com/username/pegma';
-  static const String twitterUrl = 'https://twitter.com/username';
-  static const String personalWebsite = 'https://website.com';
-  static const String otherAppsUrl =
-      'https://play.google.com/store/apps/developer?id=Your+Developer+Name';
+  static const rateAppStore =
+      'https://itunes.apple.com/app/id6743980638?action=write-review';
+  static const rateGooglePlay =
+      'https://play.google.com/store/apps/details?id=com.khlebobul.board_buddy';
+
+  // other apps links
+  static const otherAppsAppStoreLink =
+      'https://apps.apple.com/developer/gleb-shalimov/id1775466597';
+  static const otherAppsGooglePlayLink =
+      'https://www.rustore.ru/catalog/developer/xbww3r';
 }
