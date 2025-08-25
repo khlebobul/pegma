@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/presentation/screens/info/story_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
+import '../../presentation/screens/home/splash_screen.dart';
 import '../../presentation/screens/game/game_screen.dart';
 import '../../presentation/screens/settings/settings_screen.dart';
 import '../../presentation/screens/info/about_screen.dart';
@@ -9,7 +10,8 @@ import '../../presentation/screens/info/rules_screen.dart';
 import '../../presentation/screens/home/side_menu_screen.dart';
 
 class AppRouter {
-  static const String home = '/';
+  static const String splash = '/';
+  static const String home = '/home';
   static const String game = '/game';
   static const String settings = '/settings';
   static const String about = '/about';
@@ -69,8 +71,13 @@ class AppRouter {
   }
 
   static final GoRouter router = GoRouter(
-    initialLocation: home,
+    initialLocation: splash,
     routes: [
+      GoRoute(
+        path: splash,
+        pageBuilder: (context, state) =>
+            _fadeTransition(const SplashScreen(), state),
+      ),
       GoRoute(
         path: home,
         pageBuilder: (context, state) =>

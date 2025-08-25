@@ -28,6 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "about": MessageLookupByLibrary.simpleMessage("about"),
     "appDescription": m0,
     "darkTheme": MessageLookupByLibrary.simpleMessage("dark theme"),
+    "discoverPegmaAFreeOpensourceTakeOnTheClassicPeg":
+        MessageLookupByLibrary.simpleMessage(
+          "Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!",
+        ),
     "funFact": MessageLookupByLibrary.simpleMessage(
       "fun fact: i made the font specifically for this app myself for uniqueness and fun with ",
     ),

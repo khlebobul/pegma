@@ -288,6 +288,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!`
+  String get discoverPegmaAFreeOpensourceTakeOnTheClassicPeg {
+    return Intl.message(
+      'Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!',
+      name: 'discoverPegmaAFreeOpensourceTakeOnTheClassicPeg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -23,30 +23,26 @@ class StoryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
+          children: [
             InfoParagraph(
-              text:
-                  S.of(context).pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn,
+              text: S
+                  .of(context)
+                  .pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn,
             ),
             InfoParagraph(
-              text:
-                  S.of(context).theEarliestDocumentedMentionOfTheGameIsIn1687,
+              text: S.of(context).theEarliestDocumentedMentionOfTheGameIsIn1687,
             ),
             InfoParagraph(
-              text:
-                  S.of(context).theClassicBoardHasACrossShape77Squares33,
+              text: S.of(context).theClassicBoardHasACrossShape77Squares33,
             ),
             InfoParagraph(
-              text:
-                  S.of(context).theGoalIsToRemoveAllPegsLeavingOnlyOne,
+              text: S.of(context).theGoalIsToRemoveAllPegsLeavingOnlyOne,
             ),
             InfoParagraph(
-              text:
-                  S.of(context).pegSolitaireIsNotOnlyAGameButAlsoA,
+              text: S.of(context).pegSolitaireIsNotOnlyAGameButAlsoA,
             ),
             InfoParagraph(
-              text:
-                  S.of(context).inThe19thCenturyTheGameSpreadAcrossEuropeAnd,
+              text: S.of(context).inThe19thCenturyTheGameSpreadAcrossEuropeAnd,
             ),
             SizedBox(height: 50),
           ],

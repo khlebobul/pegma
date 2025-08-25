@@ -22,7 +22,11 @@ class AboutScreen extends StatelessWidget {
   }
 
   Future<void> _shareApp() async {
-    await SharePlus.instance.share(ShareParams(text: GeneralConsts.shareText));
+    await SharePlus.instance.share(
+      ShareParams(
+        text: S.current.discoverPegmaAFreeOpensourceTakeOnTheClassicPeg,
+      ),
+    );
   }
 
   Future<void> _rateApp() async {

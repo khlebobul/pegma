@@ -24,19 +24,10 @@ class RulesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
-            InfoParagraph(
-              text:
-                  S.of(context).rulesOne,
-            ),
-            InfoParagraph(
-              text:
-                  S.of(context).rulesTwo,
-            ),
-            InfoParagraph(
-              text:
-                  S.of(context).rulesThree,
-            ),
+          children: [
+            InfoParagraph(text: S.of(context).rulesOne),
+            InfoParagraph(text: S.of(context).rulesTwo),
+            InfoParagraph(text: S.of(context).rulesThree),
 
             _RulesImage(),
             SizedBox(height: 50),

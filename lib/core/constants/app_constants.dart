@@ -19,10 +19,7 @@ class GeneralConsts {
   static const String appName = 'pegma';
   static const String fontstruct = 'fontstruct';
   static const String email = 'khlebobul@gmail.com';
-
-  // Share
-  static const String shareText =
-      'Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device';
+  static const String madeBy = 'by @khlebobul';
 
   // URLs
   static const String projectWebsite = 'https://pegma.vercel.app';
