@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/constants/app_constants.dart';
+import 'package:pegma/core/utils/market_helper.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pegma/generated/l10n.dart';
@@ -63,7 +64,8 @@ class AboutScreen extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            ActionButton(title: S.of(context).rateTheApp, onTap: _rateApp),
+            if (MarketHelper.shouldShowRating())
+              ActionButton(title: S.of(context).rateTheApp, onTap: _rateApp),
             ActionButton(
               title: S.of(context).shareWithFriends,
               onTap: _shareApp,
