@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,24 +9,50 @@ part 'language_provider.g.dart';
 class LanguageNotifier extends _$LanguageNotifier {
   static const String _languageKey = 'language_code';
 
+  static const List<String> supportedLanguages = ['en', 'ru'];
+
   @override
   Locale build() {
     _loadLanguage();
+    return _getSystemLocale();
+  }
+
+  Locale _getSystemLocale() {
+    final systemLocale = ui.PlatformDispatcher.instance.locale;
+    final systemLanguageCode = systemLocale.languageCode;
+
+    if (supportedLanguages.contains(systemLanguageCode)) {
+      switch (systemLanguageCode) {
+        case 'ru':
+          return const Locale('ru', 'RU');
+        case 'en':
+          return const Locale('en', 'US');
+        default:
+          return const Locale('en', 'US');
+      }
+    }
+
     return const Locale('en', 'US');
   }
 
   Future<void> _loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
-    final languageCode = prefs.getString(_languageKey) ?? 'en';
+    final savedLanguageCode = prefs.getString(_languageKey);
 
-    switch (languageCode) {
-      case 'ru':
-        state = const Locale('ru', 'RU');
-        break;
-      case 'en':
-      default:
-        state = const Locale('en', 'US');
-        break;
+    if (savedLanguageCode != null) {
+      // Если язык уже сохранен, используем его
+      switch (savedLanguageCode) {
+        case 'ru':
+          state = const Locale('ru', 'RU');
+          break;
+        case 'en':
+        default:
+          state = const Locale('en', 'US');
+          break;
+      }
+    } else {
+      // Если язык не сохранен, используем системный
+      state = _getSystemLocale();
     }
   }
 
@@ -53,4 +80,20 @@ class LanguageNotifier extends _$LanguageNotifier {
 
   bool get isEnglish => state.languageCode == 'en';
   bool get isRussian => state.languageCode == 'ru';
+
+  static bool isLanguageSupported(String languageCode) {
+    return supportedLanguages.contains(languageCode);
+  }
+
+  static List<Locale> getSupportedLocales() {
+    return supportedLanguages.map((code) {
+      switch (code) {
+        case 'ru':
+          return const Locale('ru', 'RU');
+        case 'en':
+        default:
+          return const Locale('en', 'US');
+      }
+    }).toList();
+  }
 }

@@ -6,20 +6,20 @@ part of 'language_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$languageNotifierHash() => r'7e2d22240dd4bee033f03524bbabd714e95e3255';
+String _$languageNotifierHash() => r'8fd2ab112b4416d068d9d60a5e8adcd8fb990d47';
 
 /// See also [LanguageNotifier].
 @ProviderFor(LanguageNotifier)
 final languageNotifierProvider =
     AutoDisposeNotifierProvider<LanguageNotifier, Locale>.internal(
-      LanguageNotifier.new,
-      name: r'languageNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$languageNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  LanguageNotifier.new,
+  name: r'languageNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$languageNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$LanguageNotifier = AutoDisposeNotifier<Locale>;
 // ignore_for_file: type=lint
