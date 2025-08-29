@@ -299,14 +299,14 @@ class DialogWindow extends StatelessWidget {
 
 /// Type 3
 
-  // void _showImageDialog(BuildContext context) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) => DialogWindow.closeButtonWithImage(
-  //       imagePath: Images.rulesScheme,
-  //       onClosePressed: () {
-  //         Navigator.of(context).pop();
-  //       },
-  //     ),
-  //   );
-  // }
+// void _showImageDialog(BuildContext context) {
+//   showDialog(
+//     context: context,
+//     builder: (context) => DialogWindow.closeButtonWithImage(
+//       imagePath: Images.rulesScheme,
+//       onClosePressed: () {
+//         Navigator.of(context).pop();
+//       },
+//     ),
+//   );
+// }

@@ -9,21 +9,50 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool showBackButton;
   final bool showMenuButton;
-
+  final bool showLeftArrowButton; // ← вместо текста
   const CustomAppBar({
     super.key,
     this.title = '',
     this.showBackButton = false,
     this.showMenuButton = true,
+    this.showLeftArrowButton = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
+
     return AppBar(
       backgroundColor: theme.bgColor,
       elevation: 0,
       centerTitle: false,
+
+      leading: showLeftArrowButton
+          ? Padding(
+              padding: const EdgeInsets.only(
+                left: GeneralConsts.horizontalPadding,
+              ),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.go(AppRouter.home);
+                  }
+                },
+                child: SvgPicture.asset(
+                  CustomIcons.back,
+                  width: 20,
+                  colorFilter: ColorFilter.mode(
+                    theme.textColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            )
+          : null,
+
       title: Text(
         title,
         style: theme.basicTextStyle.copyWith(color: theme.secondaryTextColor),
@@ -31,6 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 16,
 
       automaticallyImplyLeading: false,
+
       actions: [
         if (showBackButton)
           Padding(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
+import 'package:pegma/core/router/app_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
@@ -31,7 +33,7 @@ class HomeScreen extends StatelessWidget {
           final number = index + 1;
           return GestureDetector(
             onTap: () {
-              // TODO
+              context.go(AppRouter.game);
             },
             child: Center(
               child: Text(number.toString(), style: theme.menuTextStyle),
