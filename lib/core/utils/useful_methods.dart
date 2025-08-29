@@ -28,3 +28,10 @@ Future<void> sendEmail(
     );
   }
 }
+
+  Future<void> launchLinkUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch $url');
+    }
+  }

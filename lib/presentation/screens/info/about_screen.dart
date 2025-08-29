@@ -5,8 +5,8 @@ import 'package:flutter/gestures.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/utils/market_helper.dart';
+import 'package:pegma/core/utils/useful_methods.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:pegma/generated/l10n.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/common/info_paragraph.dart';
@@ -14,13 +14,6 @@ import '../../widgets/common/action_button.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
-
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw Exception('Could not launch $url');
-    }
-  }
 
   Future<void> _shareApp() async {
     await SharePlus.instance.share(
@@ -31,7 +24,7 @@ class AboutScreen extends StatelessWidget {
   }
 
   Future<void> _rateApp() async {
-    await _launchUrl(
+    await launchLinkUrl(
       Platform.isIOS
           ? GeneralConsts.rateAppStore
           : GeneralConsts.rateGooglePlay,
@@ -72,11 +65,11 @@ class AboutScreen extends StatelessWidget {
             ),
             ActionButton(
               title: S.of(context).projectWebsite,
-              onTap: () => _launchUrl(GeneralConsts.projectWebsite),
+              onTap: () => launchLinkUrl(GeneralConsts.projectWebsite),
             ),
             ActionButton(
               title: S.of(context).telegram,
-              onTap: () => _launchUrl(GeneralConsts.telegramUrl),
+              onTap: () => launchLinkUrl(GeneralConsts.telegramUrl),
             ),
 
             const SizedBox(height: 12),
@@ -96,7 +89,7 @@ class AboutScreen extends StatelessWidget {
                       text: GeneralConsts.fontstruct,
                       style: theme.basicTextStyle,
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => _launchUrl(GeneralConsts.fontUrl),
+                        ..onTap = () => launchLinkUrl(GeneralConsts.fontUrl),
                     ),
                   ],
                 ),
@@ -107,19 +100,19 @@ class AboutScreen extends StatelessWidget {
 
             ActionButton(
               title: S.of(context).githubRepository,
-              onTap: () => _launchUrl(GeneralConsts.githubRepository),
+              onTap: () => launchLinkUrl(GeneralConsts.githubRepository),
             ),
             ActionButton(
               title: S.of(context).xTwitter,
-              onTap: () => _launchUrl(GeneralConsts.twitterUrl),
+              onTap: () => launchLinkUrl(GeneralConsts.twitterUrl),
             ),
             ActionButton(
               title: S.of(context).myWebsite,
-              onTap: () => _launchUrl(GeneralConsts.personalWebsite),
+              onTap: () => launchLinkUrl(GeneralConsts.personalWebsite),
             ),
             ActionButton(
               title: S.of(context).myOtherApps,
-              onTap: () => _launchUrl(
+              onTap: () => launchLinkUrl(
                 Platform.isIOS
                     ? GeneralConsts.otherAppsAppStoreLink
                     : GeneralConsts.otherAppsGooglePlayLink,
