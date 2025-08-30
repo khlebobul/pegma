@@ -244,6 +244,8 @@ class DialogWindow extends StatelessWidget {
   }
 }
 
+// TODO add moves counter
+
 /// Examples
 
 /// Type 1

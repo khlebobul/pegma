@@ -10,39 +10,19 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
+
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
         showLeftArrowButton: true,
         showBackButton: false,
         showMenuButton: false,
+        isGameScreen: true,
+        timer: '0:20',
+        moves: '10/33',
       ),
       body: Column(
         children: [
-          // TODO: Timer and Ball Counter Row
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 16.0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '0:20',
-                  style: theme.basicTextStyle.copyWith(
-                    color: theme.secondaryTextColor,
-                  ),
-                ),
-                Text(
-                  '10/33',
-                  style: theme.basicTextStyle.copyWith(
-                    color: theme.secondaryTextColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
           Expanded(child: Center(child: GameBoard())),
           UndoBottomBar(
             onUndoPressed: () {

@@ -4,6 +4,7 @@ import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 
 // TODO add haptic feedback
+// TODO check android bottom bar menu settings
 class UndoBottomBar extends StatelessWidget {
   final VoidCallback? onUndoPressed;
   final VoidCallback? onRedoPressed;

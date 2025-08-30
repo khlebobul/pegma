@@ -10,6 +10,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final bool showMenuButton;
   final bool showLeftArrowButton;
+  final bool isGameScreen;
+  final String? timer;
+  final String? moves;
 
   const CustomAppBar({
     super.key,
@@ -17,11 +20,79 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackButton = false,
     this.showMenuButton = true,
     this.showLeftArrowButton = false,
+    this.isGameScreen = false,
+    this.timer,
+    this.moves,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
+
+    if (isGameScreen) {
+      return AppBar(
+        backgroundColor: theme.bgColor,
+        elevation: 0,
+        centerTitle: true,
+        leading: showLeftArrowButton
+            ? Padding(
+                padding: const EdgeInsets.only(
+                  left: GeneralConsts.horizontalPadding,
+                ),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    if (context.canPop()) {
+                      context.pop();
+                    } else {
+                      context.go(AppRouter.home);
+                    }
+                  },
+                  child: Container(
+                    width: 44,
+                    height: 44,
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      CustomIcons.back,
+                      width: 30,
+                      colorFilter: ColorFilter.mode(
+                        theme.textColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : null,
+        title: timer != null
+            ? Text(
+                timer!,
+                style: theme.basicTextStyle.copyWith(
+                  color: theme.secondaryTextColor,
+                ),
+              )
+            : null,
+        titleSpacing: 16,
+        automaticallyImplyLeading: false,
+        actions: [
+          if (moves != null)
+            Padding(
+              padding: const EdgeInsets.only(
+                right: GeneralConsts.horizontalPadding,
+              ),
+              child: Center(
+                child: Text(
+                  moves!,
+                  style: theme.basicTextStyle.copyWith(
+                    color: theme.secondaryTextColor,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      );
+    }
+
     return AppBar(
       backgroundColor: theme.bgColor,
       elevation: 0,
@@ -46,7 +117,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     CustomIcons.back,
-                    width: 20,
+                    width: 15,
                     colorFilter: ColorFilter.mode(
                       theme.textColor,
                       BlendMode.srcIn,
@@ -84,7 +155,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: SvgPicture.asset(
                   CustomIcons.close,
                   width: 20,
-                  colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(
+                    theme.textColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -104,7 +178,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: SvgPicture.asset(
                   CustomIcons.burgerMenu,
                   width: 20,
-                  colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(
+                    theme.textColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
