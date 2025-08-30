@@ -15,7 +15,7 @@ class GameScreen extends StatelessWidget {
       appBar: CustomAppBar(
         showLeftArrowButton: true,
         showBackButton: false,
-        showMenuButton: true,
+        showMenuButton: false,
       ),
       body: Column(
         children: [
@@ -30,13 +30,13 @@ class GameScreen extends StatelessWidget {
               children: [
                 Text(
                   '0:20',
-                  style: theme.menuTextStyle.copyWith(
+                  style: theme.basicTextStyle.copyWith(
                     color: theme.secondaryTextColor,
                   ),
                 ),
                 Text(
                   '10/33',
-                  style: theme.menuTextStyle.copyWith(
+                  style: theme.basicTextStyle.copyWith(
                     color: theme.secondaryTextColor,
                   ),
                 ),
