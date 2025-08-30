@@ -53,6 +53,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - lib/data/levels/
 
   fonts:
   - family: Pegma
