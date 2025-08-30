@@ -52,7 +52,7 @@ class GameBoard extends ConsumerWidget {
   }
 
   Widget _buildPeg({
-    required int cellValue,
+    required String cellValue,
     required VoidCallback onTap,
     required UIThemes theme,
     required int row,
@@ -62,14 +62,15 @@ class GameBoard extends ConsumerWidget {
     final random = math.Random(row * 7 + col * 11);
     final rotation = random.nextDouble() * 2 * math.pi;
     switch (cellValue) {
-      case -1:
+      case '-1': // Invalid position (не отображается)
         return const SizedBox.shrink();
-      case 0:
+      case '0': // Empty slot (пустая ячейка)
         return GestureDetector(
           onTap: onTap,
+
           child: const SizedBox(width: 40, height: 40),
         );
-      case 1:
+      case '1': // Normal peg (существующий шарик)
         return GestureDetector(
           onTap: onTap,
           child: SizedBox(
@@ -84,7 +85,7 @@ class GameBoard extends ConsumerWidget {
             ),
           ),
         );
-      case 2:
+      case '*': // Selected peg (выбранный шарик)
         return GestureDetector(
           onTap: onTap,
           child: SizedBox(
@@ -96,6 +97,24 @@ class GameBoard extends ConsumerWidget {
                 CustomIcons.circle,
                 colorFilter: ColorFilter.mode(
                   theme.highlightColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ),
+        );
+      case 'eaten': // Eaten peg (съеденный шарик)
+        return GestureDetector(
+          onTap: onTap,
+          child: SizedBox(
+            width: 40,
+            height: 40,
+            child: Transform.rotate(
+              angle: rotation,
+              child: SvgPicture.asset(
+                CustomIcons.circle,
+                colorFilter: ColorFilter.mode(
+                  theme.secondaryTextColor,
                   BlendMode.srcIn,
                 ),
               ),

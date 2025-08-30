@@ -7,7 +7,7 @@ final gameProvider = StateNotifierProvider<GameNotifier, GameState>((ref) {
 });
 
 class GameNotifier extends StateNotifier<GameState> {
-  GameNotifier() : super(GameState(board: [])) {
+  GameNotifier() : super(GameState(board: <List<String>>[])) {
     loadLevel(1);
   }
 
@@ -20,20 +20,48 @@ class GameNotifier extends StateNotifier<GameState> {
   }
 
   void onPegTap(int row, int col) {
-    final newBoard = List<List<int>>.from(
-      state.board.map((e) => List<int>.from(e)),
+    final currentCell = state.board[row][col];
+
+    if (currentCell != '1' && currentCell != '*') return;
+
+    final newBoard = List<List<String>>.from(
+      state.board.map((e) => List<String>.from(e)),
     );
-    if (newBoard[row][col] == 1) {
-      newBoard[row][col] = 2; // Selected
-    } else if (newBoard[row][col] == 2) {
-      newBoard[row][col] = 1; // Unselected
+
+    if (state.selectedRow != null && state.selectedCol != null) {
+      final prevSelectedRow = state.selectedRow!;
+      final prevSelectedCol = state.selectedCol!;
+      if (newBoard[prevSelectedRow][prevSelectedCol] == '*') {
+        newBoard[prevSelectedRow][prevSelectedCol] = '1';
+      }
     }
-    state = GameState(board: newBoard);
+
+    if (state.selectedRow == row && state.selectedCol == col) {
+      state = GameState(board: newBoard, selectedRow: null, selectedCol: null);
+      return;
+    }
+
+    newBoard[row][col] = '*'; // Selected
+    state = GameState(board: newBoard, selectedRow: row, selectedCol: col);
+  }
+
+  void eatPeg(int row, int col) {
+    final newBoard = List<List<String>>.from(
+      state.board.map((e) => List<String>.from(e)),
+    );
+    newBoard[row][col] = 'eaten'; // Eaten peg (съеденный шарик)
+    state = GameState(
+      board: newBoard,
+      selectedRow: state.selectedRow,
+      selectedCol: state.selectedCol,
+    );
   }
 }
 
 class GameState {
-  final List<List<int>> board;
+  final List<List<String>> board;
+  final int? selectedRow;
+  final int? selectedCol;
 
-  GameState({required this.board});
+  GameState({required this.board, this.selectedRow, this.selectedCol});
 }
