@@ -4,12 +4,12 @@ import 'package:pegma/core/constants/app_constants.dart';
 class MarketHelper {
   /// Returns true if the app is configured for RuStore
   static bool isRuStore() {
-    return GeneralConsts.otherAppsGooglePlayLink.contains('rustore.ru');
+    return _getCurrentOtherAppsUrl().contains('rustore.ru');
   }
 
   /// Returns true if the app is configured for Google Play
   static bool isGooglePlay() {
-    return GeneralConsts.otherAppsGooglePlayLink.contains('play.google.com');
+    return _getCurrentOtherAppsUrl().contains('play.google.com');
   }
 
   /// Returns the current market name
@@ -27,5 +27,13 @@ class MarketHelper {
   /// (only for Google Play and App Store, not for RuStore)
   static bool shouldShowRating() {
     return !isRuStore();
+  }
+
+  /// Helper method to get the current URL being used
+  /// This should match what's being used in the app
+  static String _getCurrentOtherAppsUrl() {
+    // Check which URL is currently active
+    // The Makefile will modify this to switch between markets
+    return GeneralConsts.otherAppsRustoreLink; // This will be changed by make
   }
 }
