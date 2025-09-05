@@ -70,12 +70,13 @@ class GameStateNotifier extends _$GameStateNotifier {
     }
   }
 
-  void endGame() {
+  void endGame([Duration? gameTime]) {
     final gameScore = GameScore(
       score: state.currentScore,
       level: state.currentLevel,
       moves: state.currentMoves,
       timestamp: DateTime.now(),
+      gameTime: gameTime,
     );
 
     final updatedHighScores = [...state.highScores, gameScore]
@@ -113,12 +114,13 @@ class GameStateNotifier extends _$GameStateNotifier {
     state = state.copyWith(currentLevel: state.currentLevel + 1);
   }
 
-  void winGame() {
+  void winGame([Duration? gameTime]) {
     final gameScore = GameScore(
       score: state.currentScore,
       level: state.currentLevel,
       moves: state.currentMoves,
       timestamp: DateTime.now(),
+      gameTime: gameTime,
     );
 
     final updatedHighScores = [...state.highScores, gameScore]
