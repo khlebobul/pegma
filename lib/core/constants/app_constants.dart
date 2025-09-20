@@ -6,6 +6,7 @@ class CustomIcons {
   static const String toggleOn = 'assets/icons/toggle_on.svg';
   static const String back = 'assets/icons/arrow_back.svg';
   static const String circle = 'assets/icons/circle.svg';
+  static const String circleFilled = 'assets/icons/circle_filled.svg';
 }
 
 class Images {

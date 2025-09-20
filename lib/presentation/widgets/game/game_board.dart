@@ -33,6 +33,9 @@ class GameBoard extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(gameState.board[row].length, (col) {
                   final cellValue = gameState.board[row][col];
+                  final isPossibleMove = gameState.possibleMoves.any(
+                    (move) => move.x == row && move.y == col,
+                  );
                   return Expanded(
                     child: Center(
                       child: _buildPeg(
@@ -44,6 +47,7 @@ class GameBoard extends ConsumerWidget {
                         theme: theme,
                         row: row,
                         col: col,
+                        isPossibleMove: isPossibleMove,
                       ),
                     ),
                   );
@@ -62,72 +66,56 @@ class GameBoard extends ConsumerWidget {
     required UIThemes theme,
     required int row,
     required int col,
+    required bool isPossibleMove,
   }) {
-    // Generate random rotation based on position for consistency
     final random = math.Random(row * 7 + col * 11);
     final rotation = random.nextDouble() * 2 * math.pi;
-    switch (cellValue) {
-      case '-1': // Invalid position (не отображается)
-        return const SizedBox.shrink();
-      case '0': // Empty slot (пустая ячейка)
-        return GestureDetector(
-          onTap: onTap,
 
-          child: const SizedBox(width: 40, height: 40),
-        );
-      case '1': // Normal peg (существующий шарик)
-        return GestureDetector(
-          onTap: onTap,
-          child: SizedBox(
-            width: 40,
-            height: 40,
-            child: Transform.rotate(
-              angle: rotation,
-              child: SvgPicture.asset(
-                CustomIcons.circle,
-                colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
-              ),
-            ),
-          ),
-        );
-      case '*': // Selected peg (выбранный шарик)
-        return GestureDetector(
-          onTap: onTap,
-          child: SizedBox(
-            width: 40,
-            height: 40,
-            child: Transform.rotate(
-              angle: rotation,
-              child: SvgPicture.asset(
-                CustomIcons.circle,
-                colorFilter: ColorFilter.mode(
-                  theme.highlightColor,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
-          ),
-        );
-      case 'eaten': // Eaten peg (съеденный шарик)
-        return GestureDetector(
-          onTap: onTap,
-          child: SizedBox(
-            width: 40,
-            height: 40,
-            child: Transform.rotate(
-              angle: rotation,
-              child: SvgPicture.asset(
-                CustomIcons.circle,
-                colorFilter: ColorFilter.mode(
-                  theme.secondaryTextColor,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
-          ),
-        );
+    String? icon;
+    Color? color;
+
+    switch (cellValue) {
+      case '-1':
+        return const SizedBox.shrink();
+      case '0':
+        if (isPossibleMove) {
+          icon = CustomIcons.circle;
+          color = theme.highlightColor;
+        }
+        break;
+      case '1':
+        icon = CustomIcons.circleFilled;
+        color = theme.textColor;
+        break;
+      case '*':
+        icon = CustomIcons.circleFilled;
+        color = theme.highlightColor;
+        break;
+      case 'eaten':
+        icon = CustomIcons.circle;
+        color = isPossibleMove
+            ? theme.highlightColor
+            : theme.secondaryTextColor;
+        break;
       default:
         return const SizedBox.shrink();
     }
+
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        width: 40,
+        height: 40,
+        child: icon != null && color != null
+            ? Transform.rotate(
+                angle: rotation,
+                child: SvgPicture.asset(
+                  icon,
+                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                ),
+              )
+            : const SizedBox.shrink(),
+      ),
+    );
   }
 }
