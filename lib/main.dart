@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:talker_flutter/talker_flutter.dart';
+import 'package:pegma/core/themes/app_theme.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger.dart';
-import 'app.dart';
-
-final talker = TalkerFlutter.init(
-  settings: TalkerSettings(
-    enabled: true,
-    colors: {
-      'error': AnsiPen()..red(),
-      'info': AnsiPen()..magenta(),
-      'debug': AnsiPen()..magenta(),
-      'riverpod-update': AnsiPen()..yellow(),
-      'sql': AnsiPen()..cyan(),
-      'success': AnsiPen()..green(),
-      'riverpod-add': AnsiPen()..cyan(),
-    },
-  ),
-);
+import 'core/router/app_router.dart';
+import 'core/services/talker_service.dart';
+import 'generated/l10n.dart';
+import 'presentation/providers/game/timer_provider.dart';
+import 'presentation/providers/settings/language_provider.dart';
+import 'presentation/providers/settings/theme_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,10 +24,13 @@ Future<void> main() async {
       observers: [
         TalkerRiverpodObserver(
           talker: talker,
-          settings: const TalkerRiverpodLoggerSettings(
+          settings: TalkerRiverpodLoggerSettings(
             printProviderAdded: true,
             printProviderUpdated: true,
             printProviderDisposed: true,
+            providerFilter: (provider) {
+              return provider != timerNotifierProvider;
+            },
           ),
         ),
       ],
@@ -50,6 +44,26 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const App();
+    final themeMode = ref.watch(themeNotifierProvider);
+    final locale = ref.watch(languageNotifierProvider);
+
+    talker.info('App build with theme: $themeMode, locale: $locale');
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: AppRouter.router,
+      theme: UIThemes.lightTheme(),
+      darkTheme: UIThemes.darkTheme(),
+      themeMode: themeMode,
+      locale: locale,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      title: 'Pegma',
+    );
   }
 }
