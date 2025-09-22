@@ -42,7 +42,7 @@ class GameNotifier extends StateNotifier<GameState> {
       // Select the new peg
       newBoard[row][col] = '*';
       final possibleMoves = _calculatePossibleMoves(newBoard, row, col);
-      state = GameState(
+      state = state.copyWith(
         board: newBoard,
         selectedRow: row,
         selectedCol: col,
@@ -54,7 +54,7 @@ class GameNotifier extends StateNotifier<GameState> {
     // If the selected peg is tapped again, deselect it
     if (row == state.selectedRow && col == state.selectedCol) {
       newBoard[row][col] = '1';
-      state = GameState(
+      state = state.copyWith(
         board: newBoard,
         selectedRow: null,
         selectedCol: null,
@@ -65,6 +65,7 @@ class GameNotifier extends StateNotifier<GameState> {
   }
 
   void movePeg(int fromRow, int fromCol, int toRow, int toCol) {
+    final previousState = state;
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
     );
@@ -78,11 +79,13 @@ class GameNotifier extends StateNotifier<GameState> {
     final middleCol = fromCol + (toCol - fromCol) ~/ 2;
     newBoard[middleRow][middleCol] = 'eaten';
 
-    state = GameState(
+    state = state.copyWith(
       board: newBoard,
       selectedRow: null,
       selectedCol: null,
       possibleMoves: [],
+      history: [...state.history, previousState],
+      redoStack: [],
     );
   }
 
@@ -127,11 +130,31 @@ class GameNotifier extends StateNotifier<GameState> {
       state.board.map((e) => List<String>.from(e)),
     );
     newBoard[row][col] = 'eaten'; // Eaten peg (съеденный шарик)
-    state = GameState(
+    state = state.copyWith(
       board: newBoard,
       selectedRow: state.selectedRow,
       selectedCol: state.selectedCol,
       possibleMoves: state.possibleMoves,
+    );
+  }
+
+  void undo() {
+    if (state.history.isEmpty) return;
+    final lastState = state.history.last;
+    final newHistory = List<GameState>.from(state.history)..removeLast();
+    state = lastState.copyWith(
+      redoStack: [...lastState.redoStack, state],
+      history: newHistory,
+    );
+  }
+
+  void redo() {
+    if (state.redoStack.isEmpty) return;
+    final nextState = state.redoStack.last;
+    final newRedoStack = List<GameState>.from(state.redoStack)..removeLast();
+    state = nextState.copyWith(
+      history: [...nextState.history, state],
+      redoStack: newRedoStack,
     );
   }
 }
@@ -141,11 +164,33 @@ class GameState {
   final int? selectedRow;
   final int? selectedCol;
   final List<Point<int>> possibleMoves;
+  final List<GameState> history;
+  final List<GameState> redoStack;
 
   GameState({
     required this.board,
     this.selectedRow,
     this.selectedCol,
     required this.possibleMoves,
+    this.history = const [],
+    this.redoStack = const [],
   });
+
+  GameState copyWith({
+    List<List<String>>? board,
+    int? selectedRow,
+    int? selectedCol,
+    List<Point<int>>? possibleMoves,
+    List<GameState>? history,
+    List<GameState>? redoStack,
+  }) {
+    return GameState(
+      board: board ?? this.board,
+      selectedRow: selectedRow ?? this.selectedRow,
+      selectedCol: selectedCol ?? this.selectedCol,
+      possibleMoves: possibleMoves ?? this.possibleMoves,
+      history: history ?? this.history,
+      redoStack: redoStack ?? this.redoStack,
+    );
+  }
 }

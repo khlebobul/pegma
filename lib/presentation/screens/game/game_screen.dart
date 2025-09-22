@@ -5,6 +5,7 @@ import 'package:pegma/presentation/widgets/game/game_board.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
 import '../../providers/game/timer_provider.dart';
+import 'package:pegma/presentation/providers/game_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
   const GameScreen({super.key});
@@ -55,6 +56,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final timerState = ref.watch(timerNotifierProvider);
+    final gameState = ref.watch(gameProvider);
+    final gameNotifier = ref.read(gameProvider.notifier);
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -70,14 +73,10 @@ class _GameScreenState extends ConsumerState<GameScreen>
         children: [
           Expanded(child: Center(child: GameBoard())),
           UndoBottomBar(
-            onUndoPressed: () {
-              // TODO: Implement undo functionality
-            },
-            onRedoPressed: () {
-              // TODO: Implement redo functionality
-            },
-            canUndo: true,
-            canRedo: true,
+            onUndoPressed: gameNotifier.redo,
+            onRedoPressed: gameNotifier.undo,
+            canUndo: gameState.redoStack.isNotEmpty,
+            canRedo: gameState.history.isNotEmpty,
           ),
         ],
       ),

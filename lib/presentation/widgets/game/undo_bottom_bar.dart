@@ -31,38 +31,38 @@ class UndoBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: canRedo ? onRedoPressed : null,
-            child: Container(
-              width: 44,
-              height: 44,
-              alignment: Alignment.center,
-              child: SvgPicture.asset(
-                CustomIcons.arrow,
-                width: 30,
-                colorFilter: ColorFilter.mode(
-                  canRedo ? theme.textColor : theme.secondaryTextColor,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: canUndo ? onUndoPressed : null,
-            child: Container(
-              width: 44,
-              height: 44,
-              alignment: Alignment.center,
-              child: Transform.scale(
-                scaleX: -1,
+          Expanded(
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: canRedo ? onRedoPressed : null,
+              child: Container(
+                alignment: Alignment.center,
                 child: SvgPicture.asset(
                   CustomIcons.arrow,
                   width: 30,
                   colorFilter: ColorFilter.mode(
-                    canUndo ? theme.textColor : theme.secondaryTextColor,
+                    canRedo ? theme.textColor : theme.secondaryTextColor,
                     BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: canUndo ? onUndoPressed : null,
+              child: Container(
+                alignment: Alignment.center,
+                child: Transform.scale(
+                  scaleX: -1,
+                  child: SvgPicture.asset(
+                    CustomIcons.arrow,
+                    width: 30,
+                    colorFilter: ColorFilter.mode(
+                      canUndo ? theme.textColor : theme.secondaryTextColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ),
