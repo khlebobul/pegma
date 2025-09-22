@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gaimon/gaimon.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 
-// TODO add haptic feedback
 // TODO check android bottom bar menu settings
 class UndoBottomBar extends StatelessWidget {
   final VoidCallback? onUndoPressed;
@@ -34,7 +34,12 @@ class UndoBottomBar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: canRedo ? onRedoPressed : null,
+              onTap: canRedo
+                  ? () {
+                      onRedoPressed?.call();
+                      Gaimon.soft();
+                    }
+                  : null,
               child: Container(
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
@@ -51,7 +56,12 @@ class UndoBottomBar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: canUndo ? onUndoPressed : null,
+              onTap: canUndo
+                  ? () {
+                      onUndoPressed?.call();
+                      Gaimon.soft();
+                    }
+                  : null,
               child: Container(
                 alignment: Alignment.center,
                 child: Transform.scale(

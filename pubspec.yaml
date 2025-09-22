@@ -25,6 +25,7 @@ dependencies:
   talker_riverpod_logger: ^5.0.0
   talker_flutter: ^5.0.0
   intl_utils: ^2.8.11
+  gaimon: ^1.4.1
 
 
 dev_dependencies:
