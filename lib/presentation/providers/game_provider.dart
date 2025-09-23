@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pegma/data/models/board_model.dart';
 import 'dart:math';
 
+const _sentinel = Object();
+
 final gameProvider = StateNotifierProvider<GameNotifier, GameState>((ref) {
   return GameNotifier();
 });
@@ -72,7 +74,7 @@ class GameNotifier extends StateNotifier<GameState> {
 
     // Move peg
     newBoard[toRow][toCol] = '1';
-    newBoard[fromRow][fromCol] = '0';
+    newBoard[fromRow][fromCol] = 'eaten';
 
     // Remove jumped peg
     final middleRow = fromRow + (toRow - fromRow) ~/ 2;
@@ -178,16 +180,20 @@ class GameState {
 
   GameState copyWith({
     List<List<String>>? board,
-    int? selectedRow,
-    int? selectedCol,
+    Object? selectedRow = _sentinel,
+    Object? selectedCol = _sentinel,
     List<Point<int>>? possibleMoves,
     List<GameState>? history,
     List<GameState>? redoStack,
   }) {
     return GameState(
       board: board ?? this.board,
-      selectedRow: selectedRow ?? this.selectedRow,
-      selectedCol: selectedCol ?? this.selectedCol,
+      selectedRow: selectedRow == _sentinel
+          ? this.selectedRow
+          : selectedRow as int?,
+      selectedCol: selectedCol == _sentinel
+          ? this.selectedCol
+          : selectedCol as int?,
       possibleMoves: possibleMoves ?? this.possibleMoves,
       history: history ?? this.history,
       redoStack: redoStack ?? this.redoStack,
