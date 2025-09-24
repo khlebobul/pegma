@@ -58,6 +58,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
     final timerState = ref.watch(timerNotifierProvider);
     final gameState = ref.watch(gameProvider);
     final gameNotifier = ref.read(gameProvider.notifier);
+    final totalPegs = gameState.initialPegCount > 1
+        ? gameState.initialPegCount - 1
+        : 0;
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -67,7 +70,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
         showMenuButton: false,
         isGameScreen: true,
         timer: timerState.formattedTime,
-        moves: '10/33', // TODO: Replace with actual moves count
+        moves: '${gameState.movesCount}/$totalPegs',
       ),
       body: Column(
         children: [

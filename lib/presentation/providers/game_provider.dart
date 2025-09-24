@@ -20,7 +20,15 @@ class GameNotifier extends StateNotifier<GameState> {
       'lib/data/levels/level_$level.json',
     );
     final boardModel = BoardModel.fromJson(jsonString);
-    state = GameState(board: boardModel.board, possibleMoves: []);
+    final initialPegs = boardModel.board
+        .expand((row) => row)
+        .where((cell) => cell == '1')
+        .length;
+    state = GameState(
+      board: boardModel.board,
+      possibleMoves: [],
+      initialPegCount: initialPegs,
+    );
   }
 
   void onPegTap(int row, int col) {
@@ -88,6 +96,7 @@ class GameNotifier extends StateNotifier<GameState> {
       possibleMoves: [],
       history: [...state.history, previousState],
       redoStack: [],
+      movesCount: state.movesCount + 1,
     );
   }
 
@@ -168,6 +177,8 @@ class GameState {
   final List<Point<int>> possibleMoves;
   final List<GameState> history;
   final List<GameState> redoStack;
+  final int movesCount;
+  final int initialPegCount;
 
   GameState({
     required this.board,
@@ -176,6 +187,8 @@ class GameState {
     required this.possibleMoves,
     this.history = const [],
     this.redoStack = const [],
+    this.movesCount = 0,
+    this.initialPegCount = 0,
   });
 
   GameState copyWith({
@@ -185,6 +198,8 @@ class GameState {
     List<Point<int>>? possibleMoves,
     List<GameState>? history,
     List<GameState>? redoStack,
+    int? movesCount,
+    int? initialPegCount,
   }) {
     return GameState(
       board: board ?? this.board,
@@ -197,6 +212,8 @@ class GameState {
       possibleMoves: possibleMoves ?? this.possibleMoves,
       history: history ?? this.history,
       redoStack: redoStack ?? this.redoStack,
+      movesCount: movesCount ?? this.movesCount,
+      initialPegCount: initialPegCount ?? this.initialPegCount,
     );
   }
 }
