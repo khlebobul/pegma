@@ -37,5 +37,6 @@
   "reportBug": "report bug",
   "requestFeature": "request feature",
   "shareFeedback": "share feedback",
-  "discoverPegmaAFreeOpensourceTakeOnTheClassicPeg": "Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!"
+  "discoverPegmaAFreeOpensourceTakeOnTheClassicPeg": "Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!",
+  "gameTutorialText": "1. goal: leave as few pieces as possible.\n2. pieces jump over adjacent ones into an empty space.\n3. jumped pieces are removed."
 }

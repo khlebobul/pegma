@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "funFact": MessageLookupByLibrary.simpleMessage(
       "интересный факт: я сделал шрифт специально для этого приложения сам — для уникальности и ради веселья ",
     ),
+    "gameTutorialText": MessageLookupByLibrary.simpleMessage(
+      "1. цель: оставить как можно меньше фишек.\n2. фишки перепрыгивают через соседние в пустое место.\n3. перепрыгнутые фишки убираются.",
+    ),
     "githubRepository": MessageLookupByLibrary.simpleMessage(
       "репозиторий github",
     ),

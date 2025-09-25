@@ -6,6 +6,7 @@ import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
 import '../../providers/game/timer_provider.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
+import 'package:pegma/presentation/providers/first_launch_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
   const GameScreen({super.key});
@@ -20,6 +21,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(firstLaunchProvider).showRulesDialogIfNeeded(context);
+    });
   }
 
   @override

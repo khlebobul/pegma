@@ -298,6 +298,16 @@ class S {
       args: [],
     );
   }
+
+  /// `1. goal: leave as few pieces as possible.\n2. pieces jump over adjacent ones into an empty space.\n3. jumped pieces are removed.`
+  String get gameTutorialText {
+    return Intl.message(
+      '1. goal: leave as few pieces as possible.\n2. pieces jump over adjacent ones into an empty space.\n3. jumped pieces are removed.',
+      name: 'gameTutorialText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

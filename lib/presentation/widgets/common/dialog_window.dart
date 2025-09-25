@@ -29,6 +29,7 @@ class DialogWindow extends StatelessWidget {
   final DialogType type;
   final String? message;
   final String? imagePath;
+  final String? description;
   final String? firstButtonText;
   final String? secondButtonText;
   final VoidCallback? onFirstButtonPressed;
@@ -42,6 +43,7 @@ class DialogWindow extends StatelessWidget {
     required this.type,
     this.message,
     this.imagePath,
+    this.description,
     this.firstButtonText,
     this.secondButtonText,
     this.onFirstButtonPressed,
@@ -51,7 +53,6 @@ class DialogWindow extends StatelessWidget {
     this.linkItems,
   });
 
-  // Конструктор для типа 1: Текст и две кнопки
   const DialogWindow.textWithTwoButtons({
     super.key,
     required this.message,
@@ -61,11 +62,11 @@ class DialogWindow extends StatelessWidget {
     required this.onSecondButtonPressed,
   }) : type = DialogType.textWithTwoButtons,
        imagePath = null,
+       description = null,
        onClosePressed = null,
        menuItems = null,
        linkItems = null;
 
-  // Конструктор для типа 2: Текст с кнопками меню и ссылками
   const DialogWindow.textWithMenuAndLinks({
     super.key,
     required this.message,
@@ -74,16 +75,17 @@ class DialogWindow extends StatelessWidget {
     this.onClosePressed,
   }) : type = DialogType.textWithMenuAndLinks,
        imagePath = null,
+       description = null,
        firstButtonText = null,
        secondButtonText = null,
        onFirstButtonPressed = null,
        onSecondButtonPressed = null;
 
-  // Конструктор для типа 3: Крестик и изображение
   const DialogWindow.closeButtonWithImage({
     super.key,
     required this.imagePath,
     required this.onClosePressed,
+    this.description,
   }) : type = DialogType.closeButtonWithImage,
        message = null,
        firstButtonText = null,
@@ -102,7 +104,7 @@ class DialogWindow extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       insetPadding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
       child: Padding(
-        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding * 2),
+        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
         child: _buildDialogContent(context, theme),
       ),
     );
@@ -119,7 +121,7 @@ class DialogWindow extends StatelessWidget {
     }
   }
 
-  // Тип 1: Text with two buttons
+  // Type 1: Text with two buttons
   Widget _buildTextWithTwoButtons(BuildContext context, UIThemes theme) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -160,7 +162,7 @@ class DialogWindow extends StatelessWidget {
     );
   }
 
-  // Тип 2: Text with menu and links
+  // Type 2: Text with menu and links
   Widget _buildTextWithMenuAndLinks(BuildContext context, UIThemes theme) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -239,6 +241,16 @@ class DialogWindow extends StatelessWidget {
               return SvgPicture.asset(Images.rulesScheme);
             },
           ),
+        if (description != null) ...[
+          const SizedBox(height: 16),
+          Text(
+            description!,
+            style: theme.basicTextStyle.copyWith(
+              color: theme.secondaryTextColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ],
     );
   }
