@@ -4,7 +4,6 @@ import 'package:gaimon/gaimon.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 
-// TODO check android bottom bar menu settings
 class UndoBottomBar extends StatelessWidget {
   final VoidCallback? onUndoPressed;
   final VoidCallback? onRedoPressed;
@@ -22,63 +21,65 @@ class UndoBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
-    return Container(
-      height: 80,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: GeneralConsts.verticalPadding * 2,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: canRedo
-                  ? () {
-                      onRedoPressed?.call();
-                      Gaimon.soft();
-                    }
-                  : null,
-              child: Container(
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  CustomIcons.arrow,
-                  width: 30,
-                  colorFilter: ColorFilter.mode(
-                    canRedo ? theme.textColor : theme.secondaryTextColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: canUndo
-                  ? () {
-                      onUndoPressed?.call();
-                      Gaimon.soft();
-                    }
-                  : null,
-              child: Container(
-                alignment: Alignment.center,
-                child: Transform.scale(
-                  scaleX: -1,
+    return SafeArea(
+      child: Container(
+        height: 80,
+        padding: const EdgeInsets.symmetric(
+          horizontal: GeneralConsts.horizontalPadding,
+          vertical: GeneralConsts.verticalPadding * 2,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: canRedo
+                    ? () {
+                        onRedoPressed?.call();
+                        Gaimon.soft();
+                      }
+                    : null,
+                child: Container(
+                  alignment: Alignment.center,
                   child: SvgPicture.asset(
                     CustomIcons.arrow,
                     width: 30,
                     colorFilter: ColorFilter.mode(
-                      canUndo ? theme.textColor : theme.secondaryTextColor,
+                      canRedo ? theme.textColor : theme.secondaryTextColor,
                       BlendMode.srcIn,
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: canUndo
+                    ? () {
+                        onUndoPressed?.call();
+                        Gaimon.soft();
+                      }
+                    : null,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Transform.scale(
+                    scaleX: -1,
+                    child: SvgPicture.asset(
+                      CustomIcons.arrow,
+                      width: 30,
+                      colorFilter: ColorFilter.mode(
+                        canUndo ? theme.textColor : theme.secondaryTextColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
