@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final number = index + 1;
           return GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () {
               context.go(AppRouter.game);
             },

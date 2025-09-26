@@ -135,58 +135,51 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       actions: [
         if (showBackButton)
-          Padding(
-            padding: const EdgeInsets.only(
-              right: GeneralConsts.horizontalPadding,
-            ),
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                if (context.canPop()) {
-                  context.pop();
-                } else {
-                  context.go(AppRouter.home);
-                }
-              },
-              child: Container(
-                width: 44,
-                height: 44,
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  CustomIcons.close,
-                  width: 20,
-                  colorFilter: ColorFilter.mode(
-                    theme.textColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-            ),
+          _buildActionButton(
+            context: context,
+            theme: theme,
+            asset: CustomIcons.close,
+            onTap: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go(AppRouter.home);
+              }
+            },
           )
         else if (showMenuButton)
-          Padding(
-            padding: const EdgeInsets.only(
-              right: GeneralConsts.horizontalPadding,
-            ),
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => context.push(AppRouter.sideMenu),
-              child: Container(
-                width: 44,
-                height: 44,
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  CustomIcons.burgerMenu,
-                  width: 20,
-                  colorFilter: ColorFilter.mode(
-                    theme.textColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-            ),
+          _buildActionButton(
+            context: context,
+            theme: theme,
+            asset: CustomIcons.burgerMenu,
+            onTap: () => context.push(AppRouter.sideMenu),
           ),
       ],
+    );
+  }
+
+  Widget _buildActionButton({
+    required BuildContext context,
+    required UIThemes theme,
+    required String asset,
+    required VoidCallback onTap,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(right: GeneralConsts.horizontalPadding),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: Container(
+          width: 44,
+          height: 44,
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            asset,
+            width: 20,
+            colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+          ),
+        ),
+      ),
     );
   }
 

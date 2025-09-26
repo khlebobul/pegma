@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/generated/l10n.dart';
 import '../../../core/router/app_router.dart';
+import '../../widgets/common/app_bar_widget.dart';
 
 class SideMenuScreen extends StatelessWidget {
   const SideMenuScreen({super.key});
@@ -14,34 +14,14 @@ class SideMenuScreen extends StatelessWidget {
     final theme = UIThemes.of(context);
     return Scaffold(
       backgroundColor: theme.bgColor,
+      appBar: const CustomAppBar(
+        title: GeneralConsts.appName,
+        showBackButton: true,
+        showMenuButton: false,
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(GeneralConsts.verticalPadding * 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    GeneralConsts.appName,
-                    style: theme.basicTextStyle.copyWith(
-                      color: theme.secondaryTextColor,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => context.pop(),
-                    child: SvgPicture.asset(
-                      CustomIcons.close,
-                      width: 20,
-                      colorFilter: ColorFilter.mode(
-                        theme.textColor,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(
