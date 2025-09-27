@@ -78,10 +78,10 @@ class GameBoard extends ConsumerWidget {
       case '-1':
         return const SizedBox.shrink();
       case '0':
-        if (isPossibleMove) {
-          icon = CustomIcons.circle;
-          color = theme.highlightColor;
-        }
+        icon = CustomIcons.circle;
+        color = isPossibleMove
+            ? theme.highlightColor
+            : theme.secondaryTextColor;
         break;
       case '1':
         icon = CustomIcons.circleFilled;
@@ -106,15 +106,13 @@ class GameBoard extends ConsumerWidget {
       child: SizedBox(
         width: 40,
         height: 40,
-        child: icon != null && color != null
-            ? Transform.rotate(
-                angle: rotation,
-                child: SvgPicture.asset(
-                  icon,
-                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-                ),
-              )
-            : const SizedBox.shrink(),
+        child: Transform.rotate(
+          angle: rotation,
+          child: SvgPicture.asset(
+            icon,
+            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          ),
+        ),
       ),
     );
   }
