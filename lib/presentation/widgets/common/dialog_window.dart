@@ -292,7 +292,7 @@ class DialogWindow extends StatelessWidget {
 //             title: 'menu',
 //             onTap: () {
 //               Navigator.of(context).pop();
-//               context.pop(); // Закрыть side menu
+//               context.pop(); // Close side menu
 //             },
 //           ),
 //         ],

@@ -140,7 +140,7 @@ class GameNotifier extends StateNotifier<GameState> {
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
     );
-    newBoard[row][col] = 'eaten'; // Eaten peg (съеденный шарик)
+    newBoard[row][col] = 'eaten'; // Eaten peg
     state = state.copyWith(
       board: newBoard,
       selectedRow: state.selectedRow,

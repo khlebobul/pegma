@@ -40,7 +40,7 @@ class LanguageNotifier extends _$LanguageNotifier {
     final savedLanguageCode = prefs.getString(_languageKey);
 
     if (savedLanguageCode != null) {
-      // Если язык уже сохранен, используем его
+      // Use saved language
       switch (savedLanguageCode) {
         case 'ru':
           state = const Locale('ru', 'RU');
@@ -51,7 +51,7 @@ class LanguageNotifier extends _$LanguageNotifier {
           break;
       }
     } else {
-      // Если язык не сохранен, используем системный
+      // Use system locale if no saved language
       state = _getSystemLocale();
     }
   }
