@@ -84,9 +84,12 @@ class AppRouter {
             _fadeTransition(const HomeScreen(), state),
       ),
       GoRoute(
-        path: game,
-        pageBuilder: (context, state) =>
-            _fadeTransition(const GameScreen(), state),
+        path: '$game/:levelId',
+        name: game,
+        pageBuilder: (context, state) {
+          final levelId = int.parse(state.pathParameters['levelId']!);
+          return _fadeTransition(GameScreen(levelId: levelId), state);
+        },
       ),
       GoRoute(
         path: settings,

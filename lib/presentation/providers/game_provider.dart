@@ -5,30 +5,40 @@ import 'dart:math';
 
 const _sentinel = Object();
 
-final gameProvider = StateNotifierProvider<GameNotifier, GameState>((ref) {
-  return GameNotifier();
-});
+final gameProvider = StateNotifierProvider.family<GameNotifier, GameState, int>(
+  (ref, levelId) {
+    return GameNotifier(levelId);
+  },
+);
 
 class GameNotifier extends StateNotifier<GameState> {
-  GameNotifier()
+  final int levelId;
+
+  GameNotifier(this.levelId)
     : super(GameState(board: <List<String>>[], possibleMoves: [])) {
-    loadLevel(1);
+    loadLevel(levelId);
   }
 
   Future<void> loadLevel(int level) async {
-    final jsonString = await rootBundle.loadString(
-      'lib/data/levels/level_$level.json',
-    );
-    final boardModel = BoardModel.fromJson(jsonString);
-    final initialPegs = boardModel.board
-        .expand((row) => row)
-        .where((cell) => cell == '1')
-        .length;
-    state = GameState(
-      board: boardModel.board,
-      possibleMoves: [],
-      initialPegCount: initialPegs,
-    );
+    try {
+      final jsonString = await rootBundle.loadString(
+        'lib/data/levels/level_$level.json',
+      );
+      final boardModel = BoardModel.fromJson(jsonString);
+      final initialPegs = boardModel.board
+          .expand((row) => row)
+          .where((cell) => cell == '1')
+          .length;
+      state = GameState(
+        board: boardModel.board,
+        possibleMoves: [],
+        initialPegCount: initialPegs,
+      );
+    } catch (e) {
+      if (level != 1) {
+        loadLevel(1);
+      }
+    }
   }
 
   void onPegTap(int row, int col) {

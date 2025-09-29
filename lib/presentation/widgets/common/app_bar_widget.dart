@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isGameScreen;
   final String? timer;
   final String? moves;
+  final VoidCallback? onBackButtonPressed;
 
   const CustomAppBar({
     super.key,
@@ -23,6 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isGameScreen = false,
     this.timer,
     this.moves,
+    this.onBackButtonPressed,
   });
 
   @override
@@ -41,13 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    if (context.canPop()) {
-                      context.pop();
-                    } else {
-                      context.go(AppRouter.home);
-                    }
-                  },
+                  onTap: onBackButtonPressed,
                   child: Container(
                     width: 44,
                     height: 44,

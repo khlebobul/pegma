@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/router/app_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/presentation/providers/levels_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = UIThemes.of(context);
+    final levelsAsyncValue = ref.watch(levelsProvider);
+    final levels = levelsAsyncValue.valueOrNull ?? [];
+
     return Scaffold(
       backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
@@ -28,13 +33,13 @@ class HomeScreen extends StatelessWidget {
           mainAxisSpacing: 8.0,
           childAspectRatio: 1.0,
         ),
-        itemCount: 40,
+        itemCount: levels.length,
         itemBuilder: (context, index) {
-          final number = index + 1;
+          final number = levels[index];
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              context.go(AppRouter.game);
+              context.push('${AppRouter.game}/$number');
             },
             child: Center(
               child: Text(number.toString(), style: theme.menuTextStyle),

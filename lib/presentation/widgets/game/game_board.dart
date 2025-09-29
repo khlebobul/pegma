@@ -8,12 +8,13 @@ import 'package:pegma/presentation/providers/game_provider.dart';
 import '../../../presentation/providers/game/timer_provider.dart';
 
 class GameBoard extends ConsumerWidget {
-  const GameBoard({super.key});
+  final int levelId;
+  const GameBoard({super.key, required this.levelId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gameState = ref.watch(gameProvider);
-    final gameNotifier = ref.read(gameProvider.notifier);
+    final gameState = ref.watch(gameProvider(levelId));
+    final gameNotifier = ref.read(gameProvider(levelId).notifier);
     final timerNotifier = ref.read(timerNotifierProvider.notifier);
     final theme = UIThemes.of(context);
 

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/widgets/game/game_board.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
 import '../../providers/game/timer_provider.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
-import 'package:pegma/presentation/providers/first_launch_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
-  const GameScreen({super.key});
+  final int levelId;
+  const GameScreen({super.key, required this.levelId});
 
   @override
   ConsumerState<GameScreen> createState() => _GameScreenState();
@@ -21,9 +22,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(firstLaunchProvider).showRulesDialogIfNeeded(context);
-    });
   }
 
   @override
@@ -60,8 +58,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final timerState = ref.watch(timerNotifierProvider);
-    final gameState = ref.watch(gameProvider);
-    final gameNotifier = ref.read(gameProvider.notifier);
+    final gameState = ref.watch(gameProvider(widget.levelId));
+    final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
     final totalPegs = gameState.initialPegCount > 1
         ? gameState.initialPegCount - 1
         : 0;
@@ -75,10 +73,15 @@ class _GameScreenState extends ConsumerState<GameScreen>
         isGameScreen: true,
         timer: timerState.formattedTime,
         moves: '${gameState.movesCount}/$totalPegs',
+        onBackButtonPressed: () {
+          context.pop();
+        },
       ),
       body: Column(
         children: [
-          Expanded(child: Center(child: GameBoard())),
+          Expanded(
+            child: Center(child: GameBoard(levelId: widget.levelId)),
+          ),
           UndoBottomBar(
             onUndoPressed: gameNotifier.redo,
             onRedoPressed: gameNotifier.undo,
