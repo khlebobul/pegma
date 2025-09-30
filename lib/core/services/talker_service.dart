@@ -14,4 +14,3 @@ final talker = TalkerFlutter.init(
     },
   ),
 );
-

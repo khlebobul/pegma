@@ -20,8 +20,7 @@ class FirstLaunchProvider {
           context: context,
           builder: (context) => DialogWindow.closeButtonWithImage(
             imagePath: Images.rulesScheme,
-            description:
-                S.of(context).gameTutorialText,
+            description: S.of(context).gameTutorialText,
             onClosePressed: () {
               Navigator.of(context).pop();
             },

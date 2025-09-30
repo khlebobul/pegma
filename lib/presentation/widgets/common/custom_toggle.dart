@@ -16,10 +16,22 @@ class CustomToggle extends StatelessWidget {
       onTap: () => onChanged(!value),
       child: SizedBox(
         width: 50,
-        child: SvgPicture.asset(
-          value ? CustomIcons.toggleOn : CustomIcons.toggleOff,
-          fit: BoxFit.contain,
-          colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 200),
+          switchInCurve: Curves.easeOut,
+          switchOutCurve: Curves.easeIn,
+          transitionBuilder: (child, animation) {
+            return ScaleTransition(
+              scale: animation,
+              child: FadeTransition(opacity: animation, child: child),
+            );
+          },
+          child: SvgPicture.asset(
+            value ? CustomIcons.toggleOn : CustomIcons.toggleOff,
+            key: ValueKey<bool>(value),
+            fit: BoxFit.contain,
+            colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+          ),
         ),
       ),
     );
