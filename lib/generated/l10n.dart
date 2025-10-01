@@ -308,6 +308,36 @@ class S {
       args: [],
     );
   }
+
+  /// `restart`
+  String get restart {
+    return Intl.message('restart', name: 'restart', desc: '', args: []);
+  }
+
+  /// `menu`
+  String get menu {
+    return Intl.message('menu', name: 'menu', desc: '', args: []);
+  }
+
+  /// `next level`
+  String get nextLevel {
+    return Intl.message('next level', name: 'nextLevel', desc: '', args: []);
+  }
+
+  /// `you won!`
+  String get youWon {
+    return Intl.message('you won!', name: 'youWon', desc: '', args: []);
+  }
+
+  /// `no more moves`
+  String get noMoreMoves {
+    return Intl.message(
+      'no more moves',
+      name: 'noMoreMoves',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

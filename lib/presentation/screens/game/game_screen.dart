@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/generated/l10n.dart';
+import 'package:pegma/presentation/widgets/common/dialog_window.dart';
 import 'package:pegma/presentation/widgets/game/game_board.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
@@ -54,12 +56,63 @@ class _GameScreenState extends ConsumerState<GameScreen>
     }
   }
 
+  void _showWinDialog(BuildContext context, GameNotifier gameNotifier) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => DialogWindow.textWithTwoButtons(
+        message: S.of(context).youWon,
+        firstButtonText: S.of(context).menu,
+        secondButtonText: S.of(context).nextLevel,
+        onFirstButtonPressed: () {
+          Navigator.of(context).pop();
+          context.pop();
+        },
+        onSecondButtonPressed: () {
+          Navigator.of(context).pop();
+          final nextLevelId = widget.levelId + 1;
+          context.pushReplacement('/game/$nextLevelId');
+        },
+      ),
+    );
+  }
+
+  void _showLossDialog(BuildContext context, GameNotifier gameNotifier) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => DialogWindow.textWithTwoButtons(
+        message: S.of(context).noMoreMoves,
+        firstButtonText: S.of(context).menu,
+        secondButtonText: S.of(context).restart,
+        onFirstButtonPressed: () {
+          Navigator.of(context).pop();
+          context.pop();
+        },
+        onSecondButtonPressed: () {
+          Navigator.of(context).pop();
+          gameNotifier.restartLevel();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final timerState = ref.watch(timerNotifierProvider);
-    final gameState = ref.watch(gameProvider(widget.levelId));
     final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
+
+    ref.listen<GameState>(gameProvider(widget.levelId), (previous, next) {
+      if (next.status == GameStatus.won && previous?.status != GameStatus.won) {
+        _showWinDialog(context, gameNotifier);
+      } else if (next.status == GameStatus.lost &&
+          previous?.status != GameStatus.lost) {
+        _showLossDialog(context, gameNotifier);
+      }
+    });
+
+    final gameState = ref.watch(gameProvider(widget.levelId));
     final totalPegs = gameState.initialPegCount > 1
         ? gameState.initialPegCount - 1
         : 0;

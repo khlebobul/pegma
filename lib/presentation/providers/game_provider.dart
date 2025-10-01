@@ -5,6 +5,8 @@ import 'dart:math';
 
 const _sentinel = Object();
 
+enum GameStatus { playing, won, lost }
+
 final gameProvider = StateNotifierProvider.family<GameNotifier, GameState, int>(
   (ref, levelId) {
     return GameNotifier(levelId);
@@ -108,6 +110,35 @@ class GameNotifier extends StateNotifier<GameState> {
       redoStack: [],
       movesCount: state.movesCount + 1,
     );
+    _checkEndGame();
+  }
+
+  void _checkEndGame() {
+    final pegsLeft = state.board
+        .expand((row) => row)
+        .where((cell) => cell == '1')
+        .length;
+    if (pegsLeft == 1) {
+      state = state.copyWith(status: GameStatus.won);
+      return;
+    }
+
+    bool hasMoves = false;
+    for (int r = 0; r < state.board.length; r++) {
+      for (int c = 0; c < state.board[r].length; c++) {
+        if (state.board[r][c] == '1') {
+          if (_calculatePossibleMoves(state.board, r, c).isNotEmpty) {
+            hasMoves = true;
+            break;
+          }
+        }
+      }
+      if (hasMoves) break;
+    }
+
+    if (!hasMoves) {
+      state = state.copyWith(status: GameStatus.lost);
+    }
   }
 
   List<Point<int>> _calculatePossibleMoves(
@@ -178,6 +209,10 @@ class GameNotifier extends StateNotifier<GameState> {
       redoStack: newRedoStack,
     );
   }
+
+  void restartLevel() {
+    loadLevel(levelId);
+  }
 }
 
 class GameState {
@@ -189,6 +224,7 @@ class GameState {
   final List<GameState> redoStack;
   final int movesCount;
   final int initialPegCount;
+  final GameStatus status;
 
   GameState({
     required this.board,
@@ -199,6 +235,7 @@ class GameState {
     this.redoStack = const [],
     this.movesCount = 0,
     this.initialPegCount = 0,
+    this.status = GameStatus.playing,
   });
 
   GameState copyWith({
@@ -210,6 +247,7 @@ class GameState {
     List<GameState>? redoStack,
     int? movesCount,
     int? initialPegCount,
+    GameStatus? status,
   }) {
     return GameState(
       board: board ?? this.board,
@@ -224,6 +262,7 @@ class GameState {
       redoStack: redoStack ?? this.redoStack,
       movesCount: movesCount ?? this.movesCount,
       initialPegCount: initialPegCount ?? this.initialPegCount,
+      status: status ?? this.status,
     );
   }
 }

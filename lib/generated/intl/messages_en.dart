@@ -46,8 +46,11 @@ class MessageLookup extends MessageLookupByLibrary {
           "in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.",
         ),
     "language": MessageLookupByLibrary.simpleMessage("language"),
+    "menu": MessageLookupByLibrary.simpleMessage("menu"),
     "myOtherApps": MessageLookupByLibrary.simpleMessage("my other apps"),
     "myWebsite": MessageLookupByLibrary.simpleMessage("my website"),
+    "nextLevel": MessageLookupByLibrary.simpleMessage("next level"),
+    "noMoreMoves": MessageLookupByLibrary.simpleMessage("no more moves"),
     "others": MessageLookupByLibrary.simpleMessage("others"),
     "pegSolitaireIsNotOnlyAGameButAlsoA": MessageLookupByLibrary.simpleMessage(
       "peg solitaire is not only a game but also a subject of mathematical study. combinatorialists and logicians have used it to explore strategies, optimal moves, and problem-solving techniques.",
@@ -60,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "rateTheApp": MessageLookupByLibrary.simpleMessage("rate the app"),
     "reportBug": MessageLookupByLibrary.simpleMessage("report bug"),
     "requestFeature": MessageLookupByLibrary.simpleMessage("request feature"),
+    "restart": MessageLookupByLibrary.simpleMessage("restart"),
     "rules": MessageLookupByLibrary.simpleMessage("rules"),
     "rulesOne": MessageLookupByLibrary.simpleMessage(
       "the board has holes filled with pegs, usually with the center hole empty.",
@@ -90,5 +94,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
+    "youWon": MessageLookupByLibrary.simpleMessage("you won!"),
   };
 }
