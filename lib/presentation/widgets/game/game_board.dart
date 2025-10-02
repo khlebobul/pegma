@@ -104,14 +104,21 @@ class GameBoard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: SizedBox(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
         width: 40,
         height: 40,
-        child: Transform.rotate(
-          angle: rotation,
-          child: SvgPicture.asset(
-            icon,
-            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+        child: AnimatedRotation(
+          duration: const Duration(milliseconds: 200),
+          turns: rotation / (2 * math.pi),
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 150),
+            scale: isPossibleMove ? 1.1 : 1.0,
+            child: SvgPicture.asset(
+              icon,
+              colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+            ),
           ),
         ),
       ),
