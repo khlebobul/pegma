@@ -35,14 +35,28 @@ class HomeScreen extends ConsumerWidget {
         ),
         itemCount: levels.length,
         itemBuilder: (context, index) {
-          final number = levels[index];
+          // TODO update
+          // TODO add completed levels indicator
+          final assetLevelId = levels[index];
+          final displayNumber = index;
+          final isUnlocked = index <= 1;
+
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () {
-              context.push('${AppRouter.game}/$number');
-            },
+            onTap: isUnlocked
+                ? () {
+                    context.push('${AppRouter.game}/$assetLevelId');
+                  }
+                : null,
             child: Center(
-              child: Text(number.toString(), style: theme.menuTextStyle),
+              child: Text(
+                '$displayNumber',
+                style: theme.menuTextStyle.copyWith(
+                  color: isUnlocked
+                      ? theme.textColor
+                      : theme.secondaryTextColor,
+                ),
+              ),
             ),
           );
         },
