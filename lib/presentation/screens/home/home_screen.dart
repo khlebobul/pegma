@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/router/app_router.dart';
@@ -35,8 +36,7 @@ class HomeScreen extends ConsumerWidget {
         ),
         itemCount: levels.length,
         itemBuilder: (context, index) {
-          // TODO update
-          // TODO add completed levels indicator
+          // TODO update levels indicator and lock logic
           final assetLevelId = levels[index];
           final displayNumber = index;
           final isUnlocked = index <= 1;
@@ -48,15 +48,32 @@ class HomeScreen extends ConsumerWidget {
                     context.push('${AppRouter.game}/$assetLevelId');
                   }
                 : null,
-            child: Center(
-              child: Text(
-                '$displayNumber',
-                style: theme.menuTextStyle.copyWith(
-                  color: isUnlocked
-                      ? theme.textColor
-                      : theme.secondaryTextColor,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    '$displayNumber',
+                    style: theme.menuTextStyle.copyWith(
+                      color: isUnlocked
+                          ? theme.textColor
+                          : theme.secondaryTextColor,
+                    ),
+                  ),
                 ),
-              ),
+                if (displayNumber == 1)
+                  Positioned(
+                    top: 6,
+                    child: SvgPicture.asset(
+                      CustomIcons.star,
+                      height: 15,
+                      colorFilter: ColorFilter.mode(
+                        theme.textColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           );
         },
