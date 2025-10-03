@@ -11,7 +11,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showMenuButton;
   final bool showLeftArrowButton;
   final bool isGameScreen;
-  final String? timer;
   final String? moves;
   final VoidCallback? onBackButtonPressed;
 
@@ -22,7 +21,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showMenuButton = true,
     this.showLeftArrowButton = false,
     this.isGameScreen = false,
-    this.timer,
     this.moves,
     this.onBackButtonPressed,
   });
@@ -60,9 +58,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               )
             : null,
-        title: timer != null
+        title: moves != null
             ? Text(
-                timer!,
+                moves!,
                 style: theme.basicTextStyle.copyWith(
                   color: theme.secondaryTextColor,
                 ),
@@ -70,22 +68,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             : null,
         titleSpacing: 16,
         automaticallyImplyLeading: false,
-        actions: [
-          if (moves != null)
-            Padding(
-              padding: const EdgeInsets.only(
-                right: GeneralConsts.horizontalPadding,
-              ),
-              child: Center(
-                child: Text(
-                  moves!,
-                  style: theme.basicTextStyle.copyWith(
-                    color: theme.secondaryTextColor,
-                  ),
-                ),
-              ),
-            ),
-        ],
       );
     }
 

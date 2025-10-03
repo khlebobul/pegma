@@ -259,11 +259,6 @@ class S {
     return Intl.message('dark theme', name: 'darkTheme', desc: '', args: []);
   }
 
-  /// `stopwatch`
-  String get stopwatch {
-    return Intl.message('stopwatch', name: 'stopwatch', desc: '', args: []);
-  }
-
   /// `report bug`
   String get reportBug {
     return Intl.message('report bug', name: 'reportBug', desc: '', args: []);

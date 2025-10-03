@@ -10,10 +10,12 @@ final levelsProvider = FutureProvider<List<int>>((ref) async {
       .where((String key) => key.contains('lib/data/levels/level_'))
       .toList();
 
-  return levelPaths.map((path) {
+  final levels = levelPaths.map((path) {
     final levelNumber = int.parse(
       path.split('/').last.replaceAll('level_', '').replaceAll('.json', ''),
     );
     return levelNumber;
   }).toList()..sort();
+
+  return levels;
 });

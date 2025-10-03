@@ -26,6 +26,8 @@ dependencies:
   talker_flutter: ^5.0.0
   intl_utils: ^2.8.11
   gaimon: ^1.4.1
+  sqflite: ^2.4.2
+  path: ^1.9.1
 
 
 dev_dependencies:

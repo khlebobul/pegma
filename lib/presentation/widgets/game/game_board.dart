@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
-import '../../../presentation/providers/game/timer_provider.dart';
 
 class GameBoard extends ConsumerWidget {
   final int levelId;
@@ -15,7 +14,6 @@ class GameBoard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final gameState = ref.watch(gameProvider(levelId));
     final gameNotifier = ref.read(gameProvider(levelId).notifier);
-    final timerNotifier = ref.read(timerNotifierProvider.notifier);
     final theme = UIThemes.of(context);
 
     if (gameState.board.isEmpty) {
@@ -42,7 +40,6 @@ class GameBoard extends ConsumerWidget {
                       child: _buildPeg(
                         cellValue: cellValue,
                         onTap: () {
-                          timerNotifier.startTimer();
                           gameNotifier.onPegTap(row, col);
                         },
                         theme: theme,

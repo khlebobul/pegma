@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pegma/data/models/board_model.dart';
+import 'package:pegma/core/database/database_helper.dart';
 import 'dart:math';
 
 const _sentinel = Object();
@@ -15,6 +16,7 @@ final gameProvider = StateNotifierProvider.family<GameNotifier, GameState, int>(
 
 class GameNotifier extends StateNotifier<GameState> {
   final int levelId;
+  final DatabaseHelper _db = DatabaseHelper.instance;
 
   GameNotifier(this.levelId)
     : super(GameState(board: <List<String>>[], possibleMoves: [])) {
@@ -23,23 +25,58 @@ class GameNotifier extends StateNotifier<GameState> {
 
   Future<void> loadLevel(int level) async {
     try {
-      final jsonString = await rootBundle.loadString(
-        'lib/data/levels/level_$level.json',
-      );
-      final boardModel = BoardModel.fromJson(jsonString);
-      final initialPegs = boardModel.board
-          .expand((row) => row)
-          .where((cell) => cell == '1')
-          .length;
-      state = GameState(
-        board: boardModel.board,
-        possibleMoves: [],
-        initialPegCount: initialPegs,
-      );
-    } catch (e) {
-      if (level != 1) {
-        loadLevel(1);
+      // Check if level is completed - if yes, ignore saved state
+      final isCompleted = await _db.isLevelCompleted(level);
+
+      // Try to load saved game state first (only if not completed)
+      final savedState = !isCompleted
+          ? await _db.getSavedGameState(level)
+          : null;
+
+      if (savedState != null) {
+        // Load saved game
+        final boardData = savedState['board'] as List<dynamic>;
+        final board = boardData
+            .map((row) => List<String>.from(row as List))
+            .toList();
+
+        state = GameState(
+          board: board,
+          possibleMoves: [],
+          initialPegCount: board
+              .expand((row) => row)
+              .where((cell) => cell == '1')
+              .length,
+          movesCount: savedState['moves_count'] as int,
+        );
+      } else {
+        // Load fresh level
+        final jsonString = await rootBundle.loadString(
+          'lib/data/levels/level_$level.json',
+        );
+        final boardModel = BoardModel.fromJson(jsonString);
+        final initialPegs = boardModel.board
+            .expand((row) => row)
+            .where((cell) => cell == '1')
+            .length;
+        state = GameState(
+          board: boardModel.board,
+          possibleMoves: [],
+          initialPegCount: initialPegs,
+        );
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveCurrentState() async {
+    if (state.status == GameStatus.playing) {
+      await _db.saveGameState(
+        levelId: levelId,
+        board: state.board,
+        movesCount: state.movesCount,
+      );
     }
   }
 
@@ -113,13 +150,19 @@ class GameNotifier extends StateNotifier<GameState> {
     _checkEndGame();
   }
 
-  void _checkEndGame() {
+  void _checkEndGame() async {
     final pegsLeft = state.board
         .expand((row) => row)
         .where((cell) => cell == '1')
         .length;
     if (pegsLeft == 1) {
       state = state.copyWith(status: GameStatus.won);
+      // Mark level as completed and delete saved state
+      await _db.markLevelCompleted(
+        levelId: levelId,
+        movesCount: state.movesCount,
+      );
+      await _db.deleteSavedGameState(levelId);
       return;
     }
 
@@ -210,8 +253,9 @@ class GameNotifier extends StateNotifier<GameState> {
     );
   }
 
-  void restartLevel() {
-    loadLevel(levelId);
+  Future<void> restartLevel() async {
+    await _db.deleteSavedGameState(levelId);
+    await loadLevel(levelId);
   }
 }
 

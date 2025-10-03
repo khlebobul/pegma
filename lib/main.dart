@@ -7,7 +7,6 @@ import 'package:talker_riverpod_logger/talker_riverpod_logger.dart';
 import 'core/router/app_router.dart';
 import 'core/services/talker_service.dart';
 import 'generated/l10n.dart';
-import 'presentation/providers/game/timer_provider.dart';
 import 'presentation/providers/settings/language_provider.dart';
 import 'presentation/providers/settings/theme_provider.dart';
 
@@ -28,9 +27,6 @@ Future<void> main() async {
             printProviderAdded: true,
             printProviderUpdated: true,
             printProviderDisposed: true,
-            providerFilter: (provider) {
-              return provider != timerNotifierProvider;
-            },
           ),
         ),
       ],

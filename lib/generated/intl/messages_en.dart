@@ -79,7 +79,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "shareWithFriends": MessageLookupByLibrary.simpleMessage(
       "share with friends",
     ),
-    "stopwatch": MessageLookupByLibrary.simpleMessage("stopwatch"),
     "story": MessageLookupByLibrary.simpleMessage("story"),
     "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":

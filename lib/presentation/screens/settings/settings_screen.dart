@@ -68,20 +68,20 @@ class SettingsScreen extends ConsumerWidget {
                 themeNotifier.toggleTheme();
               }, theme),
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: GeneralConsts.horizontalPadding,
-              ),
-              child: _buildToggleOption(
-                S.of(context).stopwatch,
-                settings.soundEnabled,
-                (value) {
-                  settingsNotifier.toggleSound();
-                },
-                theme,
-              ),
-            ),
+            // const SizedBox(height: 16),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(
+            //     horizontal: GeneralConsts.horizontalPadding,
+            //   ),
+            //   child: _buildToggleOption(
+            //     S.of(context).stopwatch,
+            //     settings.soundEnabled,
+            //     (value) {
+            //       settingsNotifier.toggleSound();
+            //     },
+            //     theme,
+            //   ),
+            // ),
             const Spacer(),
 
             Padding(

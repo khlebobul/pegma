@@ -5,9 +5,10 @@ import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/generated/l10n.dart';
 import 'package:pegma/presentation/widgets/common/dialog_window.dart';
 import 'package:pegma/presentation/widgets/game/game_board.dart';
+import 'package:pegma/presentation/providers/completed_levels_provider.dart';
+import 'package:pegma/presentation/providers/levels_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
-import '../../providers/game/timer_provider.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
@@ -32,31 +33,31 @@ class _GameScreenState extends ConsumerState<GameScreen>
     super.dispose();
   }
 
+  void _saveGameState() {
+    final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
+    gameNotifier.saveCurrentState();
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final timerNotifier = ref.read(timerNotifierProvider.notifier);
-    final timerState = ref.read(timerNotifierProvider);
-
     switch (state) {
       case AppLifecycleState.paused:
       case AppLifecycleState.inactive:
       case AppLifecycleState.detached:
-        // Pause timer when app goes to background or becomes inactive
-        timerNotifier.pauseTimer();
+        _saveGameState();
         break;
       case AppLifecycleState.resumed:
-        // Auto-resume timer if it was running before (had a start time)
-        if (timerState.startTime != null && !timerState.isRunning) {
-          timerNotifier.startTimer();
-        }
         break;
       case AppLifecycleState.hidden:
-        timerNotifier.pauseTimer();
+        _saveGameState();
         break;
     }
   }
 
   void _showWinDialog(BuildContext context, GameNotifier gameNotifier) {
+    // Invalidate completed levels provider to refresh UI
+    ref.invalidate(completedLevelsProvider);
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -71,7 +72,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
         onSecondButtonPressed: () {
           Navigator.of(context).pop();
           final nextLevelId = widget.levelId + 1;
-          context.pushReplacement('/game/$nextLevelId');
+          context.pop();
+          context.push('/game/$nextLevelId');
         },
       ),
     );
@@ -100,7 +102,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
-    final timerState = ref.watch(timerNotifierProvider);
     final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
 
     ref.listen<GameState>(gameProvider(widget.levelId), (previous, next) {
@@ -113,35 +114,46 @@ class _GameScreenState extends ConsumerState<GameScreen>
     });
 
     final gameState = ref.watch(gameProvider(widget.levelId));
-    final totalPegs = gameState.initialPegCount > 1
-        ? gameState.initialPegCount - 1
-        : 0;
 
-    return Scaffold(
-      backgroundColor: theme.bgColor,
-      appBar: CustomAppBar(
-        showLeftArrowButton: true,
-        showBackButton: false,
-        showMenuButton: false,
-        isGameScreen: true,
-        timer: timerState.formattedTime,
-        moves: '${gameState.movesCount}/$totalPegs',
-        onBackButtonPressed: () {
-          context.pop();
-        },
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Center(child: GameBoard(levelId: widget.levelId)),
-          ),
-          UndoBottomBar(
-            onUndoPressed: gameNotifier.redo,
-            onRedoPressed: gameNotifier.undo,
-            canUndo: gameState.redoStack.isNotEmpty,
-            canRedo: gameState.history.isNotEmpty,
-          ),
-        ],
+    // Get level display number (0-based in UI, but we receive asset IDs)
+    final levelsAsyncValue = ref.watch(levelsProvider);
+    final levels = levelsAsyncValue.valueOrNull ?? [];
+    final displayLevelNumber = levels.indexOf(widget.levelId);
+
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (!didPop) {
+          _saveGameState();
+          Navigator.of(context).pop();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: theme.bgColor,
+        appBar: CustomAppBar(
+          showLeftArrowButton: true,
+          showBackButton: false,
+          showMenuButton: false,
+          isGameScreen: true,
+          moves: displayLevelNumber >= 0 ? '$displayLevelNumber' : '0',
+          onBackButtonPressed: () {
+            _saveGameState();
+            context.pop();
+          },
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Center(child: GameBoard(levelId: widget.levelId)),
+            ),
+            UndoBottomBar(
+              onUndoPressed: gameNotifier.redo,
+              onRedoPressed: gameNotifier.undo,
+              canUndo: gameState.redoStack.isNotEmpty,
+              canRedo: gameState.history.isNotEmpty,
+            ),
+          ],
+        ),
       ),
     );
   }

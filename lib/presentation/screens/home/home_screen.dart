@@ -6,6 +6,7 @@ import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/router/app_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
+import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -16,6 +17,8 @@ class HomeScreen extends ConsumerWidget {
     final theme = UIThemes.of(context);
     final levelsAsyncValue = ref.watch(levelsProvider);
     final levels = levelsAsyncValue.valueOrNull ?? [];
+    final completedLevels =
+        ref.watch(completedLevelsProvider).valueOrNull ?? [];
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -36,10 +39,14 @@ class HomeScreen extends ConsumerWidget {
         ),
         itemCount: levels.length,
         itemBuilder: (context, index) {
-          // TODO update levels indicator and lock logic
           final assetLevelId = levels[index];
           final displayNumber = index;
-          final isUnlocked = index <= 1;
+          final isCompleted = completedLevels.contains(assetLevelId);
+          // Level is unlocked if: it's level 0, OR it's completed, OR previous level is completed
+          final isUnlocked =
+              index == 0 ||
+              isCompleted ||
+              (index > 0 && completedLevels.contains(levels[index - 1]));
 
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
@@ -61,7 +68,7 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
-                if (displayNumber == 1)
+                if (isCompleted)
                   Positioned(
                     top: 6,
                     child: SvgPicture.asset(
