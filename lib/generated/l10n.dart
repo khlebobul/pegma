@@ -333,6 +333,56 @@ class S {
       args: [],
     );
   }
+
+  /// `ok`
+  String get ok {
+    return Intl.message('ok', name: 'ok', desc: '', args: []);
+  }
+
+  /// `cancel`
+  String get cancel {
+    return Intl.message('cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `start again?`
+  String get startAgain {
+    return Intl.message('start again?', name: 'startAgain', desc: '', args: []);
+  }
+
+  /// `yes`
+  String get yes {
+    return Intl.message('yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `again`
+  String get again {
+    return Intl.message('again', name: 'again', desc: '', args: []);
+  }
+
+  /// `level completed`
+  String get levelCompleted {
+    return Intl.message(
+      'level completed',
+      name: 'levelCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `continue`
+  String get doContinue {
+    return Intl.message('continue', name: 'doContinue', desc: '', args: []);
+  }
+
+  /// `you have an unfinished game`
+  String get youHaveAnUnfinishedGame {
+    return Intl.message(
+      'you have an unfinished game',
+      name: 'youHaveAnUnfinishedGame',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

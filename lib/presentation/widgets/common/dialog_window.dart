@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/utils/useful_methods.dart';
+import 'package:pegma/generated/l10n.dart';
 import 'package:pegma/presentation/widgets/common/action_button.dart';
 
 enum DialogType {
@@ -141,7 +142,7 @@ class DialogWindow extends StatelessWidget {
           children: [
             Expanded(
               child: ActionButton(
-                title: firstButtonText ?? 'ok',
+                title: firstButtonText ?? S.of(context).ok,
                 onTap:
                     onFirstButtonPressed ?? () => Navigator.of(context).pop(),
                 textStyle: theme.basicTextStyle,
@@ -152,7 +153,7 @@ class DialogWindow extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: ActionButton(
-                  title: secondButtonText ?? 'cancel',
+                  title: secondButtonText ?? S.of(context).cancel,
                   onTap:
                       onSecondButtonPressed ??
                       () => Navigator.of(context).pop(),
@@ -259,72 +260,3 @@ class DialogWindow extends StatelessWidget {
     );
   }
 }
-
-// TODO add moves counter
-
-/// Examples
-
-/// Type 1
-
-// void _showTextWithTwoButtonsDialog(BuildContext context) {
-//   showDialog(
-//     context: context,
-//     builder: (context) => DialogWindow.textWithTwoButtons(
-//       message: 'you won!',
-//       firstButtonText: 'menu',
-//       secondButtonText: 'next level',
-//       onFirstButtonPressed: () {
-//         Navigator.of(context).pop();
-//       },
-//       onSecondButtonPressed: () {
-//         Navigator.of(context).pop();
-//       },
-//     ),
-//   );
-// }
-
-/// Type 2
-
-// void _showMenuAndLinksDialog(BuildContext context) {
-//     showDialog(
-//       context: context,
-//       builder: (context) => DialogWindow.textWithMenuAndLinks(
-//         message:
-//             'at the moment you have completed all levels. follow the updates',
-//         menuItems: [
-//           DialogMenuItem(
-//             title: 'menu',
-//             onTap: () {
-//               Navigator.of(context).pop();
-//               context.pop(); // Close side menu
-//             },
-//           ),
-//         ],
-//         linkItems: const [
-//           DialogLinkItem(
-//             title: 'github repository',
-//             url: GeneralConsts.githubRepository,
-//           ),
-//           DialogLinkItem(title: 'x (twitter)', url: GeneralConsts.twitterUrl),
-//           DialogLinkItem(title: 'telegram', url: GeneralConsts.telegramUrl),
-//         ],
-//         onClosePressed: () {
-//           Navigator.of(context).pop();
-//         },
-//       ),
-//     );
-//   }
-
-/// Type 3
-
-// void _showImageDialog(BuildContext context) {
-//   showDialog(
-//     context: context,
-//     builder: (context) => DialogWindow.closeButtonWithImage(
-//       imagePath: Images.rulesScheme,
-//       onClosePressed: () {
-//         Navigator.of(context).pop();
-//       },
-//     ),
-//   );
-// }

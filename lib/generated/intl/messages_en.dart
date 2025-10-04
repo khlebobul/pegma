@@ -26,12 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("about"),
+    "again": MessageLookupByLibrary.simpleMessage("again"),
     "appDescription": m0,
+    "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "darkTheme": MessageLookupByLibrary.simpleMessage("dark theme"),
     "discoverPegmaAFreeOpensourceTakeOnTheClassicPeg":
         MessageLookupByLibrary.simpleMessage(
           "Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!",
         ),
+    "doContinue": MessageLookupByLibrary.simpleMessage("continue"),
     "funFact": MessageLookupByLibrary.simpleMessage(
       "fun fact: i made the font specifically for this app myself for uniqueness and fun with ",
     ),
@@ -46,11 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
           "in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.",
         ),
     "language": MessageLookupByLibrary.simpleMessage("language"),
+    "levelCompleted": MessageLookupByLibrary.simpleMessage("level completed"),
     "menu": MessageLookupByLibrary.simpleMessage("menu"),
     "myOtherApps": MessageLookupByLibrary.simpleMessage("my other apps"),
     "myWebsite": MessageLookupByLibrary.simpleMessage("my website"),
     "nextLevel": MessageLookupByLibrary.simpleMessage("next level"),
     "noMoreMoves": MessageLookupByLibrary.simpleMessage("no more moves"),
+    "ok": MessageLookupByLibrary.simpleMessage("ok"),
     "others": MessageLookupByLibrary.simpleMessage("others"),
     "pegSolitaireIsNotOnlyAGameButAlsoA": MessageLookupByLibrary.simpleMessage(
       "peg solitaire is not only a game but also a subject of mathematical study. combinatorialists and logicians have used it to explore strategies, optimal moves, and problem-solving techniques.",
@@ -79,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shareWithFriends": MessageLookupByLibrary.simpleMessage(
       "share with friends",
     ),
+    "startAgain": MessageLookupByLibrary.simpleMessage("start again?"),
     "story": MessageLookupByLibrary.simpleMessage("story"),
     "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
@@ -93,6 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
+    "yes": MessageLookupByLibrary.simpleMessage("yes"),
+    "youHaveAnUnfinishedGame": MessageLookupByLibrary.simpleMessage(
+      "you have an unfinished game",
+    ),
     "youWon": MessageLookupByLibrary.simpleMessage("you won!"),
   };
 }

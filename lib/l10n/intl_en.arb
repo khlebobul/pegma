@@ -42,5 +42,13 @@
   "menu": "menu",
   "nextLevel": "next level",
   "youWon": "you won!",
-  "noMoreMoves": "no more moves"
+  "noMoreMoves": "no more moves",
+  "ok": "ok",
+  "cancel": "cancel",
+  "startAgain": "start again?",
+  "yes": "yes",
+  "again": "again",
+  "levelCompleted": "level completed",
+  "doContinue": "continue",
+  "youHaveAnUnfinishedGame": "you have an unfinished game"
 }

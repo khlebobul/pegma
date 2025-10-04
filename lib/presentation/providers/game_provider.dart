@@ -8,6 +8,8 @@ const _sentinel = Object();
 
 enum GameStatus { playing, won, lost }
 
+enum LevelLoadType { fresh, savedGame, completed }
+
 final gameProvider = StateNotifierProvider.family<GameNotifier, GameState, int>(
   (ref, levelId) {
     return GameNotifier(levelId);
@@ -19,17 +21,31 @@ class GameNotifier extends StateNotifier<GameState> {
   final DatabaseHelper _db = DatabaseHelper.instance;
 
   GameNotifier(this.levelId)
-    : super(GameState(board: <List<String>>[], possibleMoves: [])) {
-    loadLevel(levelId);
+    : super(GameState(board: <List<String>>[], possibleMoves: []));
+
+  Future<LevelLoadType> checkLevelStatus() async {
+    // Check for saved game first (if player already started replaying)
+    final savedState = await _db.getSavedGameState(levelId);
+    if (savedState != null) {
+      return LevelLoadType.savedGame;
+    }
+
+    // If no saved game, check if completed
+    final isCompleted = await _db.isLevelCompleted(levelId);
+    if (isCompleted) {
+      return LevelLoadType.completed;
+    }
+
+    return LevelLoadType.fresh;
   }
 
-  Future<void> loadLevel(int level) async {
+  Future<void> loadLevel(int level, {bool ignoreSaved = false}) async {
     try {
       // Check if level is completed - if yes, ignore saved state
       final isCompleted = await _db.isLevelCompleted(level);
 
-      // Try to load saved game state first (only if not completed)
-      final savedState = !isCompleted
+      // Try to load saved game state first (only if not completed and not ignored)
+      final savedState = !isCompleted && !ignoreSaved
           ? await _db.getSavedGameState(level)
           : null;
 
@@ -68,6 +84,11 @@ class GameNotifier extends StateNotifier<GameState> {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Future<void> loadFreshLevel() async {
+    await _db.deleteSavedGameState(levelId);
+    await loadLevel(levelId, ignoreSaved: true);
   }
 
   Future<void> saveCurrentState() async {

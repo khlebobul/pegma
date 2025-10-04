@@ -25,6 +25,26 @@ class _GameScreenState extends ConsumerState<GameScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _checkLevelStatusAndLoad();
+  }
+
+  Future<void> _checkLevelStatusAndLoad() async {
+    final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
+    final loadType = await gameNotifier.checkLevelStatus();
+
+    if (!mounted) return;
+
+    switch (loadType) {
+      case LevelLoadType.fresh:
+        await gameNotifier.loadLevel(widget.levelId);
+        break;
+      case LevelLoadType.savedGame:
+        _showSavedGameDialog();
+        break;
+      case LevelLoadType.completed:
+        _showCompletedLevelDialog();
+        break;
+    }
   }
 
   @override
@@ -55,7 +75,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
   }
 
   void _showWinDialog(BuildContext context, GameNotifier gameNotifier) {
-    // Invalidate completed levels provider to refresh UI
     ref.invalidate(completedLevelsProvider);
 
     showDialog(
@@ -104,15 +123,57 @@ class _GameScreenState extends ConsumerState<GameScreen>
       context: context,
       barrierDismissible: true,
       builder: (context) => DialogWindow.textWithTwoButtons(
-        message: 'restart level?',
-        firstButtonText: 'cancel',
-        secondButtonText: 'restart',
+        message: S.of(context).startAgain,
+        firstButtonText: S.of(context).cancel,
+        secondButtonText: S.of(context).yes,
         onFirstButtonPressed: () {
           Navigator.of(context).pop();
         },
         onSecondButtonPressed: () {
           Navigator.of(context).pop();
           gameNotifier.restartLevel();
+        },
+      ),
+    );
+  }
+
+  void _showSavedGameDialog() {
+    final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => DialogWindow.textWithTwoButtons(
+        message: S.of(context).youHaveAnUnfinishedGame,
+        firstButtonText: S.of(context).again,
+        secondButtonText: S.of(context).doContinue,
+        onFirstButtonPressed: () async {
+          Navigator.of(context).pop();
+          await gameNotifier.loadFreshLevel();
+        },
+        onSecondButtonPressed: () async {
+          Navigator.of(context).pop();
+          await gameNotifier.loadLevel(widget.levelId);
+        },
+      ),
+    );
+  }
+
+  void _showCompletedLevelDialog() {
+    final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => DialogWindow.textWithTwoButtons(
+        message: S.of(context).levelCompleted,
+        firstButtonText: S.of(context).menu,
+        secondButtonText: S.of(context).again,
+        onFirstButtonPressed: () {
+          Navigator.of(context).pop();
+          context.pop();
+        },
+        onSecondButtonPressed: () async {
+          Navigator.of(context).pop();
+          await gameNotifier.loadFreshLevel();
         },
       ),
     );
@@ -134,7 +195,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
     final gameState = ref.watch(gameProvider(widget.levelId));
 
-    // Get level display number (0-based in UI, but we receive asset IDs)
     final levelsAsyncValue = ref.watch(levelsProvider);
     final levels = levelsAsyncValue.valueOrNull ?? [];
     final displayLevelNumber = levels.indexOf(widget.levelId);

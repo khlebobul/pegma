@@ -26,12 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("о приложении"),
+    "again": MessageLookupByLibrary.simpleMessage("заново"),
     "appDescription": m0,
+    "cancel": MessageLookupByLibrary.simpleMessage("отмена"),
     "darkTheme": MessageLookupByLibrary.simpleMessage("темная тема"),
     "discoverPegmaAFreeOpensourceTakeOnTheClassicPeg":
         MessageLookupByLibrary.simpleMessage(
           " Откройте для себя Pegma — бесплатную версию классического пасьянса Peg Solitaire с открытым исходным кодом! Наслаждайтесь этим классическим пасьянсом на мобильном устройстве!",
         ),
+    "doContinue": MessageLookupByLibrary.simpleMessage("продолжить"),
     "funFact": MessageLookupByLibrary.simpleMessage(
       "интересный факт: я сделал шрифт специально для этого приложения сам — для уникальности и ради веселья ",
     ),
@@ -46,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "в 19 веке игра распространилась по европе и англии, став популярным развлечением в аристократических кругах. современные версии существуют в виде компьютерных игр, мобильных приложений и онлайн-головоломок.",
         ),
     "language": MessageLookupByLibrary.simpleMessage("язык"),
+    "levelCompleted": MessageLookupByLibrary.simpleMessage("уровень пройден"),
     "menu": MessageLookupByLibrary.simpleMessage("меню"),
     "myOtherApps": MessageLookupByLibrary.simpleMessage(
       "мои другие приложения",
@@ -53,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "myWebsite": MessageLookupByLibrary.simpleMessage("мой сайт"),
     "nextLevel": MessageLookupByLibrary.simpleMessage("следующий уровень"),
     "noMoreMoves": MessageLookupByLibrary.simpleMessage("нет ходов"),
+    "ok": MessageLookupByLibrary.simpleMessage("ок"),
     "others": MessageLookupByLibrary.simpleMessage("другое"),
     "pegSolitaireIsNotOnlyAGameButAlsoA": MessageLookupByLibrary.simpleMessage(
       "«peg solitaire» — это не только игра, но и объект математического изучения. комбинаторики и логики использовали ее для исследования стратегий, оптимальных ходов и методов решения задач.",
@@ -81,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shareWithFriends": MessageLookupByLibrary.simpleMessage(
       "поделиться с друзьями",
     ),
+    "startAgain": MessageLookupByLibrary.simpleMessage("начать заново?"),
     "story": MessageLookupByLibrary.simpleMessage("история"),
     "telegram": MessageLookupByLibrary.simpleMessage("телеграм"),
     "theClassicBoardHasACrossShape77Squares33":
@@ -95,6 +101,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "цель — убрать все фишки, оставив только одну в центре. интересный факт: для классической доски с 33 фишками существует только один идеальный путь решения, хотя игроки часто находят множество промежуточных вариаций.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
+    "yes": MessageLookupByLibrary.simpleMessage("да"),
+    "youHaveAnUnfinishedGame": MessageLookupByLibrary.simpleMessage(
+      "у вас есть незавершенная игра",
+    ),
     "youWon": MessageLookupByLibrary.simpleMessage("победа!"),
   };
 }

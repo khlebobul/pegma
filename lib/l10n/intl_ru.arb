@@ -42,5 +42,13 @@
   "menu": "меню",
   "nextLevel": "следующий уровень",
   "youWon": "победа!",
-  "noMoreMoves": "нет ходов"
+  "noMoreMoves": "нет ходов",
+  "ok": "ок",
+  "cancel": "отмена",
+  "startAgain": "начать заново?",
+  "yes": "да",
+  "again": "заново",
+  "levelCompleted": "уровень пройден",
+  "doContinue": "продолжить",
+  "youHaveAnUnfinishedGame": "у вас есть незавершенная игра"
 }
