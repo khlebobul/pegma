@@ -13,4 +13,3 @@ final isLevelCompletedProvider = FutureProvider.family<bool, int>((
   final db = DatabaseHelper.instance;
   return await db.isLevelCompleted(levelId);
 });
-

@@ -42,11 +42,11 @@ class HomeScreen extends ConsumerWidget {
           final assetLevelId = levels[index];
           final displayNumber = index;
           final isCompleted = completedLevels.contains(assetLevelId);
-          // Level is unlocked if: it's level 0, OR it's completed, OR previous level is completed
           final isUnlocked =
               index == 0 ||
+              index == 1 ||
               isCompleted ||
-              (index > 0 && completedLevels.contains(levels[index - 1]));
+              (index > 1 && completedLevels.contains(levels[index - 1]));
 
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
