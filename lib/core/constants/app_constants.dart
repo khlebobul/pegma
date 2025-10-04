@@ -8,6 +8,7 @@ class CustomIcons {
   static const String circle = 'assets/icons/circle.svg';
   static const String circleFilled = 'assets/icons/circle_filled.svg';
   static const String star = 'assets/icons/star.svg';
+  static const String refresh = 'assets/icons/refresh.svg';
 }
 
 class Images {

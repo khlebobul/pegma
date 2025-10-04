@@ -13,6 +13,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isGameScreen;
   final String? moves;
   final VoidCallback? onBackButtonPressed;
+  final bool showRefreshButton;
+  final VoidCallback? onRefreshPressed;
+  final bool isRefreshEnabled;
 
   const CustomAppBar({
     super.key,
@@ -23,6 +26,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isGameScreen = false,
     this.moves,
     this.onBackButtonPressed,
+    this.showRefreshButton = false,
+    this.onRefreshPressed,
+    this.isRefreshEnabled = true,
   });
 
   @override
@@ -68,6 +74,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             : null,
         titleSpacing: 16,
         automaticallyImplyLeading: false,
+        actions: [
+          if (showRefreshButton)
+            _buildActionButton(
+              context: context,
+              theme: theme,
+              asset: CustomIcons.refresh,
+              onTap: onRefreshPressed ?? () {},
+              isEnabled: isRefreshEnabled,
+            ),
+        ],
       );
     }
 
@@ -141,20 +157,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required UIThemes theme,
     required String asset,
     required VoidCallback onTap,
+    bool isEnabled = true,
   }) {
     return Padding(
       padding: const EdgeInsets.only(right: GeneralConsts.horizontalPadding),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: onTap,
+        onTap: isEnabled ? onTap : null,
         child: Container(
           width: 44,
           height: 44,
           alignment: Alignment.center,
           child: SvgPicture.asset(
             asset,
-            width: 20,
-            colorFilter: ColorFilter.mode(theme.textColor, BlendMode.srcIn),
+            width: 30,
+            colorFilter: ColorFilter.mode(
+              isEnabled ? theme.textColor : theme.secondaryTextColor,
+              BlendMode.srcIn,
+            ),
           ),
         ),
       ),

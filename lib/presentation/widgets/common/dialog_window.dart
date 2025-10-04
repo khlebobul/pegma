@@ -149,11 +149,15 @@ class DialogWindow extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             Expanded(
-              child: ActionButton(
-                title: secondButtonText ?? 'cancel',
-                onTap:
-                    onSecondButtonPressed ?? () => Navigator.of(context).pop(),
-                textStyle: theme.basicTextStyle,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: ActionButton(
+                  title: secondButtonText ?? 'cancel',
+                  onTap:
+                      onSecondButtonPressed ??
+                      () => Navigator.of(context).pop(),
+                  textStyle: theme.basicTextStyle,
+                ),
               ),
             ),
           ],

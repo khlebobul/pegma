@@ -99,6 +99,25 @@ class _GameScreenState extends ConsumerState<GameScreen>
     );
   }
 
+  void _showRestartDialog(BuildContext context, GameNotifier gameNotifier) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => DialogWindow.textWithTwoButtons(
+        message: 'restart level?',
+        firstButtonText: 'cancel',
+        secondButtonText: 'restart',
+        onFirstButtonPressed: () {
+          Navigator.of(context).pop();
+        },
+        onSecondButtonPressed: () {
+          Navigator.of(context).pop();
+          gameNotifier.restartLevel();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
@@ -122,7 +141,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, result) async {
         if (!didPop) {
           _saveGameState();
           Navigator.of(context).pop();
@@ -140,6 +159,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
             _saveGameState();
             context.pop();
           },
+          showRefreshButton: true,
+          onRefreshPressed: () => _showRestartDialog(context, gameNotifier),
+          isRefreshEnabled: gameState.movesCount > 0,
         ),
         body: Column(
           children: [

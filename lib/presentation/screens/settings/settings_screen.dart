@@ -9,7 +9,6 @@ import '../../widgets/common/custom_toggle.dart';
 import '../../widgets/common/action_button.dart';
 import '../../providers/settings/theme_provider.dart';
 import '../../providers/settings/language_provider.dart';
-import '../../providers/settings/settings_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -21,8 +20,6 @@ class SettingsScreen extends ConsumerWidget {
     final themeMode = ref.watch(themeNotifierProvider);
 
     final currentLocale = ref.watch(languageNotifierProvider);
-    final settings = ref.watch(settingsNotifierProvider);
-    final settingsNotifier = ref.watch(settingsNotifierProvider.notifier);
 
     final isDarkTheme = themeMode == ThemeMode.dark;
     final selectedLanguage = currentLocale.languageCode == 'en'
