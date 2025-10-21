@@ -24,16 +24,24 @@ class GameNotifier extends StateNotifier<GameState> {
     : super(GameState(board: <List<String>>[], possibleMoves: []));
 
   Future<LevelLoadType> checkLevelStatus() async {
-    // Check for saved game first (if player already started replaying)
+    // First check if level is completed
+    final isCompleted = await _db.isLevelCompleted(levelId);
+
+    if (isCompleted) {
+      // If completed, check if there's a saved game with moves
+      final savedState = await _db.getSavedGameState(levelId);
+      if (savedState != null && (savedState['moves_count'] as int) > 0) {
+        // Level is completed but player started replaying and made moves
+        return LevelLoadType.savedGame;
+      }
+      // Level is completed and no replay started or no moves made
+      return LevelLoadType.completed;
+    }
+
+    // Level is not completed, check for saved game
     final savedState = await _db.getSavedGameState(levelId);
     if (savedState != null) {
       return LevelLoadType.savedGame;
-    }
-
-    // If no saved game, check if completed
-    final isCompleted = await _db.isLevelCompleted(levelId);
-    if (isCompleted) {
-      return LevelLoadType.completed;
     }
 
     return LevelLoadType.fresh;
@@ -41,11 +49,8 @@ class GameNotifier extends StateNotifier<GameState> {
 
   Future<void> loadLevel(int level, {bool ignoreSaved = false}) async {
     try {
-      // Check if level is completed - if yes, ignore saved state
-      final isCompleted = await _db.isLevelCompleted(level);
-
-      // Try to load saved game state first (only if not completed and not ignored)
-      final savedState = !isCompleted && !ignoreSaved
+      // Try to load saved game state first (only if not ignored)
+      final savedState = !ignoreSaved
           ? await _db.getSavedGameState(level)
           : null;
 
