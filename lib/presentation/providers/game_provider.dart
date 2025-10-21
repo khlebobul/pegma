@@ -38,9 +38,9 @@ class GameNotifier extends StateNotifier<GameState> {
       return LevelLoadType.completed;
     }
 
-    // Level is not completed, check for saved game
+    // Level is not completed, check for saved game with moves
     final savedState = await _db.getSavedGameState(levelId);
-    if (savedState != null) {
+    if (savedState != null && (savedState['moves_count'] as int) > 0) {
       return LevelLoadType.savedGame;
     }
 
