@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pegma/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:pegma/presentation/widgets/common/dialog_window.dart';
-import 'package:pegma/core/constants/app_constants.dart';
+import 'package:pegma/presentation/widgets/tutorial/interactive_tutorial_dialog.dart';
 
 final firstLaunchProvider = Provider((ref) => FirstLaunchProvider());
 
@@ -16,12 +14,11 @@ class FirstLaunchProvider {
 
     if (isFirstLaunch) {
       if (context.mounted) {
-        showDialog(
+        await showDialog(
           context: context,
-          builder: (context) => DialogWindow.closeButtonWithImage(
-            imagePath: Images.rulesScheme,
-            description: S.of(context).gameTutorialText,
-            onClosePressed: () {
+          barrierDismissible: false,
+          builder: (context) => InteractiveTutorialDialog(
+            onClose: () {
               Navigator.of(context).pop();
             },
           ),
