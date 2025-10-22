@@ -50,5 +50,15 @@
   "again": "again",
   "levelCompleted": "level completed",
   "doContinue": "continue",
-  "youHaveAnUnfinishedGame": "you have an unfinished game"
+  "youHaveAnUnfinishedGame": "you have an unfinished game",
+  "howToPlay": "how to play",
+  "tutorialStep1": "this is the board. pegs (filled circles) can jump over each other into empty holes.",
+  "tutorialStep2": "tap a peg to select it. the selected peg is highlighted.",
+  "tutorialStep3": "highlighted dots show where you can move. tap a dot to jump there.",
+  "tutorialStep4": "the peg jumps over the middle peg into the empty hole.",
+  "tutorialStep5": "the jumped peg is removed! keep going until only one peg remains.",
+  "previous": "previous",
+  "next": "next",
+  "done": "done",
+  "play": "play"
 }

@@ -383,6 +383,81 @@ class S {
       args: [],
     );
   }
+
+  /// `how to play`
+  String get howToPlay {
+    return Intl.message('how to play', name: 'howToPlay', desc: '', args: []);
+  }
+
+  /// `this is the board. pegs (filled circles) can jump over each other into empty holes.`
+  String get tutorialStep1 {
+    return Intl.message(
+      'this is the board. pegs (filled circles) can jump over each other into empty holes.',
+      name: 'tutorialStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tap a peg to select it. the selected peg is highlighted.`
+  String get tutorialStep2 {
+    return Intl.message(
+      'tap a peg to select it. the selected peg is highlighted.',
+      name: 'tutorialStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `highlighted dots show where you can move. tap a dot to jump there.`
+  String get tutorialStep3 {
+    return Intl.message(
+      'highlighted dots show where you can move. tap a dot to jump there.',
+      name: 'tutorialStep3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the peg jumps over the middle peg into the empty hole.`
+  String get tutorialStep4 {
+    return Intl.message(
+      'the peg jumps over the middle peg into the empty hole.',
+      name: 'tutorialStep4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the jumped peg is removed! keep going until only one peg remains.`
+  String get tutorialStep5 {
+    return Intl.message(
+      'the jumped peg is removed! keep going until only one peg remains.',
+      name: 'tutorialStep5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `previous`
+  String get previous {
+    return Intl.message('previous', name: 'previous', desc: '', args: []);
+  }
+
+  /// `next`
+  String get next {
+    return Intl.message('next', name: 'next', desc: '', args: []);
+  }
+
+  /// `done`
+  String get done {
+    return Intl.message('done', name: 'done', desc: '', args: []);
+  }
+
+  /// `play`
+  String get play {
+    return Intl.message('play', name: 'play', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

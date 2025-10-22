@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
           " Откройте для себя Pegma — бесплатную версию классического пасьянса Peg Solitaire с открытым исходным кодом! Наслаждайтесь этим классическим пасьянсом на мобильном устройстве!",
         ),
     "doContinue": MessageLookupByLibrary.simpleMessage("продолжить"),
+    "done": MessageLookupByLibrary.simpleMessage("готово"),
     "funFact": MessageLookupByLibrary.simpleMessage(
       "интересный факт: я сделал шрифт специально для этого приложения сам — для уникальности и ради веселья ",
     ),
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "githubRepository": MessageLookupByLibrary.simpleMessage(
       "репозиторий github",
     ),
+    "howToPlay": MessageLookupByLibrary.simpleMessage("как играть"),
     "inThe19thCenturyTheGameSpreadAcrossEuropeAnd":
         MessageLookupByLibrary.simpleMessage(
           "в 19 веке игра распространилась по европе и англии, став популярным развлечением в аристократических кругах. современные версии существуют в виде компьютерных игр, мобильных приложений и онлайн-головоломок.",
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "мои другие приложения",
     ),
     "myWebsite": MessageLookupByLibrary.simpleMessage("мой сайт"),
+    "next": MessageLookupByLibrary.simpleMessage("далее"),
     "nextLevel": MessageLookupByLibrary.simpleMessage("следующий уровень"),
     "noMoreMoves": MessageLookupByLibrary.simpleMessage("нет ходов"),
     "ok": MessageLookupByLibrary.simpleMessage("ок"),
@@ -66,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "игра «peg solitaire» или «солитер на фишках» возникла в европе в 17 веке и быстро стала популярной во франции.",
         ),
+    "play": MessageLookupByLibrary.simpleMessage("играй"),
+    "previous": MessageLookupByLibrary.simpleMessage("назад"),
     "projectWebsite": MessageLookupByLibrary.simpleMessage("сайт проекта"),
     "rateTheApp": MessageLookupByLibrary.simpleMessage("оценить приложение"),
     "reportBug": MessageLookupByLibrary.simpleMessage("сообщить об ошибке"),
@@ -99,6 +104,21 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
       "цель — убрать все фишки, оставив только одну в центре. интересный факт: для классической доски с 33 фишками существует только один идеальный путь решения, хотя игроки часто находят множество промежуточных вариаций.",
+    ),
+    "tutorialStep1": MessageLookupByLibrary.simpleMessage(
+      "это игровая доска. фишки (заполненные круги) могут прыгать друг через друга в пустые лунки.",
+    ),
+    "tutorialStep2": MessageLookupByLibrary.simpleMessage(
+      "нажмите на фишку, чтобы выбрать её. выбранная фишка подсвечивается.",
+    ),
+    "tutorialStep3": MessageLookupByLibrary.simpleMessage(
+      "подсвеченные точки показывают, куда можно сходить. нажмите на точку, чтобы прыгнуть туда.",
+    ),
+    "tutorialStep4": MessageLookupByLibrary.simpleMessage(
+      "фишка перепрыгивает через среднюю фишку в пустую лунку.",
+    ),
+    "tutorialStep5": MessageLookupByLibrary.simpleMessage(
+      "перепрыгнутая фишка убирается! продолжайте, пока не останется только одна фишка.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
     "yes": MessageLookupByLibrary.simpleMessage("да"),

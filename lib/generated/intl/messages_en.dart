@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "Discover Pegma — a free, open-source take on the classic Peg Solitaire! Enjoy the timeless puzzle on your mobile device!",
         ),
     "doContinue": MessageLookupByLibrary.simpleMessage("continue"),
+    "done": MessageLookupByLibrary.simpleMessage("done"),
     "funFact": MessageLookupByLibrary.simpleMessage(
       "fun fact: i made the font specifically for this app myself for uniqueness and fun with ",
     ),
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "githubRepository": MessageLookupByLibrary.simpleMessage(
       "github repository",
     ),
+    "howToPlay": MessageLookupByLibrary.simpleMessage("how to play"),
     "inThe19thCenturyTheGameSpreadAcrossEuropeAnd":
         MessageLookupByLibrary.simpleMessage(
           "in the 19th century, the game spread across europe and england, becoming a popular pastime in aristocratic circles. modern versions now exist as computer games, mobile apps, and online puzzles.",
@@ -53,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "menu": MessageLookupByLibrary.simpleMessage("menu"),
     "myOtherApps": MessageLookupByLibrary.simpleMessage("my other apps"),
     "myWebsite": MessageLookupByLibrary.simpleMessage("my website"),
+    "next": MessageLookupByLibrary.simpleMessage("next"),
     "nextLevel": MessageLookupByLibrary.simpleMessage("next level"),
     "noMoreMoves": MessageLookupByLibrary.simpleMessage("no more moves"),
     "ok": MessageLookupByLibrary.simpleMessage("ok"),
@@ -64,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "peg solitaire, or solitaire on pegs, originated in europe in the 17th century and quickly became popular in france.",
         ),
+    "play": MessageLookupByLibrary.simpleMessage("play"),
+    "previous": MessageLookupByLibrary.simpleMessage("previous"),
     "projectWebsite": MessageLookupByLibrary.simpleMessage("project website"),
     "rateTheApp": MessageLookupByLibrary.simpleMessage("rate the app"),
     "reportBug": MessageLookupByLibrary.simpleMessage("report bug"),
@@ -97,6 +102,21 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
       "the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.",
+    ),
+    "tutorialStep1": MessageLookupByLibrary.simpleMessage(
+      "this is the board. pegs (filled circles) can jump over each other into empty holes.",
+    ),
+    "tutorialStep2": MessageLookupByLibrary.simpleMessage(
+      "tap a peg to select it. the selected peg is highlighted.",
+    ),
+    "tutorialStep3": MessageLookupByLibrary.simpleMessage(
+      "highlighted dots show where you can move. tap a dot to jump there.",
+    ),
+    "tutorialStep4": MessageLookupByLibrary.simpleMessage(
+      "the peg jumps over the middle peg into the empty hole.",
+    ),
+    "tutorialStep5": MessageLookupByLibrary.simpleMessage(
+      "the jumped peg is removed! keep going until only one peg remains.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
     "yes": MessageLookupByLibrary.simpleMessage("yes"),

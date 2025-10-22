@@ -7,6 +7,7 @@ import 'package:pegma/presentation/widgets/common/dialog_window.dart';
 import 'package:pegma/presentation/widgets/game/game_board.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
+import 'package:pegma/presentation/providers/first_launch_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/undo_bottom_bar.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
@@ -21,6 +22,8 @@ class GameScreen extends ConsumerStatefulWidget {
 
 class _GameScreenState extends ConsumerState<GameScreen>
     with WidgetsBindingObserver {
+  bool _tutorialShown = false;
+
   @override
   void initState() {
     super.initState();
@@ -44,6 +47,15 @@ class _GameScreenState extends ConsumerState<GameScreen>
       case LevelLoadType.completed:
         _showCompletedLevelDialog();
         break;
+    }
+
+    // Show tutorial on first game launch
+    if (!_tutorialShown && mounted) {
+      _tutorialShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final firstLaunchService = ref.read(firstLaunchProvider);
+        firstLaunchService.showRulesDialogIfNeeded(context);
+      });
     }
   }
 
