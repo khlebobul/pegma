@@ -9,7 +9,7 @@ import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
 import 'package:pegma/presentation/providers/first_launch_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
-import '../../widgets/game/undo_bottom_bar.dart';
+import '../../widgets/game/game_bottom_bar.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
@@ -54,7 +54,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
       _tutorialShown = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         final firstLaunchService = ref.read(firstLaunchProvider);
-        firstLaunchService.showRulesDialogIfNeeded(context);
+        firstLaunchService.showTutorialDialogIfNeeded(context);
       });
     }
   }
@@ -240,9 +240,12 @@ class _GameScreenState extends ConsumerState<GameScreen>
             Expanded(
               child: Center(child: GameBoard(levelId: widget.levelId)),
             ),
-            UndoBottomBar(
+            GameBottomBar(
               onUndoPressed: gameNotifier.redo,
               onRedoPressed: gameNotifier.undo,
+              onTutorialPressed: () {
+                ref.read(firstLaunchProvider).showTutorialDialog(context);
+              },
               canUndo: gameState.redoStack.isNotEmpty,
               canRedo: gameState.history.isNotEmpty,
             ),

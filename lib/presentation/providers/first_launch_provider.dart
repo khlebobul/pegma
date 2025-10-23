@@ -8,7 +8,7 @@ final firstLaunchProvider = Provider((ref) => FirstLaunchProvider());
 class FirstLaunchProvider {
   static const String _isFirstLaunchKey = 'isFirstLaunch';
 
-  Future<void> showRulesDialogIfNeeded(BuildContext context) async {
+  Future<void> showTutorialDialogIfNeeded(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     final isFirstLaunch = prefs.getBool(_isFirstLaunchKey) ?? true;
 
@@ -25,6 +25,22 @@ class FirstLaunchProvider {
         );
         await prefs.setBool(_isFirstLaunchKey, false);
       }
+    }
+  }
+
+  Future<void> showTutorialDialog(BuildContext context) async {
+    if (context.mounted) {
+      await showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (context) => InteractiveTutorialDialog(
+          onClose: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      );
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_isFirstLaunchKey, false);
     }
   }
 }

@@ -4,16 +4,18 @@ import 'package:gaimon/gaimon.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 
-class UndoBottomBar extends StatelessWidget {
+class GameBottomBar extends StatelessWidget {
   final VoidCallback? onUndoPressed;
   final VoidCallback? onRedoPressed;
+  final VoidCallback? onTutorialPressed;
   final bool canUndo;
   final bool canRedo;
 
-  const UndoBottomBar({
+  const GameBottomBar({
     super.key,
     this.onUndoPressed,
     this.onRedoPressed,
+    this.onTutorialPressed,
     this.canUndo = true,
     this.canRedo = true,
   });
@@ -47,6 +49,26 @@ class UndoBottomBar extends StatelessWidget {
                     width: 30,
                     colorFilter: ColorFilter.mode(
                       canRedo ? theme.textColor : theme.secondaryTextColor,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  onTutorialPressed?.call();
+                  Gaimon.soft();
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: SvgPicture.asset(
+                    CustomIcons.info,
+                    width: 30,
+                    colorFilter: ColorFilter.mode(
+                      theme.textColor,
                       BlendMode.srcIn,
                     ),
                   ),

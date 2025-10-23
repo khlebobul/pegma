@@ -6,7 +6,6 @@ import '../../presentation/screens/home/splash_screen.dart';
 import '../../presentation/screens/game/game_screen.dart';
 import '../../presentation/screens/settings/settings_screen.dart';
 import '../../presentation/screens/info/about_screen.dart';
-import '../../presentation/screens/info/rules_screen.dart';
 import '../../presentation/screens/home/side_menu_screen.dart';
 
 class AppRouter {
@@ -15,7 +14,6 @@ class AppRouter {
   static const String game = '/game';
   static const String settings = '/settings';
   static const String about = '/about';
-  static const String rules = '/rules';
   static const String sideMenu = '/side-menu';
   static const String story = '/story';
 
@@ -100,11 +98,6 @@ class AppRouter {
         path: about,
         pageBuilder: (context, state) =>
             _slideTransition(const AboutScreen(), state),
-      ),
-      GoRoute(
-        path: rules,
-        pageBuilder: (context, state) =>
-            _slideTransition(const RulesScreen(), state),
       ),
       GoRoute(
         path: story,
