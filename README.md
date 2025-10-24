@@ -1,10 +1,12 @@
 <div align="center">
 
+// TODO: update store links
+
 [![App Store](https://img.shields.io/badge/App_Store-414141?style=for-the-badge&logo=App+Store&logoColor=F1F1F1)]() [![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=Google+Play&logoColor=F1F1F1)](https://play.google.com/store/apps/details?id=com.khlebobul.pegma) [![RuStore](https://img.shields.io/badge/RuStore-414141?style=for-the-badge&logo=RuSrore&logoColor=F1F1F1)](https://www.rustore.ru/catalog/app/com.khlebobul.pegma)
 
-// TODO: app images
+<img width="700" alt="Frame 1" src="https://github.com/user-attachments/assets/3a537b38-fbca-45e0-898d-60fac2ff68a5" />
 
-A timeless, free, cross-platform version of the classic Peg Solitaire game
+A free and cross-platform version of the classic Peg solitaire! Enjoy the timeless puzzle on your mobile device!
 
 [![Website](https://img.shields.io/badge/Website-414141?style=for-the-badge&logo=Website&logoColor=F1F1F1)](https://pegma.vercel.app) [![Support - Stars](https://img.shields.io/badge/Support-Stars-414141?style=for-the-badge&logo=Telegram&logoColor=F1F1F1)](https://t.me/khlebobul_dev) [![Support - YooMoney](https://img.shields.io/badge/Support-YooMoney-414141?style=for-the-badge&logo=YooMoney&logoColor=F1F1F1)](https://yoomoney.ru/to/4100118234947004) [![LICENCE - MIT](https://img.shields.io/badge/LICENCE-MIT-414141?style=for-the-badge&logo=Licence&logoColor=F1F1F1)](https://github.com/khlebobul/pegma/blob/main/LICENSE)
 
