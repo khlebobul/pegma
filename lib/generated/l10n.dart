@@ -319,9 +319,9 @@ class S {
     return Intl.message('next level', name: 'nextLevel', desc: '', args: []);
   }
 
-  /// `you won!`
+  /// `you won :)`
   String get youWon {
-    return Intl.message('you won!', name: 'youWon', desc: '', args: []);
+    return Intl.message('you won :)', name: 'youWon', desc: '', args: []);
   }
 
   /// `no more moves`
@@ -429,10 +429,10 @@ class S {
     );
   }
 
-  /// `the jumped peg is removed! keep going until only one peg remains.`
+  /// `the jumped peg is removed. keep going until only one peg remains.`
   String get tutorialStep5 {
     return Intl.message(
-      'the jumped peg is removed! keep going until only one peg remains.',
+      'the jumped peg is removed. keep going until only one peg remains.',
       name: 'tutorialStep5',
       desc: '',
       args: [],

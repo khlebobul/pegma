@@ -116,13 +116,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "the peg jumps over the middle peg into the empty hole.",
     ),
     "tutorialStep5": MessageLookupByLibrary.simpleMessage(
-      "the jumped peg is removed! keep going until only one peg remains.",
+      "the jumped peg is removed. keep going until only one peg remains.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
     "yes": MessageLookupByLibrary.simpleMessage("yes"),
     "youHaveAnUnfinishedGame": MessageLookupByLibrary.simpleMessage(
       "you have an unfinished game",
     ),
-    "youWon": MessageLookupByLibrary.simpleMessage("you won!"),
+    "youWon": MessageLookupByLibrary.simpleMessage("you won :)"),
   };
 }

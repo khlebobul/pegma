@@ -30,51 +30,80 @@ class TutorialNavigation extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          _AnimatedButton(
             onTap: canGoBack ? onPrevious : null,
-            child: SizedBox(
-              height: 50,
-              child: Center(
-                child: SvgPicture.asset(
-                  CustomIcons.back,
-                  width: 28,
-                  colorFilter: ColorFilter.mode(
-                    canGoBack ? theme.textColor : theme.secondaryTextColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
+            child: SvgPicture.asset(
+              CustomIcons.back,
+              width: 28,
+              colorFilter: ColorFilter.mode(
+                canGoBack ? theme.textColor : theme.secondaryTextColor,
+                BlendMode.srcIn,
               ),
             ),
           ),
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          _AnimatedButton(
             onTap: onNext,
-            child: SizedBox(
-              height: 50,
-              child: Center(
-                child: isLastStep
-                    ? Text(
-                        S.of(context).play,
-                        style: theme.basicTextStyle.copyWith(
-                          color: theme.textColor,
-                        ),
-                      )
-                    : Transform.scale(
-                        scaleX: -1,
-                        child: SvgPicture.asset(
-                          CustomIcons.back,
-                          width: 28,
-                          colorFilter: ColorFilter.mode(
-                            theme.textColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
+            child: isLastStep
+                ? Text(
+                    S.of(context).play,
+                    style: theme.basicTextStyle.copyWith(
+                      color: theme.textColor,
+                    ),
+                  )
+                : Transform.scale(
+                    scaleX: -1,
+                    child: SvgPicture.asset(
+                      CustomIcons.back,
+                      width: 28,
+                      colorFilter: ColorFilter.mode(
+                        theme.textColor,
+                        BlendMode.srcIn,
                       ),
-              ),
-            ),
+                    ),
+                  ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _AnimatedButton extends StatefulWidget {
+  final VoidCallback? onTap;
+  final Widget child;
+
+  const _AnimatedButton({required this.onTap, required this.child});
+
+  @override
+  State<_AnimatedButton> createState() => _AnimatedButtonState();
+}
+
+class _AnimatedButtonState extends State<_AnimatedButton> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapDown: widget.onTap != null
+          ? (_) => setState(() => _isPressed = true)
+          : null,
+      onTapUp: widget.onTap != null
+          ? (_) => setState(() => _isPressed = false)
+          : null,
+      onTapCancel: widget.onTap != null
+          ? () => setState(() => _isPressed = false)
+          : null,
+      onTap: widget.onTap,
+      child: SizedBox(
+        height: 50,
+        child: Center(
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 100),
+            scale: _isPressed ? 0.9 : 1.0,
+            child: widget.child,
+          ),
+        ),
       ),
     );
   }

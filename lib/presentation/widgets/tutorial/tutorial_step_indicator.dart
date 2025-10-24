@@ -29,13 +29,18 @@ class TutorialStepIndicator extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 4),
           child: Transform.rotate(
             angle: rotation,
-            child: SvgPicture.asset(
-              isActive ? CustomIcons.circleFilled : CustomIcons.circle,
-              width: 12,
-              height: 12,
-              colorFilter: ColorFilter.mode(
-                isActive ? theme.textColor : theme.secondaryTextColor,
-                BlendMode.srcIn,
+            child: AnimatedScale(
+              duration: const Duration(milliseconds: 300),
+              scale: isActive ? 1.3 : 1.0,
+              curve: Curves.easeInOut,
+              child: SvgPicture.asset(
+                isActive ? CustomIcons.circleFilled : CustomIcons.circle,
+                width: 12,
+                height: 12,
+                colorFilter: ColorFilter.mode(
+                  isActive ? theme.textColor : theme.secondaryTextColor,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),

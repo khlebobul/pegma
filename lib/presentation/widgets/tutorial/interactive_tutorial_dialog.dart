@@ -22,17 +22,25 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
   int _currentStep = 0;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
 
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0.3, 0), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
     _animationController.forward();
   }
 
@@ -47,6 +55,16 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
       setState(() {
         _currentStep++;
         _animationController.reset();
+        _slideAnimation =
+            Tween<Offset>(
+              begin: const Offset(0.3, 0),
+              end: Offset.zero,
+            ).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Curves.easeOutCubic,
+              ),
+            );
         _animationController.forward();
       });
     } else {
@@ -59,6 +77,16 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
       setState(() {
         _currentStep--;
         _animationController.reset();
+        _slideAnimation =
+            Tween<Offset>(
+              begin: const Offset(-0.3, 0),
+              end: Offset.zero,
+            ).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Curves.easeOutCubic,
+              ),
+            );
         _animationController.forward();
       });
     }
@@ -116,23 +144,29 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FadeTransition(
-                      opacity: _fadeAnimation,
-                      child: TutorialBoard(
-                        boardState: TutorialBoardStates.states[_currentStep],
-                        theme: theme,
+                    SlideTransition(
+                      position: _slideAnimation,
+                      child: FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: TutorialBoard(
+                          boardState: TutorialBoardStates.states[_currentStep],
+                          theme: theme,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
 
-                    FadeTransition(
-                      opacity: _fadeAnimation,
-                      child: Text(
-                        _getStepDescription(context),
-                        style: theme.basicTextStyle.copyWith(
-                          color: theme.secondaryTextColor,
+                    SlideTransition(
+                      position: _slideAnimation,
+                      child: FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: Text(
+                          _getStepDescription(context),
+                          style: theme.basicTextStyle.copyWith(
+                            color: theme.secondaryTextColor,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],

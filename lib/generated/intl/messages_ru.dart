@@ -118,13 +118,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "фишка перепрыгивает через среднюю фишку в пустую лунку.",
     ),
     "tutorialStep5": MessageLookupByLibrary.simpleMessage(
-      "перепрыгнутая фишка убирается! продолжайте, пока не останется только одна фишка.",
+      "перепрыгнутая фишка убирается. продолжайте, пока не останется только одна фишка.",
     ),
     "xTwitter": MessageLookupByLibrary.simpleMessage("x (twitter)"),
     "yes": MessageLookupByLibrary.simpleMessage("да"),
     "youHaveAnUnfinishedGame": MessageLookupByLibrary.simpleMessage(
       "у вас есть незавершенная игра",
     ),
-    "youWon": MessageLookupByLibrary.simpleMessage("победа!"),
+    "youWon": MessageLookupByLibrary.simpleMessage("победа :)"),
   };
 }
