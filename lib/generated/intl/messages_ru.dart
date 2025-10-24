@@ -109,7 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "это игровая доска. фишки (заполненные круги) могут прыгать друг через друга в пустые лунки.",
     ),
     "tutorialStep2": MessageLookupByLibrary.simpleMessage(
-      "нажмите на фишку, чтобы выбрать её. выбранная фишка подсвечивается.",
+      "нажмите на фишку, чтобы выбрать ее. выбранная фишка подсвечивается.",
     ),
     "tutorialStep3": MessageLookupByLibrary.simpleMessage(
       "подсвеченные точки показывают, куда можно сходить. нажмите на точку, чтобы прыгнуть туда.",
