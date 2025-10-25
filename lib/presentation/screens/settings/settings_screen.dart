@@ -21,7 +21,9 @@ class SettingsScreen extends ConsumerWidget {
 
     final currentLocale = ref.watch(languageNotifierProvider);
 
-    final isDarkTheme = themeMode == ThemeMode.dark;
+    final isDarkTheme =
+        themeMode == ThemeMode.dark ||
+        (themeMode == ThemeMode.system && theme.isDarkTheme);
     final selectedLanguage = currentLocale.languageCode == 'en'
         ? 'english'
         : 'русский';
