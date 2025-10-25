@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("about"),
     "again": MessageLookupByLibrary.simpleMessage("again"),
+    "allLevelsCompleted": MessageLookupByLibrary.simpleMessage(
+      "you completed all levels:)\n more levels will be added later.",
+    ),
     "appDescription": m0,
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "darkTheme": MessageLookupByLibrary.simpleMessage("dark theme"),

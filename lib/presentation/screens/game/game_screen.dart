@@ -89,25 +89,45 @@ class _GameScreenState extends ConsumerState<GameScreen>
   void _showWinDialog(BuildContext context, GameNotifier gameNotifier) {
     ref.invalidate(completedLevelsProvider);
 
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => DialogWindow.textWithTwoButtons(
-        message: S.of(context).youWon,
-        firstButtonText: S.of(context).menu,
-        secondButtonText: S.of(context).nextLevel,
-        onFirstButtonPressed: () {
-          Navigator.of(context).pop();
-          context.pop();
-        },
-        onSecondButtonPressed: () {
-          Navigator.of(context).pop();
-          final nextLevelId = widget.levelId + 1;
-          context.pop();
-          context.push('/game/$nextLevelId');
-        },
-      ),
-    );
+    final levelsAsyncValue = ref.read(levelsProvider);
+    final levels = levelsAsyncValue.valueOrNull ?? [];
+    final nextLevelId = widget.levelId + 1;
+    final hasNextLevel = levels.contains(nextLevelId);
+
+    if (!hasNextLevel) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => DialogWindow.textWithOneButton(
+          message: S.of(context).allLevelsCompleted,
+          firstButtonText: S.of(context).menu,
+          onFirstButtonPressed: () {
+            Navigator.of(context).pop();
+            context.pop();
+          },
+        ),
+      );
+    } else {
+      // Show dialog with two buttons if there's a next level
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => DialogWindow.textWithTwoButtons(
+          message: S.of(context).youWon,
+          firstButtonText: S.of(context).menu,
+          secondButtonText: S.of(context).nextLevel,
+          onFirstButtonPressed: () {
+            Navigator.of(context).pop();
+            context.pop();
+          },
+          onSecondButtonPressed: () {
+            Navigator.of(context).pop();
+            context.pop();
+            context.push('/game/$nextLevelId');
+          },
+        ),
+      );
+    }
   }
 
   void _showLossDialog(BuildContext context, GameNotifier gameNotifier) {

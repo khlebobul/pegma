@@ -60,5 +60,6 @@
   "previous": "previous",
   "next": "next",
   "done": "done",
-  "play": "play"
+  "play": "play",
+  "allLevelsCompleted": "you completed all levels:)\n more levels will be added later."
 }

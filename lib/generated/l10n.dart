@@ -458,6 +458,16 @@ class S {
   String get play {
     return Intl.message('play', name: 'play', desc: '', args: []);
   }
+
+  /// `you completed all levels:)\n more levels will be added later.`
+  String get allLevelsCompleted {
+    return Intl.message(
+      'you completed all levels:)\n more levels will be added later.',
+      name: 'allLevelsCompleted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

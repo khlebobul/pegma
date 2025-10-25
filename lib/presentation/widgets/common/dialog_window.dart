@@ -8,6 +8,7 @@ import 'package:pegma/presentation/widgets/common/action_button.dart';
 
 enum DialogType {
   textWithTwoButtons,
+  textWithOneButton,
   textWithMenuAndLinks,
   closeButtonWithImage,
 }
@@ -68,6 +69,20 @@ class DialogWindow extends StatelessWidget {
        menuItems = null,
        linkItems = null;
 
+  const DialogWindow.textWithOneButton({
+    super.key,
+    required this.message,
+    required this.firstButtonText,
+    required this.onFirstButtonPressed,
+  }) : type = DialogType.textWithOneButton,
+       imagePath = null,
+       description = null,
+       secondButtonText = null,
+       onSecondButtonPressed = null,
+       onClosePressed = null,
+       menuItems = null,
+       linkItems = null;
+
   const DialogWindow.textWithMenuAndLinks({
     super.key,
     required this.message,
@@ -115,6 +130,8 @@ class DialogWindow extends StatelessWidget {
     switch (type) {
       case DialogType.textWithTwoButtons:
         return _buildTextWithTwoButtons(context, theme);
+      case DialogType.textWithOneButton:
+        return _buildTextWithOneButton(context, theme);
       case DialogType.textWithMenuAndLinks:
         return _buildTextWithMenuAndLinks(context, theme);
       case DialogType.closeButtonWithImage:
@@ -162,6 +179,32 @@ class DialogWindow extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ],
+    );
+  }
+
+  // Type 1b: Text with one button (centered)
+  Widget _buildTextWithOneButton(BuildContext context, UIThemes theme) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (message != null) ...[
+          Text(
+            message!,
+            style: theme.basicTextStyle.copyWith(
+              color: theme.secondaryTextColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+        ],
+        Center(
+          child: ActionButton(
+            title: firstButtonText ?? S.of(context).ok,
+            onTap: onFirstButtonPressed ?? () => Navigator.of(context).pop(),
+            textStyle: theme.basicTextStyle,
+          ),
         ),
       ],
     );

@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("о приложении"),
     "again": MessageLookupByLibrary.simpleMessage("заново"),
+    "allLevelsCompleted": MessageLookupByLibrary.simpleMessage(
+      "вы прошли все уровни :)\nновые уровни будут добавлены позже.",
+    ),
     "appDescription": m0,
     "cancel": MessageLookupByLibrary.simpleMessage("отмена"),
     "darkTheme": MessageLookupByLibrary.simpleMessage("темная тема"),
@@ -69,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "игра «peg solitaire» или «солитер на фишках» возникла в европе в 17 веке и быстро стала популярной во франции.",
         ),
-    "play": MessageLookupByLibrary.simpleMessage("играй"),
+    "play": MessageLookupByLibrary.simpleMessage("играть"),
     "previous": MessageLookupByLibrary.simpleMessage("назад"),
     "projectWebsite": MessageLookupByLibrary.simpleMessage("сайт проекта"),
     "rateTheApp": MessageLookupByLibrary.simpleMessage("оценить приложение"),
