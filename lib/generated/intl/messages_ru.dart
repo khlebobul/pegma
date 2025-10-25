@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "myWebsite": MessageLookupByLibrary.simpleMessage("мой сайт"),
     "next": MessageLookupByLibrary.simpleMessage("далее"),
-    "nextLevel": MessageLookupByLibrary.simpleMessage("следующий уровень"),
+    "nextLevel": MessageLookupByLibrary.simpleMessage("далее"),
     "noMoreMoves": MessageLookupByLibrary.simpleMessage("нет ходов"),
     "ok": MessageLookupByLibrary.simpleMessage("ок"),
     "others": MessageLookupByLibrary.simpleMessage("другое"),
