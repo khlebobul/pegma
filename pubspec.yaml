@@ -1,7 +1,7 @@
 name: pegma
-description: "A new Flutter project."
+description: "A free and cross-platform version of the classic Peg solitaire! Enjoy the timeless puzzle on your mobile device!"
 publish_to: 'none'
-version: 1.0.0+5
+version: 1.0.0+6
 
 environment:
   sdk: ^3.8.1
