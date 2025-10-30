@@ -119,9 +119,12 @@ class DialogWindow extends StatelessWidget {
       backgroundColor: theme.bgColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       insetPadding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
-      child: Padding(
-        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
-        child: _buildDialogContent(context, theme),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 480, minWidth: 280),
+        child: Padding(
+          padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
+          child: _buildDialogContent(context, theme),
+        ),
       ),
     );
   }
