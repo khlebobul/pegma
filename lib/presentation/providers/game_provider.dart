@@ -96,8 +96,25 @@ class GameNotifier extends StateNotifier<GameState> {
     await loadLevel(levelId, ignoreSaved: true);
   }
 
+  void clearSelection() {
+    if (state.selectedRow != null && state.selectedCol != null) {
+      final newBoard = List<List<String>>.from(
+        state.board.map((e) => List<String>.from(e)),
+      );
+      newBoard[state.selectedRow!][state.selectedCol!] = '1';
+      state = state.copyWith(
+        board: newBoard,
+        selectedRow: null,
+        selectedCol: null,
+        possibleMoves: [],
+      );
+    }
+  }
+
   Future<void> saveCurrentState() async {
     if (state.status == GameStatus.playing) {
+      clearSelection();
+
       await _db.saveGameState(
         levelId: levelId,
         board: state.board,
