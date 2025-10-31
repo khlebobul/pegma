@@ -1,8 +1,6 @@
 <div align="center">
 
-// TODO: update store links
-
-[![App Store](https://img.shields.io/badge/App_Store-414141?style=for-the-badge&logo=App+Store&logoColor=F1F1F1)]() [![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=Google+Play&logoColor=F1F1F1)](https://play.google.com/store/apps/details?id=com.khlebobul.pegma) [![RuStore](https://img.shields.io/badge/RuStore-414141?style=for-the-badge&logo=RuSrore&logoColor=F1F1F1)](https://www.rustore.ru/catalog/app/com.khlebobul.pegma)
+[![App Store](https://img.shields.io/badge/App_Store-414141?style=for-the-badge&logo=App+Store&logoColor=F1F1F1)](https://apps.apple.com/ru/app/pegma-peg-solitaire/id6754343848) [![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=Google+Play&logoColor=F1F1F1)](https://play.google.com/store/apps/details?id=com.khlebobul.pegma) [![RuStore](https://img.shields.io/badge/RuStore-414141?style=for-the-badge&logo=RuSrore&logoColor=F1F1F1)](https://www.rustore.ru/catalog/app/com.khlebobul.pegma)
 
 <img width="700" alt="Frame 1" src="https://github.com/user-attachments/assets/3a537b38-fbca-45e0-898d-60fac2ff68a5" />
 

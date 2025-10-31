@@ -56,9 +56,8 @@ class AboutScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 12),
-            // TODO: open after publication
-            // if (MarketHelper.shouldShowRating())
-            //   ActionButton(title: S.of(context).rateTheApp, onTap: _rateApp),
+            if (MarketHelper.shouldShowRating())
+              ActionButton(title: S.of(context).rateTheApp, onTap: _rateApp),
             ActionButton(
               title: S.of(context).shareWithFriends,
               onTap: _shareApp,
