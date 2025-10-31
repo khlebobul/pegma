@@ -49,3 +49,13 @@ class GeneralConsts {
   static const otherAppsRustoreLink =
       'https://www.rustore.ru/catalog/developer/xbww3r';
 }
+
+class ReviewConsts {
+  // SharedPreferences keys
+  static const String levelEntriesCountKey = 'level_entries_count';
+  static const String lastReviewRequestDateKey = 'last_review_request_date';
+
+  // Review request settings
+  static const int levelEntriesToShowReview = 5;
+  static const int monthsBetweenReviews = 3;
+}
