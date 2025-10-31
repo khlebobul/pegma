@@ -54,7 +54,6 @@ class AboutScreen extends StatelessWidget {
                 bottom: GeneralConsts.verticalPadding,
               ),
             ),
-
             const SizedBox(height: 12),
             if (MarketHelper.shouldShowRating())
               ActionButton(title: S.of(context).rateTheApp, onTap: _rateApp),
