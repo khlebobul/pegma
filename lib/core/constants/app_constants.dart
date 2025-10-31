@@ -36,18 +36,26 @@ class GeneralConsts {
   static const String fontUrl =
       'https://fontstruct.com/fontstructions/show/2728315/pegma-app';
 
-  // TODO update
   static const rateAppStore =
-      'https://itunes.apple.com/app/id6743980638?action=write-review';
+      'https://itunes.apple.com/app/id6754343848?action=write-review';
   static const rateGooglePlay =
-      'https://play.google.com/store/apps/details?id=com.khlebobul.board_buddy';
+      'https://play.google.com/store/apps/details?id=com.khlebobul.pegma';
 
   // other apps links
   static const otherAppsAppStoreLink =
       'https://apps.apple.com/developer/gleb-shalimov/id1775466597';
   static const otherAppsGooglePlayLink =
-      'https://www.rustore.ru/catalog/developer/xbww3r';
+      'https://play.google.com/store/apps/developer?id=Gleb+Shalimov&h';
   static const otherAppsRustoreLink =
       'https://www.rustore.ru/catalog/developer/xbww3r';
-  // static const otherAppsGooglePlayLink = 'https://www.rustore.ru/catalog/developer/xbww3r';
+}
+
+class ReviewConsts {
+  // SharedPreferences keys
+  static const String levelEntriesCountKey = 'level_entries_count';
+  static const String lastReviewRequestDateKey = 'last_review_request_date';
+
+  // Review request settings
+  static const int levelEntriesToShowReview = 5;
+  static const int monthsBetweenReviews = 3;
 }

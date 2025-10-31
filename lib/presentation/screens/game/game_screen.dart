@@ -8,6 +8,7 @@ import 'package:pegma/presentation/widgets/game/game_board.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
 import 'package:pegma/presentation/providers/first_launch_provider.dart';
+import 'package:pegma/presentation/providers/review_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 import '../../widgets/game/game_bottom_bar.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
@@ -48,6 +49,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
         _showCompletedLevelDialog();
         break;
     }
+
+    final reviewService = ref.read(reviewServiceProvider);
+    await reviewService.onLevelEntry();
 
     // Show tutorial on first game launch
     if (!_tutorialShown && mounted) {
