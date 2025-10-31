@@ -255,21 +255,31 @@ class _GameScreenState extends ConsumerState<GameScreen>
           onRefreshPressed: () => _showRestartDialog(context, gameNotifier),
           isRefreshEnabled: gameState.movesCount > 0,
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: Center(child: GameBoard(levelId: widget.levelId)),
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: GameBoard(levelId: widget.levelId),
+                    ),
+                  ),
+                ),
+                GameBottomBar(
+                  onUndoPressed: gameNotifier.redo,
+                  onRedoPressed: gameNotifier.undo,
+                  onTutorialPressed: () {
+                    ref.read(firstLaunchProvider).showTutorialDialog(context);
+                  },
+                  canUndo: gameState.redoStack.isNotEmpty,
+                  canRedo: gameState.history.isNotEmpty,
+                ),
+              ],
             ),
-            GameBottomBar(
-              onUndoPressed: gameNotifier.redo,
-              onRedoPressed: gameNotifier.undo,
-              onTutorialPressed: () {
-                ref.read(firstLaunchProvider).showTutorialDialog(context);
-              },
-              canUndo: gameState.redoStack.isNotEmpty,
-              canRedo: gameState.history.isNotEmpty,
-            ),
-          ],
+          ),
         ),
       ),
     );

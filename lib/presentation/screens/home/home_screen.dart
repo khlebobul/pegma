@@ -27,68 +27,73 @@ class HomeScreen extends ConsumerWidget {
         showBackButton: false,
         showMenuButton: true,
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: GeneralConsts.horizontalPadding,
-        ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
-          childAspectRatio: 1.0,
-        ),
-        itemCount: levels.length,
-        itemBuilder: (context, index) {
-          final assetLevelId = levels[index];
-          final displayNumber = index;
-          final isCompleted = completedLevels.contains(assetLevelId);
-          final isUnlocked =
-              index == 0 ||
-              index == 1 ||
-              isCompleted ||
-              (index > 1 && completedLevels.contains(levels[index - 1]));
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 900),
+          child: GridView.builder(
+            padding: const EdgeInsets.symmetric(
+              horizontal: GeneralConsts.horizontalPadding,
+            ),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 120,
+              crossAxisSpacing: 12.0,
+              mainAxisSpacing: 12.0,
+              childAspectRatio: 1.0,
+            ),
+            itemCount: levels.length,
+            itemBuilder: (context, index) {
+              final assetLevelId = levels[index];
+              final displayNumber = index;
+              final isCompleted = completedLevels.contains(assetLevelId);
+              final isUnlocked =
+                  index == 0 ||
+                  index == 1 ||
+                  isCompleted ||
+                  (index > 1 && completedLevels.contains(levels[index - 1]));
 
-          return GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: isUnlocked
-                ? () {
-                    context.push('${AppRouter.game}/$assetLevelId');
-                  }
-                : null,
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: isUnlocked
+                    ? () {
+                        context.push('${AppRouter.game}/$assetLevelId');
+                      }
+                    : null,
 
-            // For creating new lelvels
-            // () {
-            //   context.push('${AppRouter.game}/$assetLevelId');
-            // },
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    '$displayNumber',
-                    style: theme.menuTextStyle.copyWith(
-                      color: isUnlocked
-                          ? theme.textColor
-                          : theme.secondaryTextColor,
-                    ),
-                  ),
-                ),
-                if (isCompleted)
-                  Positioned(
-                    top: 6,
-                    child: SvgPicture.asset(
-                      CustomIcons.star,
-                      height: 15,
-                      colorFilter: ColorFilter.mode(
-                        theme.textColor,
-                        BlendMode.srcIn,
+                // For creating new lelvels
+                // () {
+                //   context.push('${AppRouter.game}/$assetLevelId');
+                // },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Center(
+                      child: Text(
+                        '$displayNumber',
+                        style: theme.menuTextStyle.copyWith(
+                          color: isUnlocked
+                              ? theme.textColor
+                              : theme.secondaryTextColor,
+                        ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-          );
-        },
+                    if (isCompleted)
+                      Positioned(
+                        top: 6,
+                        child: SvgPicture.asset(
+                          CustomIcons.star,
+                          height: 15,
+                          colorFilter: ColorFilter.mode(
+                            theme.textColor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
