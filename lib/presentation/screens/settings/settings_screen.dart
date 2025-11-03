@@ -18,15 +18,17 @@ class SettingsScreen extends ConsumerWidget {
     final theme = UIThemes.of(context);
     final themeNotifier = ref.watch(themeNotifierProvider.notifier);
     final themeMode = ref.watch(themeNotifierProvider);
-
     final currentLocale = ref.watch(languageNotifierProvider);
 
     final isDarkTheme =
         themeMode == ThemeMode.dark ||
         (themeMode == ThemeMode.system && theme.isDarkTheme);
-    final selectedLanguage = currentLocale.languageCode == 'en'
-        ? 'english'
-        : 'русский';
+
+    final selectedLanguage = switch (currentLocale.languageCode) {
+      'ru' => 'русский',
+      'es' => 'español',
+      _ => 'english',
+    };
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -67,27 +69,12 @@ class SettingsScreen extends ConsumerWidget {
                 themeNotifier.toggleTheme();
               }, theme),
             ),
-            // const SizedBox(height: 16),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(
-            //     horizontal: GeneralConsts.horizontalPadding,
-            //   ),
-            //   child: _buildToggleOption(
-            //     S.of(context).stopwatch,
-            //     settings.soundEnabled,
-            //     (value) {
-            //       settingsNotifier.toggleSound();
-            //     },
-            //     theme,
-            //   ),
-            // ),
             const Spacer(),
 
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: GeneralConsts.horizontalPadding,
               ),
-
               child: _buildFooterActions(theme, context),
             ),
           ],
@@ -108,7 +95,8 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     String selectedLanguage,
   ) {
-    final languages = ['english', 'русский'];
+    // добавлен испанский язык
+    final languages = ['english', 'русский', 'español'];
 
     return SizedBox(
       height: 40,
@@ -145,6 +133,8 @@ class SettingsScreen extends ConsumerWidget {
           ref.read(languageNotifierProvider.notifier).setEnglish();
         } else if (language == 'русский') {
           ref.read(languageNotifierProvider.notifier).setRussian();
+        } else if (language == 'español') {
+          ref.read(languageNotifierProvider.notifier).setSpanish();
         }
       },
       child: Text(
