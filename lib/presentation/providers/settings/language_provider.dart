@@ -9,7 +9,7 @@ part 'language_provider.g.dart';
 class LanguageNotifier extends _$LanguageNotifier {
   static const String _languageKey = 'language_code';
 
-  static const List<String> supportedLanguages = ['en', 'ru'];
+  static const List<String> supportedLanguages = ['en', 'ru', 'es'];
 
   @override
   Locale build() {
@@ -25,8 +25,9 @@ class LanguageNotifier extends _$LanguageNotifier {
       switch (systemLanguageCode) {
         case 'ru':
           return const Locale('ru', 'RU');
+        case 'es':
+          return const Locale('es', 'ES');
         case 'en':
-          return const Locale('en', 'US');
         default:
           return const Locale('en', 'US');
       }
@@ -40,10 +41,13 @@ class LanguageNotifier extends _$LanguageNotifier {
     final savedLanguageCode = prefs.getString(_languageKey);
 
     if (savedLanguageCode != null) {
-      // Use saved language
+      // использовать сохранённый язык
       switch (savedLanguageCode) {
         case 'ru':
           state = const Locale('ru', 'RU');
+          break;
+        case 'es':
+          state = const Locale('es', 'ES');
           break;
         case 'en':
         default:
@@ -51,7 +55,7 @@ class LanguageNotifier extends _$LanguageNotifier {
           break;
       }
     } else {
-      // Use system locale if no saved language
+      // использовать язык системы, если не сохранён
       state = _getSystemLocale();
     }
   }
@@ -78,8 +82,15 @@ class LanguageNotifier extends _$LanguageNotifier {
     await _saveLanguage('ru');
   }
 
+  Future<void> setSpanish() async {
+    const locale = Locale('es', 'ES');
+    state = locale;
+    await _saveLanguage('es');
+  }
+
   bool get isEnglish => state.languageCode == 'en';
   bool get isRussian => state.languageCode == 'ru';
+  bool get isSpanish => state.languageCode == 'es';
 
   static bool isLanguageSupported(String languageCode) {
     return supportedLanguages.contains(languageCode);
@@ -90,6 +101,8 @@ class LanguageNotifier extends _$LanguageNotifier {
       switch (code) {
         case 'ru':
           return const Locale('ru', 'RU');
+        case 'es':
+          return const Locale('es', 'ES');
         case 'en':
         default:
           return const Locale('en', 'US');
