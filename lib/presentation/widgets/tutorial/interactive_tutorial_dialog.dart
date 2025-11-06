@@ -116,7 +116,7 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
     final screenSize = MediaQuery.of(context).size;
     final dialogWidth =
         screenSize.width - (GeneralConsts.horizontalPadding * 2);
-    final dialogHeight = screenSize.height * 0.65;
+    final dialogHeight = screenSize.height * 0.75;
 
     return Dialog(
       backgroundColor: theme.bgColor,

@@ -737,10 +737,10 @@ packages:
     dependency: "direct main"
     description:
       name: share_plus
-      sha256: d7dc0630a923883c6328ca31b89aa682bacbf2f8304162d29f7c6aaff03a27a1
+      sha256: "14c8860d4de93d3a7e53af51bff479598c4e999605290756bbbe45cf65b37840"
       url: "https://pub.dev"
     source: hosted
-    version: "11.1.0"
+    version: "12.0.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
@@ -942,26 +942,26 @@ packages:
     dependency: "direct main"
     description:
       name: talker
-      sha256: "2d742b54e5cda58b7d386cd2d95088c3429ef273b2a0869dec552fe02601367a"
+      sha256: "82de443cadfb6c41d457e7774c7890a91c73af3c2f17f3f7c01670bb58d5f5a1"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.2"
   talker_flutter:
     dependency: "direct main"
     description:
       name: talker_flutter
-      sha256: d249fa16936a08fe5c4fb9e2b9b122fdcbaef6be9c4dcf61e448d0b76f3179f1
+      sha256: "4f7a8d739237a3a3c8ba4dddcdbc1f9d9dec143811641dbafebd6b70f947f8ca"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.2"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: "4f06d46db664c11cf4d629378da661f2c75aee629e3ef898dbc3cf44a0c41cd7"
+      sha256: "8218836d871ea5ab1ec616cffe3cdae84e8fb44022d5cc04c95d7b220572b8fb"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.2"
   talker_riverpod_logger:
     dependency: "direct main"
     description:
