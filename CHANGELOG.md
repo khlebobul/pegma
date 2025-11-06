@@ -1,3 +1,13 @@
+## [1.1.0]
+
+#### New Features
+
+- Added 10 new game levels (Levels 21–30).
+
+#### Improvements
+
+- Increased tutorial dialog size for better visibility and usability.
+
 ## [1.0.2]
 
 #### New Features
