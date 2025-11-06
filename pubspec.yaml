@@ -1,7 +1,7 @@
 name: pegma
 description: "A free and cross-platform version of the classic Peg solitaire! Enjoy the timeless puzzle on your mobile device!"
 publish_to: 'none'
-version: 1.0.2+8
+version: 1.1.0+9
 
 environment:
   sdk: ^3.8.1
