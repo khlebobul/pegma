@@ -1,4 +1,4 @@
-## [1.0.2]
+## [1.1.2]
 
 #### New Features
 - Italian language support (it_IT) added throughout the app
