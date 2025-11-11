@@ -9,7 +9,7 @@ part 'language_provider.g.dart';
 class LanguageNotifier extends _$LanguageNotifier {
   static const String _languageKey = 'language_code';
 
-  static const List<String> supportedLanguages = ['en', 'ru', 'es'];
+  static const List<String> supportedLanguages = ['en', 'ru', 'es', 'it'];
 
   @override
   Locale build() {
@@ -27,6 +27,8 @@ class LanguageNotifier extends _$LanguageNotifier {
           return const Locale('ru', 'RU');
         case 'es':
           return const Locale('es', 'ES');
+        case 'it':
+          return const Locale('it', 'IT');
         case 'en':
         default:
           return const Locale('en', 'US');
@@ -48,6 +50,9 @@ class LanguageNotifier extends _$LanguageNotifier {
           break;
         case 'es':
           state = const Locale('es', 'ES');
+          break;
+        case 'it':
+          state = const Locale('it', 'IT');
           break;
         case 'en':
         default:
@@ -88,9 +93,16 @@ class LanguageNotifier extends _$LanguageNotifier {
     await _saveLanguage('es');
   }
 
+  Future<void> setItalian() async {
+    const locale = Locale('it', 'IT');
+    state = locale;
+    await _saveLanguage('it');
+  }
+
   bool get isEnglish => state.languageCode == 'en';
   bool get isRussian => state.languageCode == 'ru';
   bool get isSpanish => state.languageCode == 'es';
+  bool get isItalian => state.languageCode == 'it';
 
   static bool isLanguageSupported(String languageCode) {
     return supportedLanguages.contains(languageCode);
@@ -103,6 +115,8 @@ class LanguageNotifier extends _$LanguageNotifier {
           return const Locale('ru', 'RU');
         case 'es':
           return const Locale('es', 'ES');
+        case 'it':
+          return const Locale('it', 'IT');
         case 'en':
         default:
           return const Locale('en', 'US');
