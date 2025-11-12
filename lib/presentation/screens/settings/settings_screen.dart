@@ -27,6 +27,7 @@ class SettingsScreen extends ConsumerWidget {
     final selectedLanguage = switch (currentLocale.languageCode) {
       'ru' => 'русский',
       'es' => 'español',
+      'it' => 'italiano',
       _ => 'english',
     };
 
@@ -95,8 +96,8 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     String selectedLanguage,
   ) {
-    // добавлен испанский язык
-    final languages = ['english', 'русский', 'español'];
+    // добавлен испанский и итальянский языки
+    final languages = ['english', 'русский', 'español', 'italiano'];
 
     return SizedBox(
       height: 40,
@@ -135,6 +136,8 @@ class SettingsScreen extends ConsumerWidget {
           ref.read(languageNotifierProvider.notifier).setRussian();
         } else if (language == 'español') {
           ref.read(languageNotifierProvider.notifier).setSpanish();
+        } else if (language == 'italiano') {
+          ref.read(languageNotifierProvider.notifier).setItalian();
         }
       },
       child: Text(
