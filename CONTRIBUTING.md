@@ -60,28 +60,6 @@ flutter pub get
 flutter run
 ```
 
-- For VS Code users `launch.json` (`.vscode/launch.json`):
-
-```json
-{
-  "configurations": [
-    {
-      "name": "pegma_debug",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart"
-    },
-    {
-      "name": "pegma_release",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "args": ["--release"]
-    }
-  ]
-}
-```
-
 ### Dependency Management
 
 - Run `flutter pub upgrade` to check for package updates.
@@ -91,6 +69,11 @@ flutter run
 
 - Add new translations in the `lib/l10n/` directory.
 - Use the `intl` package to translate strings.
+
+## New levels
+
+- Location `lib/data/levels`
+- Run tests `flutter test`
 
 ## How to Get in Touch
 
