@@ -70,7 +70,7 @@ flutter run
 - Add new translations in the `lib/l10n/` directory.
 - Use the `intl` package to translate strings.
 
-## New levels
+### New levels
 
 - Location `lib/data/levels`
 - Run tests `flutter test`
