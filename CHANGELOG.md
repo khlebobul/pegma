@@ -1,3 +1,9 @@
+## [1.2.0]
+
+#### New Features
+
+- Added 10 new game levels (Levels 31–40).
+
 ## [1.1.2]
 
 #### New Features
