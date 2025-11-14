@@ -155,15 +155,25 @@ class PegSolitaireSolver {
             final middleRow = r + dir.x ~/ 2;
             final middleCol = c + dir.y ~/ 2;
 
-            if (_isValidMove(board, r, c, targetRow, targetCol, middleRow, middleCol)) {
-              moves.add(Move(
-                fromRow: r,
-                fromCol: c,
-                toRow: targetRow,
-                toCol: targetCol,
-                middleRow: middleRow,
-                middleCol: middleCol,
-              ));
+            if (_isValidMove(
+              board,
+              r,
+              c,
+              targetRow,
+              targetCol,
+              middleRow,
+              middleCol,
+            )) {
+              moves.add(
+                Move(
+                  fromRow: r,
+                  fromCol: c,
+                  toRow: targetRow,
+                  toCol: targetCol,
+                  middleRow: middleRow,
+                  middleCol: middleCol,
+                ),
+              );
             }
           }
         }
@@ -280,4 +290,3 @@ class Move {
     required this.middleCol,
   });
 }
-
