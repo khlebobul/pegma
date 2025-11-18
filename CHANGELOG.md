@@ -1,3 +1,8 @@
+## [1.2.1]
+
+#### New Features
+- French language support (fr_FR) added throughout the app
+
 ## [1.2.0]
 
 #### New Features
