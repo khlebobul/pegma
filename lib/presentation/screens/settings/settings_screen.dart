@@ -29,6 +29,7 @@ class SettingsScreen extends ConsumerWidget {
       'es' => 'español',
       'it' => 'italiano',
       'fr' => 'français',
+      'de' => 'deutsch',
       _ => 'english',
     };
 
@@ -97,7 +98,14 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     String selectedLanguage,
   ) {
-    final languages = ['english', 'русский', 'español', 'italiano', 'français'];
+    final languages = [
+      'english',
+      'русский',
+      'español',
+      'italiano',
+      'français',
+      'deutsch',
+    ];
 
     return SizedBox(
       height: 40,
@@ -140,6 +148,8 @@ class SettingsScreen extends ConsumerWidget {
           ref.read(languageNotifierProvider.notifier).setItalian();
         } else if (language == 'français') {
           ref.read(languageNotifierProvider.notifier).setFrench();
+        } else if (language == 'deutsch') {
+          ref.read(languageNotifierProvider.notifier).setGerman();
         }
       },
       child: Text(

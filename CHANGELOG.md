@@ -1,3 +1,8 @@
+## [1.2.2]
+
+#### New Features
+- German language support (de_DE) added throughout the app
+
 ## [1.2.1]
 
 #### New Features
