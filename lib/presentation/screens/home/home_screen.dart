@@ -45,24 +45,12 @@ class HomeScreen extends ConsumerWidget {
               final assetLevelId = levels[index];
               final displayNumber = index;
               final isCompleted = completedLevels.contains(assetLevelId);
-              final isUnlocked =
-                  index == 0 ||
-                  index == 1 ||
-                  isCompleted ||
-                  (index > 1 && completedLevels.contains(levels[index - 1]));
 
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: isUnlocked
-                    ? () {
-                        context.push('${AppRouter.game}/$assetLevelId');
-                      }
-                    : null,
-
-                // For creating new lelvels
-                // () {
-                //   context.push('${AppRouter.game}/$assetLevelId');
-                // },
+                onTap: () {
+                  context.push('${AppRouter.game}/$assetLevelId');
+                },
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -70,9 +58,7 @@ class HomeScreen extends ConsumerWidget {
                       child: Text(
                         '$displayNumber',
                         style: theme.menuTextStyle.copyWith(
-                          color: isUnlocked
-                              ? theme.textColor
-                              : theme.secondaryTextColor,
+                          color: theme.textColor,
                         ),
                       ),
                     ),

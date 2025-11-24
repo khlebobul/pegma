@@ -95,10 +95,14 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
     final levelsAsyncValue = ref.read(levelsProvider);
     final levels = levelsAsyncValue.valueOrNull ?? [];
+    final completedLevels = ref.read(completedLevelsProvider).valueOrNull ?? [];
+    final updatedCompletedLevels = {...completedLevels, widget.levelId};
     final nextLevelId = widget.levelId + 1;
     final hasNextLevel = levels.contains(nextLevelId);
+    final allLevelsCompleted =
+        updatedCompletedLevels.length >= levels.length && levels.isNotEmpty;
 
-    if (!hasNextLevel) {
+    if (!hasNextLevel && allLevelsCompleted) {
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -111,8 +115,20 @@ class _GameScreenState extends ConsumerState<GameScreen>
           },
         ),
       );
+    } else if (!hasNextLevel) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => DialogWindow.textWithOneButton(
+          message: S.of(context).youWon,
+          firstButtonText: S.of(context).menu,
+          onFirstButtonPressed: () {
+            Navigator.of(context).pop();
+            context.pop();
+          },
+        ),
+      );
     } else {
-      // Show dialog with two buttons if there's a next level
       showDialog(
         context: context,
         barrierDismissible: false,
