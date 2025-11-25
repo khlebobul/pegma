@@ -9,7 +9,14 @@ part 'language_provider.g.dart';
 class LanguageNotifier extends _$LanguageNotifier {
   static const String _languageKey = 'language_code';
 
-  static const List<String> supportedLanguages = ['en', 'ru', 'es', 'it', 'fr', 'de'];
+  static const List<String> supportedLanguages = [
+    'en',
+    'ru',
+    'es',
+    'it',
+    'fr',
+    'de',
+  ];
 
   @override
   Locale build() {
