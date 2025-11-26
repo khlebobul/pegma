@@ -1,3 +1,13 @@
+## [1.3.1]
+
+#### Bug Fixes
+
+- Fixed the completed level indicator error
+
+#### Improvements
+
+- Updated package dependencies
+
 ## [1.3.0]
 
 #### New Features
