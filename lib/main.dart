@@ -40,8 +40,11 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeNotifierProvider);
-    final locale = ref.watch(languageNotifierProvider);
+    final themeModeAsync = ref.watch(themeProvider);
+    final localeAsync = ref.watch(languageProvider);
+
+    final themeMode = themeModeAsync.value ?? ThemeMode.system;
+    final locale = localeAsync.value ?? const Locale('en', 'US');
 
     talker.info('App build with theme: $themeMode, locale: $locale');
 

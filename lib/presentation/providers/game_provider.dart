@@ -1,8 +1,10 @@
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:pegma/data/models/board_model.dart';
 import 'package:pegma/core/database/database_helper.dart';
 import 'dart:math';
+
+part 'game_provider.g.dart';
 
 const _sentinel = Object();
 
@@ -10,18 +12,14 @@ enum GameStatus { playing, won, lost }
 
 enum LevelLoadType { fresh, savedGame, completed }
 
-final gameProvider = StateNotifierProvider.family<GameNotifier, GameState, int>(
-  (ref, levelId) {
-    return GameNotifier(levelId);
-  },
-);
-
-class GameNotifier extends StateNotifier<GameState> {
-  final int levelId;
+@riverpod
+class Game extends _$Game {
   final DatabaseHelper _db = DatabaseHelper.instance;
 
-  GameNotifier(this.levelId)
-    : super(GameState(board: <List<String>>[], possibleMoves: []));
+  @override
+  GameState build(int levelId) {
+    return GameState(board: <List<String>>[], possibleMoves: []);
+  }
 
   Future<LevelLoadType> checkLevelStatus() async {
     // First check if level is completed

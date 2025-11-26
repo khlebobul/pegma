@@ -18,12 +18,12 @@ dependencies:
   share_plus: ^12.0.1
   url_launcher: ^6.3.2
   url_launcher_ios: ^6.3.6
-  flutter_riverpod: ^2.6.1
-  riverpod_annotation: ^2.6.1
+  flutter_riverpod: ^3.0.3
+  riverpod_annotation: ^3.0.3
   shared_preferences: ^2.5.3
-  talker: ^5.0.0
-  talker_riverpod_logger: ^5.0.0
-  talker_flutter: ^5.0.0
+  talker: ^5.1.0
+  talker_riverpod_logger: ^5.1.0
+  talker_flutter: ^5.1.0
   intl_utils: ^2.8.11
   gaimon: ^1.4.1
   sqflite: ^2.4.2
@@ -34,11 +34,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
   build_runner: ^2.4.15
-  riverpod_generator: ^2.6.5
-  riverpod_lint: ^2.6.5
+  riverpod_generator: ^3.0.3
+  riverpod_lint: ^3.0.3
 
 flutter_launcher_icons:
   android: "launcher_icon"

@@ -16,9 +16,9 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = UIThemes.of(context);
     final levelsAsyncValue = ref.watch(levelsProvider);
-    final levels = levelsAsyncValue.valueOrNull ?? [];
+    final levels = levelsAsyncValue.value ?? [];
     final completedLevels =
-        ref.watch(completedLevelsProvider).valueOrNull ?? [];
+        ref.watch(completedLevelsProvider).value ?? [];
 
     return Scaffold(
       backgroundColor: theme.bgColor,
