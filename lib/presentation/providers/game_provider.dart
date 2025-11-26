@@ -199,13 +199,12 @@ class GameNotifier extends StateNotifier<GameState> {
         .where((cell) => cell == '1')
         .length;
     if (pegsLeft == 1) {
-      state = state.copyWith(status: GameStatus.won);
-      // Mark level as completed and delete saved state
       await _db.markLevelCompleted(
         levelId: levelId,
         movesCount: state.movesCount,
       );
       await _db.deleteSavedGameState(levelId);
+      state = state.copyWith(status: GameStatus.won);
       return;
     }
 
