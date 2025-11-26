@@ -1,3 +1,11 @@
+## [1.3.0]
+
+#### New Features
+- Added 10 new game levels (Levels 41–50).
+
+#### Improvements
+- Removed level unlock restrictions; all levels are now accessible
+
 ## [1.2.2]
 
 #### New Features
