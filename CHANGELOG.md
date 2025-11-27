@@ -1,4 +1,16 @@
-## [1.3.1]
+## [1.3.3]
+
+#### Bug Fixes
+
+- Fixed slow level loading on physical devices after completing a level
+- Improved database operations handling to prevent race conditions
+
+#### Improvements
+
+- Enhanced game state saving reliability
+- Optimized async operations for better performance on real devices
+
+## [1.3.2]
 
 #### Bug Fixes
 
