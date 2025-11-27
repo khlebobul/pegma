@@ -9,15 +9,14 @@ class ThemeNotifier extends _$ThemeNotifier {
   static const String _themeKey = 'theme_mode';
 
   @override
-  ThemeMode build() {
-    _loadTheme();
-    return ThemeMode.system;
+  Future<ThemeMode> build() async {
+    return await _loadTheme();
   }
 
-  Future<void> _loadTheme() async {
+  Future<ThemeMode> _loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
     final themeIndex = prefs.getInt(_themeKey) ?? ThemeMode.system.index;
-    state = ThemeMode.values[themeIndex];
+    return ThemeMode.values[themeIndex];
   }
 
   Future<void> _saveTheme(ThemeMode mode) async {
@@ -26,13 +25,15 @@ class ThemeNotifier extends _$ThemeNotifier {
   }
 
   Future<void> setThemeMode(ThemeMode mode) async {
-    state = mode;
     await _saveTheme(mode);
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> toggleTheme() async {
+    final currentMode = state.hasValue ? state.value : ThemeMode.system;
     ThemeMode newMode;
-    switch (state) {
+    switch (currentMode!) {
       case ThemeMode.light:
         newMode = ThemeMode.dark;
         break;
@@ -43,11 +44,12 @@ class ThemeNotifier extends _$ThemeNotifier {
         newMode = ThemeMode.light;
         break;
     }
-    state = newMode;
     await _saveTheme(newMode);
+    ref.invalidateSelf();
+    await future;
   }
 
-  bool get isDarkMode => state == ThemeMode.dark;
-  bool get isLightMode => state == ThemeMode.light;
-  bool get isSystemMode => state == ThemeMode.system;
+  bool isDarkMode() => state.hasValue && state.value == ThemeMode.dark;
+  bool isLightMode() => state.hasValue && state.value == ThemeMode.light;
+  bool isSystemMode() => state.hasValue && state.value == ThemeMode.system;
 }

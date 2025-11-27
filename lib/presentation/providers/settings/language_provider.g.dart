@@ -6,21 +6,50 @@ part of 'language_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$languageNotifierHash() => r'1280419f34cc7a0564cf54644eac53b18eaf3c0d';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [LanguageNotifier].
 @ProviderFor(LanguageNotifier)
-final languageNotifierProvider =
-    AutoDisposeNotifierProvider<LanguageNotifier, Locale>.internal(
-      LanguageNotifier.new,
-      name: r'languageNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$languageNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+const languageProvider = LanguageNotifierProvider._();
 
-typedef _$LanguageNotifier = AutoDisposeNotifier<Locale>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class LanguageNotifierProvider
+    extends $AsyncNotifierProvider<LanguageNotifier, ui.Locale> {
+  const LanguageNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'languageProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$languageNotifierHash();
+
+  @$internal
+  @override
+  LanguageNotifier create() => LanguageNotifier();
+}
+
+String _$languageNotifierHash() => r'3257b7c7718e2ba8aed8d44cbd8b314f3919cefe';
+
+abstract class _$LanguageNotifier extends $AsyncNotifier<ui.Locale> {
+  FutureOr<ui.Locale> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<ui.Locale>, ui.Locale>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<ui.Locale>, ui.Locale>,
+              AsyncValue<ui.Locale>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
