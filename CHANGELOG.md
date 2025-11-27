@@ -2,6 +2,17 @@
 
 #### Bug Fixes
 
+- Two levels have been fixed
+
+#### Improvements
+
+- Updated `levels_uniqueness_test` test
+- Added `.github/workflows/dart.yml` file for CI
+
+## [1.3.1]
+
+#### Bug Fixes
+
 - Fixed the completed level indicator error
 
 #### Improvements
