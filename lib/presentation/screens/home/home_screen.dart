@@ -9,16 +9,22 @@ import 'package:pegma/presentation/providers/levels_provider.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  bool _isNavigating = false;
+
+  @override
+  Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final levelsAsyncValue = ref.watch(levelsProvider);
     final levels = levelsAsyncValue.value ?? [];
-    final completedLevels =
-        ref.watch(completedLevelsProvider).value ?? [];
+    final completedLevels = ref.watch(completedLevelsProvider).value ?? [];
 
     return Scaffold(
       backgroundColor: theme.bgColor,
@@ -49,7 +55,13 @@ class HomeScreen extends ConsumerWidget {
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  context.push('${AppRouter.game}/$assetLevelId');
+                  if (_isNavigating) return;
+                  _isNavigating = true;
+                  context.push('${AppRouter.game}/$assetLevelId').then((_) {
+                    if (mounted) {
+                      _isNavigating = false;
+                    }
+                  });
                 },
                 child: Stack(
                   alignment: Alignment.center,
