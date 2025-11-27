@@ -16,9 +16,12 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = UIThemes.of(context);
-    final themeNotifier = ref.watch(themeNotifierProvider.notifier);
-    final themeMode = ref.watch(themeNotifierProvider);
-    final currentLocale = ref.watch(languageNotifierProvider);
+    final themeNotifier = ref.watch(themeProvider.notifier);
+    final themeModeAsync = ref.watch(themeProvider);
+    final currentLocaleAsync = ref.watch(languageProvider);
+
+    final themeMode = themeModeAsync.value ?? ThemeMode.system;
+    final currentLocale = currentLocaleAsync.value ?? const Locale('en', 'US');
 
     final isDarkTheme =
         themeMode == ThemeMode.dark ||
@@ -139,17 +142,17 @@ class SettingsScreen extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         if (language == 'english') {
-          ref.read(languageNotifierProvider.notifier).setEnglish();
+          ref.read(languageProvider.notifier).setEnglish();
         } else if (language == 'русский') {
-          ref.read(languageNotifierProvider.notifier).setRussian();
+          ref.read(languageProvider.notifier).setRussian();
         } else if (language == 'español') {
-          ref.read(languageNotifierProvider.notifier).setSpanish();
+          ref.read(languageProvider.notifier).setSpanish();
         } else if (language == 'italiano') {
-          ref.read(languageNotifierProvider.notifier).setItalian();
+          ref.read(languageProvider.notifier).setItalian();
         } else if (language == 'français') {
-          ref.read(languageNotifierProvider.notifier).setFrench();
+          ref.read(languageProvider.notifier).setFrench();
         } else if (language == 'deutsch') {
-          ref.read(languageNotifierProvider.notifier).setGerman();
+          ref.read(languageProvider.notifier).setGerman();
         }
       },
       child: Text(

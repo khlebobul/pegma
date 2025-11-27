@@ -19,9 +19,8 @@ class LanguageNotifier extends _$LanguageNotifier {
   ];
 
   @override
-  Locale build() {
-    _loadLanguage();
-    return _getSystemLocale();
+  Future<Locale> build() async {
+    return await _loadLanguage();
   }
 
   Locale _getSystemLocale() {
@@ -49,7 +48,7 @@ class LanguageNotifier extends _$LanguageNotifier {
     return const Locale('en', 'US');
   }
 
-  Future<void> _loadLanguage() async {
+  Future<Locale> _loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final savedLanguageCode = prefs.getString(_languageKey);
 
@@ -57,28 +56,22 @@ class LanguageNotifier extends _$LanguageNotifier {
       // использовать сохранённый язык
       switch (savedLanguageCode) {
         case 'ru':
-          state = const Locale('ru', 'RU');
-          break;
+          return const Locale('ru', 'RU');
         case 'es':
-          state = const Locale('es', 'ES');
-          break;
+          return const Locale('es', 'ES');
         case 'it':
-          state = const Locale('it', 'IT');
-          break;
+          return const Locale('it', 'IT');
         case 'fr':
-          state = const Locale('fr', 'FR');
-          break;
+          return const Locale('fr', 'FR');
         case 'de':
-          state = const Locale('de', 'DE');
-          break;
+          return const Locale('de', 'DE');
         case 'en':
         default:
-          state = const Locale('en', 'US');
-          break;
+          return const Locale('en', 'US');
       }
     } else {
       // использовать язык системы, если не сохранён
-      state = _getSystemLocale();
+      return _getSystemLocale();
     }
   }
 
@@ -88,52 +81,53 @@ class LanguageNotifier extends _$LanguageNotifier {
   }
 
   Future<void> setLanguage(Locale locale) async {
-    state = locale;
     await _saveLanguage(locale.languageCode);
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setEnglish() async {
-    const locale = Locale('en', 'US');
-    state = locale;
     await _saveLanguage('en');
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setRussian() async {
-    const locale = Locale('ru', 'RU');
-    state = locale;
     await _saveLanguage('ru');
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setSpanish() async {
-    const locale = Locale('es', 'ES');
-    state = locale;
     await _saveLanguage('es');
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setItalian() async {
-    const locale = Locale('it', 'IT');
-    state = locale;
     await _saveLanguage('it');
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setFrench() async {
-    const locale = Locale('fr', 'FR');
-    state = locale;
     await _saveLanguage('fr');
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<void> setGerman() async {
-    const locale = Locale('de', 'DE');
-    state = locale;
     await _saveLanguage('de');
+    ref.invalidateSelf();
+    await future;
   }
 
-  bool get isEnglish => state.languageCode == 'en';
-  bool get isRussian => state.languageCode == 'ru';
-  bool get isSpanish => state.languageCode == 'es';
-  bool get isItalian => state.languageCode == 'it';
-  bool get isFrench => state.languageCode == 'fr';
-  bool get isGerman => state.languageCode == 'de';
+  bool isEnglish() => state.hasValue && state.value?.languageCode == 'en';
+  bool isRussian() => state.hasValue && state.value?.languageCode == 'ru';
+  bool isSpanish() => state.hasValue && state.value?.languageCode == 'es';
+  bool isItalian() => state.hasValue && state.value?.languageCode == 'it';
+  bool isFrench() => state.hasValue && state.value?.languageCode == 'fr';
+  bool isGerman() => state.hasValue && state.value?.languageCode == 'de';
 
   static bool isLanguageSupported(String languageCode) {
     return supportedLanguages.contains(languageCode);

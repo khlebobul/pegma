@@ -90,12 +90,12 @@ class _GameScreenState extends ConsumerState<GameScreen>
     }
   }
 
-  void _showWinDialog(BuildContext context, GameNotifier gameNotifier) {
+  void _showWinDialog(BuildContext context, Game gameNotifier) {
     ref.invalidate(completedLevelsProvider);
 
     final levelsAsyncValue = ref.read(levelsProvider);
-    final levels = levelsAsyncValue.valueOrNull ?? [];
-    final completedLevels = ref.read(completedLevelsProvider).valueOrNull ?? [];
+    final levels = levelsAsyncValue.value ?? [];
+    final completedLevels = ref.read(completedLevelsProvider).value ?? [];
     final updatedCompletedLevels = {...completedLevels, widget.levelId};
     final nextLevelId = widget.levelId + 1;
     final hasNextLevel = levels.contains(nextLevelId);
@@ -150,7 +150,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
     }
   }
 
-  void _showLossDialog(BuildContext context, GameNotifier gameNotifier) {
+  void _showLossDialog(BuildContext context, Game gameNotifier) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -170,7 +170,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
     );
   }
 
-  void _showRestartDialog(BuildContext context, GameNotifier gameNotifier) {
+  void _showRestartDialog(BuildContext context, Game gameNotifier) {
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -248,7 +248,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
     final gameState = ref.watch(gameProvider(widget.levelId));
 
     final levelsAsyncValue = ref.watch(levelsProvider);
-    final levels = levelsAsyncValue.valueOrNull ?? [];
+    final levels = levelsAsyncValue.value ?? [];
     final displayLevelNumber = levels.indexOf(widget.levelId);
 
     return PopScope(
