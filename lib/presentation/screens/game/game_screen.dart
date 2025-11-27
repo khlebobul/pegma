@@ -69,9 +69,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
     super.dispose();
   }
 
-  void _saveGameState() {
+  Future<void> _saveGameState() async {
     final gameNotifier = ref.read(gameProvider(widget.levelId).notifier);
-    gameNotifier.saveCurrentState();
+    await gameNotifier.saveCurrentState();
   }
 
   @override
@@ -255,7 +255,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
         if (!didPop) {
-          _saveGameState();
+          await _saveGameState();
           Navigator.of(context).pop();
         }
       },
@@ -267,8 +267,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
           showMenuButton: false,
           isGameScreen: true,
           moves: displayLevelNumber >= 0 ? '$displayLevelNumber' : '0',
-          onBackButtonPressed: () {
-            _saveGameState();
+          onBackButtonPressed: () async {
+            await _saveGameState();
             context.pop();
           },
           showRefreshButton: true,

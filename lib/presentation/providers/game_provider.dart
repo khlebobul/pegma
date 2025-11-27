@@ -121,7 +121,7 @@ class Game extends _$Game {
     }
   }
 
-  void onPegTap(int row, int col) {
+  Future<void> onPegTap(int row, int col) async {
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
     );
@@ -129,7 +129,7 @@ class Game extends _$Game {
     // If an empty cell is tapped and it's a valid move
     if ((newBoard[row][col] == '0' || newBoard[row][col] == 'eaten') &&
         state.possibleMoves.any((move) => move.x == row && move.y == col)) {
-      movePeg(state.selectedRow!, state.selectedCol!, row, col);
+      await movePeg(state.selectedRow!, state.selectedCol!, row, col);
       return;
     }
 
@@ -164,7 +164,7 @@ class Game extends _$Game {
     }
   }
 
-  void movePeg(int fromRow, int fromCol, int toRow, int toCol) {
+  Future<void> movePeg(int fromRow, int fromCol, int toRow, int toCol) async {
     final previousState = state;
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
@@ -188,10 +188,10 @@ class Game extends _$Game {
       redoStack: [],
       movesCount: state.movesCount + 1,
     );
-    _checkEndGame();
+    await _checkEndGame();
   }
 
-  void _checkEndGame() async {
+  Future<void> _checkEndGame() async {
     final pegsLeft = state.board
         .expand((row) => row)
         .where((cell) => cell == '1')
