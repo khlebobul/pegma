@@ -30,6 +30,10 @@ void main() {
         reason: 'Should have at least one level',
       );
 
+      debugPrint(
+        '\nChecking uniqueness of ${levelNumbers.length} levels...',
+      );
+
       // Load all levels
       final Map<int, BoardModel> levels = {};
       for (final levelNumber in levelNumbers) {
@@ -56,8 +60,13 @@ void main() {
         }
       }
 
-      // Check that there are no duplicates
       if (duplicates.isNotEmpty) {
+        debugPrint('\nFound ${duplicates.length} duplicate level pair(s):');
+        for (final pair in duplicates) {
+          debugPrint('   • level_${pair[0]}.json == level_${pair[1]}.json');
+        }
+        debugPrint('');
+
         final duplicateMessages = duplicates
             .map((pair) => 'level_${pair[0]}.json == level_${pair[1]}.json')
             .join(', ');
