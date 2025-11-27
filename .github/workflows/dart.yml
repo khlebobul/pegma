@@ -1,0 +1,38 @@
+name: Dart Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Flutter Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Clone the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Flutter SDK
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.3'
+          channel: 'stable'
+          cache: true
+
+      # Step 3: Check Flutter version
+      - name: Flutter version
+        run: flutter --version
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: flutter test --coverage
