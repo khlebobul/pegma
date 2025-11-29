@@ -1,4 +1,24 @@
-## [1.3.1]
+## [1.3.4]
+
+#### Bug Fixes
+
+- Fixed issue when rapidly tapping multiple levels before loading completes
+
+## [1.3.3]
+
+#### Bug Fixes
+
+- Fixed slow level loading on physical devices after completing a level
+- Improved database operations handling to prevent race conditions
+
+#### Improvements
+
+- Enhanced game state saving reliability
+- Optimized async operations for better performance on real devices
+- Database queries now execute in parallel for faster level initialization
+- Prevented duplicate navigation when rapidly selecting levels
+
+## [1.3.2]
 
 #### Bug Fixes
 

@@ -22,12 +22,17 @@ class Game extends _$Game {
   }
 
   Future<LevelLoadType> checkLevelStatus() async {
-    // First check if level is completed
-    final isCompleted = await _db.isLevelCompleted(levelId);
+    // Optimize: fetch both states in parallel
+    final results = await Future.wait([
+      _db.isLevelCompleted(levelId),
+      _db.getSavedGameState(levelId),
+    ]);
+
+    final isCompleted = results[0] as bool;
+    final savedState = results[1] as Map<String, dynamic>?;
 
     if (isCompleted) {
       // If completed, check if there's a saved game with moves
-      final savedState = await _db.getSavedGameState(levelId);
       if (savedState != null && (savedState['moves_count'] as int) > 0) {
         // Level is completed but player started replaying and made moves
         return LevelLoadType.savedGame;
@@ -37,7 +42,6 @@ class Game extends _$Game {
     }
 
     // Level is not completed, check for saved game with moves
-    final savedState = await _db.getSavedGameState(levelId);
     if (savedState != null && (savedState['moves_count'] as int) > 0) {
       return LevelLoadType.savedGame;
     }
@@ -121,7 +125,7 @@ class Game extends _$Game {
     }
   }
 
-  void onPegTap(int row, int col) {
+  Future<void> onPegTap(int row, int col) async {
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
     );
@@ -129,7 +133,7 @@ class Game extends _$Game {
     // If an empty cell is tapped and it's a valid move
     if ((newBoard[row][col] == '0' || newBoard[row][col] == 'eaten') &&
         state.possibleMoves.any((move) => move.x == row && move.y == col)) {
-      movePeg(state.selectedRow!, state.selectedCol!, row, col);
+      await movePeg(state.selectedRow!, state.selectedCol!, row, col);
       return;
     }
 
@@ -164,7 +168,7 @@ class Game extends _$Game {
     }
   }
 
-  void movePeg(int fromRow, int fromCol, int toRow, int toCol) {
+  Future<void> movePeg(int fromRow, int fromCol, int toRow, int toCol) async {
     final previousState = state;
     final newBoard = List<List<String>>.from(
       state.board.map((e) => List<String>.from(e)),
@@ -188,10 +192,10 @@ class Game extends _$Game {
       redoStack: [],
       movesCount: state.movesCount + 1,
     );
-    _checkEndGame();
+    await _checkEndGame();
   }
 
-  void _checkEndGame() async {
+  Future<void> _checkEndGame() async {
     final pegsLeft = state.board
         .expand((row) => row)
         .where((cell) => cell == '1')
