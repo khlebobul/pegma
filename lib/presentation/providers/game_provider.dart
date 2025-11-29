@@ -51,43 +51,57 @@ class Game extends _$Game {
 
   Future<void> loadLevel(int level, {bool ignoreSaved = false}) async {
     try {
+      Map<String, dynamic>? savedState;
+
       // Try to load saved game state first (only if not ignored)
-      final savedState = !ignoreSaved
-          ? await _db.getSavedGameState(level)
-          : null;
+      if (!ignoreSaved) {
+        try {
+          savedState = await _db.getSavedGameState(level);
+        } catch (e) {
+          // If saved state is corrupted, delete it and load fresh
+          await _db.deleteSavedGameState(level);
+          savedState = null;
+        }
+      }
 
       if (savedState != null) {
-        // Load saved game
-        final boardData = savedState['board'] as List<dynamic>;
-        final board = boardData
-            .map((row) => List<String>.from(row as List))
-            .toList();
+        try {
+          // Load saved game
+          final boardData = savedState['board'] as List<dynamic>;
+          final board = boardData
+              .map((row) => List<String>.from(row as List))
+              .toList();
 
-        state = GameState(
-          board: board,
-          possibleMoves: [],
-          initialPegCount: board
-              .expand((row) => row)
-              .where((cell) => cell == '1')
-              .length,
-          movesCount: savedState['moves_count'] as int,
-        );
-      } else {
-        // Load fresh level
-        final jsonString = await rootBundle.loadString(
-          'lib/data/levels/level_$level.json',
-        );
-        final boardModel = BoardModel.fromJson(jsonString);
-        final initialPegs = boardModel.board
-            .expand((row) => row)
-            .where((cell) => cell == '1')
-            .length;
-        state = GameState(
-          board: boardModel.board,
-          possibleMoves: [],
-          initialPegCount: initialPegs,
-        );
+          state = GameState(
+            board: board,
+            possibleMoves: [],
+            initialPegCount: board
+                .expand((row) => row)
+                .where((cell) => cell == '1')
+                .length,
+            movesCount: savedState['moves_count'] as int,
+          );
+          return;
+        } catch (e) {
+          // If saved state is corrupted, delete it and load fresh
+          await _db.deleteSavedGameState(level);
+        }
       }
+
+      // Load fresh level
+      final jsonString = await rootBundle.loadString(
+        'lib/data/levels/level_$level.json',
+      );
+      final boardModel = BoardModel.fromJson(jsonString);
+      final initialPegs = boardModel.board
+          .expand((row) => row)
+          .where((cell) => cell == '1')
+          .length;
+      state = GameState(
+        board: boardModel.board,
+        possibleMoves: [],
+        initialPegCount: initialPegs,
+      );
     } catch (e) {
       rethrow;
     }

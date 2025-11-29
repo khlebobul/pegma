@@ -286,9 +286,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
           isRefreshEnabled: gameState.movesCount > 0,
         ),
         body: _isLoading
-            ? const Center(
-                child: PegLoadingIndicator(),
-              )
+            ? const Center(child: PegLoadingIndicator())
             : Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 800),
@@ -306,7 +304,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
                         onUndoPressed: gameNotifier.redo,
                         onRedoPressed: gameNotifier.undo,
                         onTutorialPressed: () {
-                          ref.read(firstLaunchProvider).showTutorialDialog(context);
+                          ref
+                              .read(firstLaunchProvider)
+                              .showTutorialDialog(context);
                         },
                         canUndo: gameState.redoStack.isNotEmpty,
                         canRedo: gameState.history.isNotEmpty,

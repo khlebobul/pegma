@@ -1,8 +1,16 @@
 ## [1.3.5]
 
+#### Bug Fixes
+
+- Fixed critical issue where some levels failed to load for certain users after updates
+- Added automatic recovery from corrupted saved game states
+- Improved error handling during level loading with automatic fallback to fresh state
+
 #### Improvements
 
 - Added custom animated loading indicator with jumping pegs for better visual feedback
+- Database now automatically cleans corrupted saved games while preserving completed levels progress
+- Enhanced data migration reliability across app updates
 
 ## [1.3.4]
 
