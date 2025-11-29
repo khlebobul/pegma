@@ -1,3 +1,9 @@
+## [1.3.5]
+
+#### Improvements
+
+- Added custom animated loading indicator with jumping pegs for better visual feedback
+
 ## [1.3.4]
 
 #### Bug Fixes
