@@ -20,7 +20,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 3,
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -32,6 +32,12 @@ class DatabaseHelper {
       await db.execute('DROP TABLE IF EXISTS completed_levels');
       await db.execute('DROP TABLE IF EXISTS saved_games');
       await _createDB(db, newVersion);
+    }
+
+    if (oldVersion < 3) {
+      // Clear saved games but keep completed levels
+      // This fixes corrupted saved games from previous versions
+      await db.delete('saved_games');
     }
   }
 
@@ -120,6 +126,11 @@ class DatabaseHelper {
   Future<void> deleteSavedGameState(int levelId) async {
     final db = await database;
     await db.delete('saved_games', where: 'level_id = ?', whereArgs: [levelId]);
+  }
+
+  Future<void> clearAllSavedGames() async {
+    final db = await database;
+    await db.delete('saved_games');
   }
 
   Future<void> close() async {

@@ -30,9 +30,7 @@ void main() {
         reason: 'Should have at least one level',
       );
 
-      debugPrint(
-        '\nChecking uniqueness of ${levelNumbers.length} levels...',
-      );
+      debugPrint('\nChecking uniqueness of ${levelNumbers.length} levels...');
 
       // Load all levels
       final Map<int, BoardModel> levels = {};
