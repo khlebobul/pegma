@@ -1,3 +1,10 @@
+## [1.3.6]
+
+#### Improvements
+
+- Improved and optimized work with the database for saving
+
+
 ## [1.3.5]
 
 #### Bug Fixes
