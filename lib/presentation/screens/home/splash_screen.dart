@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/core/router/app_router.dart';
+import 'package:pegma/core/database/database_helper.dart';
 import 'package:pegma/presentation/widgets/splash_screen/rotating_text.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,15 +17,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+    _initializeAndNavigate();
   }
 
-  void _navigateToHome() {
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        context.go(AppRouter.home);
-      }
-    });
+  Future<void> _initializeAndNavigate() async {
+    await Future.wait([
+      DatabaseHelper.instance.database,
+      Future.delayed(const Duration(seconds: 3)),
+    ]);
+
+    if (mounted) {
+      context.go(AppRouter.home);
+    }
   }
 
   @override

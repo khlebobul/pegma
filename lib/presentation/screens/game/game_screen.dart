@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/generated/l10n.dart';
 import 'package:pegma/presentation/widgets/common/dialog_window.dart';
-import 'package:pegma/presentation/widgets/common/peg_loading_indicator.dart';
 import 'package:pegma/presentation/widgets/game/game_board.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
@@ -27,7 +26,6 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen>
     with WidgetsBindingObserver {
   bool _tutorialShown = false;
-  bool _isLoading = true;
 
   @override
   void initState() {
@@ -52,12 +50,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
       case LevelLoadType.completed:
         _showCompletedLevelDialog();
         break;
-    }
-
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
     }
 
     final reviewService = ref.read(reviewServiceProvider);
@@ -285,36 +277,32 @@ class _GameScreenState extends ConsumerState<GameScreen>
           onRefreshPressed: () => _showRestartDialog(context, gameNotifier),
           isRefreshEnabled: gameState.movesCount > 0,
         ),
-        body: _isLoading
-            ? const Center(child: PegLoadingIndicator())
-            : Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 800),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Center(
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: GameBoard(levelId: widget.levelId),
-                          ),
-                        ),
-                      ),
-                      GameBottomBar(
-                        onUndoPressed: gameNotifier.redo,
-                        onRedoPressed: gameNotifier.undo,
-                        onTutorialPressed: () {
-                          ref
-                              .read(firstLaunchProvider)
-                              .showTutorialDialog(context);
-                        },
-                        canUndo: gameState.redoStack.isNotEmpty,
-                        canRedo: gameState.history.isNotEmpty,
-                      ),
-                    ],
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: GameBoard(levelId: widget.levelId),
+                    ),
                   ),
                 ),
-              ),
+                GameBottomBar(
+                  onUndoPressed: gameNotifier.redo,
+                  onRedoPressed: gameNotifier.undo,
+                  onTutorialPressed: () {
+                    ref.read(firstLaunchProvider).showTutorialDialog(context);
+                  },
+                  canUndo: gameState.redoStack.isNotEmpty,
+                  canRedo: gameState.history.isNotEmpty,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
