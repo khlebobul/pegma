@@ -20,7 +20,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 3,
+      version: 4,
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -28,16 +28,26 @@ class DatabaseHelper {
 
   Future<void> _upgradeDB(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < 2) {
-      // Drop old tables and recreate without time_seconds
       await db.execute('DROP TABLE IF EXISTS completed_levels');
       await db.execute('DROP TABLE IF EXISTS saved_games');
       await _createDB(db, newVersion);
+      return;
     }
 
     if (oldVersion < 3) {
-      // Clear saved games but keep completed levels
-      // This fixes corrupted saved games from previous versions
       await db.delete('saved_games');
+    }
+    
+    if (oldVersion < 4) {
+      await db.execute('DROP TABLE IF EXISTS saved_games');
+      await db.execute('''
+        CREATE TABLE saved_games (
+          level_id INTEGER PRIMARY KEY,
+          board_state TEXT NOT NULL,
+          moves_count INTEGER NOT NULL,
+          saved_at TEXT NOT NULL
+        )
+      ''');
     }
   }
 
