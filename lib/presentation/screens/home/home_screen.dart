@@ -20,6 +20,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isNavigating = false;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _isNavigating = false;
+        });
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final levelsAsyncValue = ref.watch(levelsProvider);

@@ -26,6 +26,7 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen>
     with WidgetsBindingObserver {
   bool _tutorialShown = false;
+  bool _dialogShown = false;
 
   @override
   void initState() {
@@ -45,10 +46,20 @@ class _GameScreenState extends ConsumerState<GameScreen>
         await gameNotifier.loadLevel(widget.levelId);
         break;
       case LevelLoadType.savedGame:
-        _showSavedGameDialog();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted && !_dialogShown) {
+            _dialogShown = true;
+            _showSavedGameDialog();
+          }
+        });
         break;
       case LevelLoadType.completed:
-        _showCompletedLevelDialog();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted && !_dialogShown) {
+            _dialogShown = true;
+            _showCompletedLevelDialog();
+          }
+        });
         break;
     }
 

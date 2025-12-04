@@ -1,3 +1,14 @@
+## [1.3.7]
+
+#### Bug Fixes
+
+- Resolved minor issues with restoring game state when returning to previously opened levels
+
+#### Improvements
+
+- Further refined database initialization to be more robust across app updates
+- Small navigation and UI responsiveness tweaks for a smoother gameplay experience
+
 ## [1.3.6]
 
 #### Improvements
