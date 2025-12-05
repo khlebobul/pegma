@@ -49,7 +49,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted && !_dialogShown) {
             _dialogShown = true;
-            _showSavedGameDialog();
+        _showSavedGameDialog();
           }
         });
         break;
@@ -57,7 +57,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted && !_dialogShown) {
             _dialogShown = true;
-            _showCompletedLevelDialog();
+        _showCompletedLevelDialog();
           }
         });
         break;

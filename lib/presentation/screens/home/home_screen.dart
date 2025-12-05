@@ -20,18 +20,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isNavigating = false;
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        setState(() {
-          _isNavigating = false;
-        });
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
     final levelsAsyncValue = ref.watch(levelsProvider);
@@ -66,14 +54,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () {
+                onTap: () async {
                   if (_isNavigating) return;
-                  _isNavigating = true;
-                  context.push('${AppRouter.game}/$assetLevelId').then((_) {
-                    if (mounted) {
-                      _isNavigating = false;
-                    }
-                  });
+                  setState(() => _isNavigating = true);
+                  await context.push('${AppRouter.game}/$assetLevelId');
+                  if (mounted) {
+                    setState(() => _isNavigating = false);
+                  }
                 },
                 child: Stack(
                   alignment: Alignment.center,
