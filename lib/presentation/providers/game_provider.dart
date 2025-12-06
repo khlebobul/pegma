@@ -18,6 +18,7 @@ class Game extends _$Game {
 
   @override
   GameState build(int levelId) {
+    ref.keepAlive();
     return GameState(board: <List<String>>[], possibleMoves: []);
   }
 

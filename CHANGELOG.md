@@ -1,3 +1,18 @@
+## [1.3.8]
+
+#### Bug Fixes
+
+- Fixed critical issue in release mode where levels would not respond to taps after navigation
+- Fixed issue where level screen required swipe/extra tap to become interactive
+- Resolved provider state management issue causing frozen game board
+- Fixed navigation state handling to prevent interaction blocking
+
+#### Improvements
+
+- Improved provider lifecycle management with keepAlive for better state persistence
+- Enhanced navigation reliability between levels
+- Optimized game state updates for smoother transitions
+
 ## [1.3.7]
 
 #### Bug Fixes
