@@ -23,7 +23,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 4,
+      version: 5,
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -51,6 +51,16 @@ class DatabaseHelper {
           saved_at TEXT NOT NULL
         )
       ''');
+    }
+
+    if (oldVersion < 5) {
+      // Delete saved games for levels that were modified (10, 45, 48)
+      // This fixes incompatibility issues while preserving completed level progress
+      await db.delete(
+        'saved_games',
+        where: 'level_id IN (?, ?, ?)',
+        whereArgs: [10, 45, 48],
+      );
     }
   }
 
@@ -129,11 +139,26 @@ class DatabaseHelper {
 
     if (result.isEmpty) return null;
 
-    final row = result.first;
-    return {
-      'board': jsonDecode(row['board_state'] as String) as List<dynamic>,
-      'moves_count': row['moves_count'] as int,
-    };
+    try {
+      final row = result.first;
+      final boardData = jsonDecode(row['board_state'] as String) as List<dynamic>;
+      
+      // Validate board structure
+      if (boardData.isEmpty || boardData.first is! List) {
+        // Invalid board structure, delete corrupted save
+        await deleteSavedGameState(levelId);
+        return null;
+      }
+      
+      return {
+        'board': boardData,
+        'moves_count': row['moves_count'] as int,
+      };
+    } catch (e) {
+      // If decoding fails, delete corrupted save and return null
+      await deleteSavedGameState(levelId);
+      return null;
+    }
   }
 
   Future<void> deleteSavedGameState(int levelId) async {
@@ -144,6 +169,18 @@ class DatabaseHelper {
   Future<void> clearAllSavedGames() async {
     final db = await database;
     await db.delete('saved_games');
+  }
+
+  /// Clear saved games for specific levels (useful after level modifications)
+  Future<void> clearSavedGamesForLevels(List<int> levelIds) async {
+    if (levelIds.isEmpty) return;
+    final db = await database;
+    final placeholders = List.filled(levelIds.length, '?').join(',');
+    await db.delete(
+      'saved_games',
+      where: 'level_id IN ($placeholders)',
+      whereArgs: levelIds,
+    );
   }
 
   Future<void> close() async {
