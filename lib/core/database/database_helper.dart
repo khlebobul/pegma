@@ -5,12 +5,15 @@ import 'package:path/path.dart';
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
   static Database? _database;
+  static Future<Database>? _initFuture;
 
   DatabaseHelper._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB('pegma.db');
+    // Prevent race conditions by reusing the same initialization future
+    _initFuture ??= _initDB('pegma.db');
+    _database = await _initFuture;
     return _database!;
   }
 

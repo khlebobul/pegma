@@ -32,7 +32,12 @@ class _GameScreenState extends ConsumerState<GameScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _checkLevelStatusAndLoad();
+    // Use addPostFrameCallback to ensure proper initialization on Android
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        _checkLevelStatusAndLoad();
+      }
+    });
   }
 
   Future<void> _checkLevelStatusAndLoad() async {
@@ -297,7 +302,10 @@ class _GameScreenState extends ConsumerState<GameScreen>
                   child: Center(
                     child: AspectRatio(
                       aspectRatio: 1,
-                      child: GameBoard(levelId: widget.levelId),
+                      child: GameBoard(
+                        key: ValueKey('game_board_${widget.levelId}'),
+                        levelId: widget.levelId,
+                      ),
                     ),
                   ),
                 ),
