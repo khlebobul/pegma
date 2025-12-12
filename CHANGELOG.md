@@ -1,3 +1,15 @@
+## [1.4.0]
+
+#### New Features
+
+- Added 10 new game levels (51–60).
+
+#### Bug Fixes
+
+- Improved detection and cleanup of corrupted game saves for affected levels.
+- Enhanced rendering performance on Android devices.
+- Improved touch responsiveness and tap detection.
+
 ## [1.3.8]
 
 #### Bug Fixes
@@ -29,7 +41,6 @@
 #### Improvements
 
 - Improved and optimized work with the database for saving
-
 
 ## [1.3.5]
 

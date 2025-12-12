@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'it';
 
   static String m0(String appName) =>
-      "il nome ${appName} è un gioco di parole che combina: \"peg\" (piolo, pedina) - l'elemento principale del gioco - e \"theorema\", associato al rigore e alla logica matematica.";
+      "il nome ${appName} è un gioco di parole che combina: \"peg\" (piolo, pedina) - l’elemento principale del gioco - e \"theorema\", associato al rigore e alla logica matematica.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{

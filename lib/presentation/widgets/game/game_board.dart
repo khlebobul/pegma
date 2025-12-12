@@ -20,11 +20,13 @@ class GameBoard extends ConsumerWidget {
       return const Center(child: CircularProgressIndicator());
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: AspectRatio(
-        aspectRatio: 1.0,
-        child: Column(
+    // RepaintBoundary isolates rendering to prevent Android release mode issues
+    return RepaintBoundary(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(gameState.board.length, (row) {
             return Expanded(
@@ -54,6 +56,7 @@ class GameBoard extends ConsumerWidget {
             );
           }),
         ),
+      ),
       ),
     );
   }
@@ -101,6 +104,7 @@ class GameBoard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque, // Ensures tap detection works reliably on Android
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
