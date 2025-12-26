@@ -1,3 +1,9 @@
+## [1.5.0]
+
+#### New Features
+
+- Added 10 new game levels (61–70).
+
 ## [1.4.0]
 
 #### New Features
