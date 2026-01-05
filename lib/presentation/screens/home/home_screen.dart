@@ -37,8 +37,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 900),
           child: GridView.builder(
-            padding: const EdgeInsets.symmetric(
-              horizontal: GeneralConsts.horizontalPadding,
+            padding: const EdgeInsets.fromLTRB(
+              GeneralConsts.horizontalPadding,
+              0,
+              GeneralConsts.horizontalPadding,
+              50,
             ),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 120,
