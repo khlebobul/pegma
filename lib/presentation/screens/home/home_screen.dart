@@ -21,6 +21,16 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isNavigating = false;
+  late final Upgrader _upgrader;
+
+  @override
+  void initState() {
+    super.initState();
+    _upgrader = Upgrader(
+      debugLogging: true,
+      debugDisplayAlways: true,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,10 +119,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         color: CupertinoColors.activeBlue,
         fontSize: 17,
       ),
-      upgrader: Upgrader(
-        debugLogging: true,
-        debugDisplayAlways: true,
-      ),
+      upgrader: _upgrader,
       child: content,
     );
 
