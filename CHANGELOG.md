@@ -1,4 +1,4 @@
-## [1.5.0]
+## [1.6.0]
 
 #### New Features
 
@@ -6,7 +6,8 @@
 
 #### Enhancements
 
-- Change "no cell" symbol to "x" in level data for better readability.
+- Changed "no cell" symbol to "x" in level data for better readability.
+- Added `upgrader` package for app updates.
 
 ## [1.5.0]
 
