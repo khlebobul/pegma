@@ -2,6 +2,16 @@
 
 #### New Features
 
+- Added 10 new game levels (71–80).
+
+#### Enhancements
+
+- Change "no cell" symbol to "x" in level data for better readability.
+
+## [1.5.0]
+
+#### New Features
+
 - Added 10 new game levels (61–70).
 
 ## [1.4.0]
