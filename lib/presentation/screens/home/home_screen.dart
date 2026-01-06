@@ -26,10 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _upgrader = Upgrader(
-      debugLogging: true,
-      debugDisplayAlways: true,
-    );
+    _upgrader = Upgrader(debugLogging: true, debugDisplayAlways: false);
   }
 
   @override
