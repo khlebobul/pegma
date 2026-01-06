@@ -3,33 +3,33 @@ class TutorialBoardStates {
   static const List<List<List<String>>> states = [
     // Step 0: Initial board
     [
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
       ['1', '1', '0'],
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
     ],
     // Step 1: Select a peg
     [
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
       ['*', '1', '0'],
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
     ],
     // Step 2: Show possible move
     [
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
       ['*', '1', 'possible'],
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
     ],
     // Step 3: Move the peg (mid-animation)
     [
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
       ['eaten', 'eaten', '1'],
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
     ],
     // Step 4: Final state after move
     [
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
       ['eaten', 'eaten', '1'],
-      ['-1', '1', '-1'],
+      ['x', '1', 'x'],
     ],
   ];
 }
