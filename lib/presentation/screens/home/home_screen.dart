@@ -101,6 +101,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
 
     final upgradeAlert = UpgradeAlert(
+      showReleaseNotes: false,
       dialogStyle: Platform.isIOS
           ? UpgradeDialogStyle.cupertino
           : UpgradeDialogStyle.material,
@@ -111,7 +112,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       upgrader: Upgrader(
         debugLogging: true,
         debugDisplayAlways: true,
-        durationUntilAlertAgain: Duration.zero,
       ),
       child: content,
     );
