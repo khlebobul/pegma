@@ -110,23 +110,16 @@ class SettingsScreen extends ConsumerWidget {
       'deutsch',
     ];
 
-    return SizedBox(
-      height: 40,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(
-          horizontal: GeneralConsts.horizontalPadding,
-        ),
-        itemCount: languages.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 24),
-        itemBuilder: (context, index) {
-          return _buildLanguageOption(
-            languages[index],
-            theme,
-            ref,
-            selectedLanguage,
-          );
-        },
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: GeneralConsts.horizontalPadding,
+      ),
+      child: Wrap(
+        spacing: 24,
+        runSpacing: 12,
+        children: languages.map((language) {
+          return _buildLanguageOption(language, theme, ref, selectedLanguage);
+        }).toList(),
       ),
     );
   }

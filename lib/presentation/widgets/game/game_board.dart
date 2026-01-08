@@ -27,36 +27,36 @@ class GameBoard extends ConsumerWidget {
         child: AspectRatio(
           aspectRatio: 1.0,
           child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(gameState.board.length, (row) {
-            return Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(gameState.board[row].length, (col) {
-                  final cellValue = gameState.board[row][col];
-                  final isPossibleMove = gameState.possibleMoves.any(
-                    (move) => move.x == row && move.y == col,
-                  );
-                  return Expanded(
-                    child: Center(
-                      child: _buildPeg(
-                        cellValue: cellValue,
-                        onTap: () {
-                          gameNotifier.onPegTap(row, col);
-                        },
-                        theme: theme,
-                        row: row,
-                        col: col,
-                        isPossibleMove: isPossibleMove,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(gameState.board.length, (row) {
+              return Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(gameState.board[row].length, (col) {
+                    final cellValue = gameState.board[row][col];
+                    final isPossibleMove = gameState.possibleMoves.any(
+                      (move) => move.x == row && move.y == col,
+                    );
+                    return Expanded(
+                      child: Center(
+                        child: _buildPeg(
+                          cellValue: cellValue,
+                          onTap: () {
+                            gameNotifier.onPegTap(row, col);
+                          },
+                          theme: theme,
+                          row: row,
+                          col: col,
+                          isPossibleMove: isPossibleMove,
+                        ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-            );
-          }),
+                    );
+                  }),
+                ),
+              );
+            }),
+          ),
         ),
-      ),
       ),
     );
   }
@@ -76,7 +76,7 @@ class GameBoard extends ConsumerWidget {
     Color? color;
 
     switch (cellValue) {
-      case '-1':
+      case 'x':
         return const SizedBox.shrink();
       case '0':
         icon = CustomIcons.circle;
@@ -104,7 +104,8 @@ class GameBoard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: onTap,
-      behavior: HitTestBehavior.opaque, // Ensures tap detection works reliably on Android
+      behavior: HitTestBehavior
+          .opaque, // Ensures tap detection works reliably on Android
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,

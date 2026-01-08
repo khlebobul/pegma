@@ -117,7 +117,7 @@ class _TutorialCellState extends State<_TutorialCell>
     double opacity = 1.0;
 
     switch (widget.cellState) {
-      case '-1': // No cell
+      case 'x': // No cell
         return SizedBox(width: widget.size, height: widget.size);
       case '0': // Empty hole
         icon = CustomIcons.circle;

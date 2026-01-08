@@ -1,3 +1,14 @@
+## [1.6.0]
+
+#### New Features
+
+- Added 10 new game levels (71–80).
+
+#### Enhancements
+
+- Changed "no cell" symbol to "x" in level data for better readability.
+- Added `upgrader` package for app updates.
+
 ## [1.5.0]
 
 #### New Features

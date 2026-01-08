@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +9,7 @@ import 'package:pegma/core/router/app_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
+import 'package:upgrader/upgrader.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -18,6 +21,13 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isNavigating = false;
+  late final Upgrader _upgrader;
+
+  @override
+  void initState() {
+    super.initState();
+    _upgrader = Upgrader(debugLogging: true, debugDisplayAlways: false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final levels = levelsAsyncValue.value ?? [];
     final completedLevels = ref.watch(completedLevelsProvider).value ?? [];
 
-    return Scaffold(
+    Widget content = Scaffold(
       backgroundColor: theme.bgColor,
       appBar: CustomAppBar(
         title: GeneralConsts.appName,
@@ -37,8 +47,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 900),
           child: GridView.builder(
-            padding: const EdgeInsets.symmetric(
-              horizontal: GeneralConsts.horizontalPadding,
+            padding: const EdgeInsets.fromLTRB(
+              GeneralConsts.horizontalPadding,
+              0,
+              GeneralConsts.horizontalPadding,
+              50,
             ),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 120,
@@ -93,5 +106,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
       ),
     );
+
+    final upgradeAlert = UpgradeAlert(
+      showReleaseNotes: false,
+      dialogStyle: Platform.isIOS
+          ? UpgradeDialogStyle.cupertino
+          : UpgradeDialogStyle.material,
+      cupertinoButtonTextStyle: const TextStyle(
+        color: CupertinoColors.activeBlue,
+        fontSize: 17,
+      ),
+      upgrader: _upgrader,
+      child: content,
+    );
+
+    if (!Platform.isIOS) {
+      return Theme(
+        data: Theme.of(context).brightness == Brightness.dark
+            ? ThemeData.dark(useMaterial3: true)
+            : ThemeData.light(useMaterial3: true),
+        child: upgradeAlert,
+      );
+    }
+
+    return upgradeAlert;
   }
 }

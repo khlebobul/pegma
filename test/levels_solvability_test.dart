@@ -221,7 +221,7 @@ class PegSolitaireSolver {
     }
 
     // Can't move to inactive cells
-    if (board[toRow][toCol] == '-1') {
+    if (board[toRow][toCol] == 'x') {
       return false;
     }
 
