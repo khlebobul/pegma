@@ -15,7 +15,7 @@ const gameProvider = GameFamily._();
 final class GameProvider extends $NotifierProvider<Game, GameState> {
   const GameProvider._({
     required GameFamily super.from,
-    required int super.argument,
+    required String super.argument,
   }) : super(
          retry: null,
          name: r'gameProvider',
@@ -57,10 +57,10 @@ final class GameProvider extends $NotifierProvider<Game, GameState> {
   }
 }
 
-String _$gameHash() => r'de3e5cee9d0db36826ecf57a0f4a20142e21bf1b';
+String _$gameHash() => r'67b0add8aa53b4aa6af3c2089014dc02eb4f6e64';
 
 final class GameFamily extends $Family
-    with $ClassFamilyOverride<Game, GameState, GameState, GameState, int> {
+    with $ClassFamilyOverride<Game, GameState, GameState, GameState, String> {
   const GameFamily._()
     : super(
         retry: null,
@@ -70,7 +70,7 @@ final class GameFamily extends $Family
         isAutoDispose: true,
       );
 
-  GameProvider call(int levelId) =>
+  GameProvider call(String levelId) =>
       GameProvider._(argument: levelId, from: this);
 
   @override
@@ -78,10 +78,10 @@ final class GameFamily extends $Family
 }
 
 abstract class _$Game extends $Notifier<GameState> {
-  late final _$args = ref.$arg as int;
-  int get levelId => _$args;
+  late final _$args = ref.$arg as String;
+  String get levelId => _$args;
 
-  GameState build(int levelId);
+  GameState build(String levelId);
   @$mustCallSuper
   @override
   void runBuild() {

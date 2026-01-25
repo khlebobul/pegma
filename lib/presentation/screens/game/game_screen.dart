@@ -16,7 +16,7 @@ import '../../widgets/game/game_bottom_bar.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
-  final int levelId;
+  final String levelId;
   const GameScreen({super.key, required this.levelId});
 
   @override
@@ -115,8 +115,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
     final levels = levelsAsyncValue.value ?? [];
     final completedLevels = ref.read(completedLevelsProvider).value ?? [];
     final updatedCompletedLevels = {...completedLevels, widget.levelId};
-    final nextLevelId = widget.levelId + 1;
-    final hasNextLevel = levels.contains(nextLevelId);
+    final currentIndex = levels.indexOf(widget.levelId);
+    final hasNextLevel = currentIndex >= 0 && currentIndex < levels.length - 1;
+    final nextLevelId = hasNextLevel ? levels[currentIndex + 1] : '';
     final allLevelsCompleted =
         updatedCompletedLevels.length >= levels.length && levels.isNotEmpty;
 
