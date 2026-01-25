@@ -1,3 +1,16 @@
+## [1.8.0]
+
+#### New Features
+
+- Added support for fractional level IDs (0.1, 0.2).
+- Renamed classic level 0 to 0.1.
+- Added new level 0.2.
+
+#### Improvements
+
+- Database migration to support new level ID format.
+- Existing users' progress is preserved automatically.
+
 ## [1.7.0]
 
 #### New Features
