@@ -266,10 +266,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
     final gameState = ref.watch(gameProvider(widget.levelId));
 
-    final levelsAsyncValue = ref.watch(levelsProvider);
-    final levels = levelsAsyncValue.value ?? [];
-    final displayLevelNumber = levels.indexOf(widget.levelId);
-
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
@@ -285,7 +281,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
           showBackButton: false,
           showMenuButton: false,
           isGameScreen: true,
-          moves: displayLevelNumber >= 0 ? '$displayLevelNumber' : '0',
+          moves: widget.levelId,
           onBackButtonPressed: () async {
             await _saveGameState();
             context.pop();
