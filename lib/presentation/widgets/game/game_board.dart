@@ -7,7 +7,7 @@ import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/providers/game_provider.dart';
 
 class GameBoard extends ConsumerWidget {
-  final int levelId;
+  final String levelId;
   const GameBoard({super.key, required this.levelId});
 
   @override

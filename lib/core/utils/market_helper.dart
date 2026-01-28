@@ -41,6 +41,6 @@ class MarketHelper {
   static String _getCurrentOtherAppsUrl() {
     // Check which URL is currently active
     // The Makefile will modify this to switch between markets
-    return GeneralConsts.otherAppsRustoreLink; // This will be changed by make
+    return GeneralConsts.otherAppsGooglePlayLink; // This will be changed by make
   }
 }

@@ -17,7 +17,7 @@ class Game extends _$Game {
   final DatabaseHelper _db = DatabaseHelper.instance;
 
   @override
-  GameState build(int levelId) {
+  GameState build(String levelId) {
     ref.keepAlive();
     return GameState(board: <List<String>>[], possibleMoves: []);
   }
@@ -50,7 +50,7 @@ class Game extends _$Game {
     return LevelLoadType.fresh;
   }
 
-  Future<void> loadLevel(int level, {bool ignoreSaved = false}) async {
+  Future<void> loadLevel(String level, {bool ignoreSaved = false}) async {
     try {
       Map<String, dynamic>? savedState;
 

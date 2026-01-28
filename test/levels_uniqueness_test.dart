@@ -17,37 +17,42 @@ void main() {
           .where((String key) => key.contains('lib/data/levels/level_'))
           .toList();
 
-      final levelNumbers = levelPaths.map((path) {
-        final levelNumber = int.parse(
-          path.split('/').last.replaceAll('level_', '').replaceAll('.json', ''),
-        );
-        return levelNumber;
-      }).toList()..sort();
+      final levelIds = levelPaths.map((path) {
+        final levelId = path.split('/').last.replaceAll('level_', '').replaceAll('.json', '');
+        return levelId;
+      }).toList();
+
+      // Sort numerically (supports fractional levels like 0.1, 0.2)
+      levelIds.sort((a, b) {
+        final aNum = double.tryParse(a) ?? 0;
+        final bNum = double.tryParse(b) ?? 0;
+        return aNum.compareTo(bNum);
+      });
 
       expect(
-        levelNumbers.isNotEmpty,
+        levelIds.isNotEmpty,
         true,
         reason: 'Should have at least one level',
       );
 
-      debugPrint('\nChecking uniqueness of ${levelNumbers.length} levels...');
+      debugPrint('\nChecking uniqueness of ${levelIds.length} levels...');
 
       // Load all levels
-      final Map<int, BoardModel> levels = {};
-      for (final levelNumber in levelNumbers) {
+      final Map<String, BoardModel> levels = {};
+      for (final levelId in levelIds) {
         final jsonString = await rootBundle.loadString(
-          'lib/data/levels/level_$levelNumber.json',
+          'lib/data/levels/level_$levelId.json',
         );
-        levels[levelNumber] = BoardModel.fromJson(jsonString);
+        levels[levelId] = BoardModel.fromJson(jsonString);
       }
 
       // Check uniqueness: compare each level with every other level
-      final duplicates = <List<int>>[];
+      final duplicates = <List<String>>[];
 
-      for (int i = 0; i < levelNumbers.length; i++) {
-        for (int j = i + 1; j < levelNumbers.length; j++) {
-          final level1 = levelNumbers[i];
-          final level2 = levelNumbers[j];
+      for (int i = 0; i < levelIds.length; i++) {
+        for (int j = i + 1; j < levelIds.length; j++) {
+          final level1 = levelIds[i];
+          final level2 = levelIds[j];
           final board1 = levels[level1]!.board;
           final board2 = levels[level2]!.board;
 
@@ -75,7 +80,7 @@ void main() {
       expect(duplicates.isEmpty, true, reason: 'All levels should be unique');
 
       // Print information about the number of checked levels
-      debugPrint('✓ Checked ${levelNumbers.length} levels, all are unique');
+      debugPrint('✓ Checked ${levelIds.length} levels, all are unique');
     });
 
     test('should load all level files correctly', () async {

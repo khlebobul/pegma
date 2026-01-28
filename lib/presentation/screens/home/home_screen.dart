@@ -62,7 +62,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             itemCount: levels.length,
             itemBuilder: (context, index) {
               final assetLevelId = levels[index];
-              final displayNumber = index;
               final isCompleted = completedLevels.contains(assetLevelId);
 
               return GestureDetector(
@@ -80,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   children: [
                     Center(
                       child: Text(
-                        '$displayNumber',
+                        assetLevelId,
                         style: theme.menuTextStyle.copyWith(
                           color: theme.textColor,
                         ),
