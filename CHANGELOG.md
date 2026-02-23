@@ -1,3 +1,9 @@
+## [1.9.0]
+
+#### New Features
+
+- Added 10 new game levels (91–100).
+
 ## [1.8.0]
 
 #### New Features
