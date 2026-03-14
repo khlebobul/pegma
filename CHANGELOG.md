@@ -1,3 +1,9 @@
+## [1.10.0]
+
+#### New Features
+
+- Added 10 new game levels (101–110).
+
 ## [1.9.0]
 
 #### New Features
