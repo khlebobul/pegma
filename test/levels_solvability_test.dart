@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -61,7 +60,13 @@ void main() {
 
         // Check if level is solvable
         final solver = PegSolitaireSolver(board);
+        final stopwatch = Stopwatch()..start();
         final isSolvable = solver.solve();
+        stopwatch.stop();
+
+        final elapsed = stopwatch.elapsedMilliseconds;
+        final status = isSolvable ? '✓' : '✗';
+        debugPrint('$status level_$levelId.json — ${elapsed}ms');
 
         if (isSolvable) {
           solvedCount++;
@@ -91,216 +96,133 @@ void main() {
   });
 }
 
-/// Solver for Peg Solitaire game
+/// Optimized solver using bitboard representation and center-biased move ordering
 class PegSolitaireSolver {
   final List<List<String>> initialBoard;
   final int maxDepth;
-  final Set<String> _visitedStates = {};
 
-  PegSolitaireSolver(this.initialBoard, {this.maxDepth = 1000});
+  late final int _initialState;
+  late final int _initialPegCount;
+  late final List<_BitMove> _allMoves;
+  final Set<int> _visitedStates = {};
 
-  /// Attempts to solve the puzzle using backtracking
-  bool solve() {
-    final board = _copyBoard(initialBoard);
-    return _solveRecursive(board, 0);
+  PegSolitaireSolver(this.initialBoard, {this.maxDepth = 1000}) {
+    _precompute();
   }
 
-  /// Recursive backtracking solver
-  bool _solveRecursive(List<List<String>> board, int depth) {
-    // Check if we've exceeded max depth (prevent infinite recursion)
-    if (depth > maxDepth) {
-      return false;
-    }
+  void _precompute() {
+    final rows = initialBoard.length;
+    final cols = initialBoard[0].length;
 
-    // Check win condition: only one peg left
-    final pegsCount = _countPegs(board);
-    if (pegsCount == 1) {
-      return true;
-    }
+    // Map each active cell to a bit index
+    final cellIndex = <int, Map<int, int>>{};
+    final cellRows = <int>[];
+    final cellCols = <int>[];
+    double sumR = 0, sumC = 0;
+    int activeCount = 0;
 
-    // Check if no moves are possible
-    final allMoves = _getAllPossibleMoves(board);
-    if (allMoves.isEmpty) {
-      return false;
-    }
-
-    // Create state signature to avoid revisiting same states
-    final stateSignature = _getBoardSignature(board);
-    if (_visitedStates.contains(stateSignature)) {
-      return false;
-    }
-    _visitedStates.add(stateSignature);
-
-    // Try each possible move
-    for (final move in allMoves) {
-      // Make the move
-      _makeMove(board, move);
-
-      // Recursively try to solve
-      if (_solveRecursive(board, depth + 1)) {
-        return true;
+    for (int r = 0; r < rows; r++) {
+      cellIndex[r] = {};
+      for (int c = 0; c < cols; c++) {
+        if (initialBoard[r][c] != 'x') {
+          cellIndex[r]![c] = activeCount;
+          cellRows.add(r);
+          cellCols.add(c);
+          sumR += r;
+          sumC += c;
+          activeCount++;
+        }
       }
+    }
 
-      // Undo the move (backtrack)
-      _undoMove(board, move);
+    assert(activeCount <= 63, 'Board too large for bitboard solver');
+
+    final centerR = sumR / activeCount;
+    final centerC = sumC / activeCount;
+
+    // Build initial state bitmask
+    int state = 0;
+    int pegCount = 0;
+    for (int i = 0; i < activeCount; i++) {
+      if (initialBoard[cellRows[i]][cellCols[i]] == '1') {
+        state |= (1 << i);
+        pegCount++;
+      }
+    }
+    _initialState = state;
+    _initialPegCount = pegCount;
+
+    // Precompute all possible jump templates sorted by target centrality
+    const directions = [
+      [0, 2], [0, -2], [2, 0], [-2, 0],
+    ];
+
+    _allMoves = [];
+    for (int i = 0; i < activeCount; i++) {
+      final r = cellRows[i];
+      final c = cellCols[i];
+      for (final dir in directions) {
+        final mr = r + dir[0] ~/ 2;
+        final mc = c + dir[1] ~/ 2;
+        final tr = r + dir[0];
+        final tc = c + dir[1];
+        final midIdx = cellIndex[mr]?[mc];
+        final tarIdx = cellIndex[tr]?[tc];
+        if (midIdx != null && tarIdx != null) {
+          final dr = tr - centerR;
+          final dc = tc - centerC;
+          _allMoves.add(_BitMove(
+            fromBit: 1 << i,
+            middleBit: 1 << midIdx,
+            targetBit: 1 << tarIdx,
+            targetDist: dr * dr + dc * dc,
+          ));
+        }
+      }
+    }
+
+    // Moves toward center first — dramatically prunes search tree
+    _allMoves.sort((a, b) => a.targetDist.compareTo(b.targetDist));
+  }
+
+  bool solve() {
+    _visitedStates.clear();
+    return _solveRecursive(_initialState, _initialPegCount, 0);
+  }
+
+  bool _solveRecursive(int state, int pegCount, int depth) {
+    if (depth > maxDepth) return false;
+    if (pegCount == 1) return true;
+    if (_visitedStates.contains(state)) return false;
+    _visitedStates.add(state);
+
+    for (final move in _allMoves) {
+      // from has peg, middle has peg, target is empty
+      if ((state & move.fromBit) != 0 &&
+          (state & move.middleBit) != 0 &&
+          (state & move.targetBit) == 0) {
+        final newState =
+            (state & ~move.fromBit & ~move.middleBit) | move.targetBit;
+        if (_solveRecursive(newState, pegCount - 1, depth + 1)) {
+          return true;
+        }
+      }
     }
 
     return false;
   }
-
-  /// Get all possible moves from current board state
-  List<Move> _getAllPossibleMoves(List<List<String>> board) {
-    final moves = <Move>[];
-
-    for (int r = 0; r < board.length; r++) {
-      for (int c = 0; c < board[r].length; c++) {
-        if (board[r][c] == '1') {
-          // Check all four directions
-          final directions = [
-            const Point(0, 2), // right
-            const Point(0, -2), // left
-            const Point(2, 0), // down
-            const Point(-2, 0), // up
-          ];
-
-          for (final dir in directions) {
-            final targetRow = r + dir.x;
-            final targetCol = c + dir.y;
-            final middleRow = r + dir.x ~/ 2;
-            final middleCol = c + dir.y ~/ 2;
-
-            if (_isValidMove(
-              board,
-              r,
-              c,
-              targetRow,
-              targetCol,
-              middleRow,
-              middleCol,
-            )) {
-              moves.add(
-                Move(
-                  fromRow: r,
-                  fromCol: c,
-                  toRow: targetRow,
-                  toCol: targetCol,
-                  middleRow: middleRow,
-                  middleCol: middleCol,
-                ),
-              );
-            }
-          }
-        }
-      }
-    }
-
-    return moves;
-  }
-
-  /// Check if a move is valid
-  bool _isValidMove(
-    List<List<String>> board,
-    int fromRow,
-    int fromCol,
-    int toRow,
-    int toCol,
-    int middleRow,
-    int middleCol,
-  ) {
-    // Check bounds
-    if (toRow < 0 ||
-        toRow >= board.length ||
-        toCol < 0 ||
-        toCol >= board[0].length ||
-        middleRow < 0 ||
-        middleRow >= board.length ||
-        middleCol < 0 ||
-        middleCol >= board[0].length) {
-      return false;
-    }
-
-    // Target must be empty (0 or eaten)
-    if (board[toRow][toCol] != '0' && board[toRow][toCol] != 'eaten') {
-      return false;
-    }
-
-    // Middle must have a peg
-    if (board[middleRow][middleCol] != '1') {
-      return false;
-    }
-
-    // Source must have a peg
-    if (board[fromRow][fromCol] != '1') {
-      return false;
-    }
-
-    // Can't move to inactive cells
-    if (board[toRow][toCol] == 'x') {
-      return false;
-    }
-
-    return true;
-  }
-
-  /// Make a move on the board
-  void _makeMove(List<List<String>> board, Move move) {
-    board[move.toRow][move.toCol] = '1';
-    board[move.fromRow][move.fromCol] = 'eaten';
-    board[move.middleRow][move.middleCol] = 'eaten';
-  }
-
-  /// Undo a move on the board
-  void _undoMove(List<List<String>> board, Move move) {
-    board[move.fromRow][move.fromCol] = '1';
-    board[move.middleRow][move.middleCol] = '1';
-    board[move.toRow][move.toCol] = '0';
-  }
-
-  /// Count number of pegs on the board
-  int _countPegs(List<List<String>> board) {
-    int count = 0;
-    for (final row in board) {
-      for (final cell in row) {
-        if (cell == '1') {
-          count++;
-        }
-      }
-    }
-    return count;
-  }
-
-  /// Create a signature of the board state for duplicate detection
-  String _getBoardSignature(List<List<String>> board) {
-    final buffer = StringBuffer();
-    for (final row in board) {
-      for (final cell in row) {
-        buffer.write(cell);
-      }
-    }
-    return buffer.toString();
-  }
-
-  /// Create a deep copy of the board
-  List<List<String>> _copyBoard(List<List<String>> board) {
-    return board.map((row) => List<String>.from(row)).toList();
-  }
 }
 
-/// Represents a move in the game
-class Move {
-  final int fromRow;
-  final int fromCol;
-  final int toRow;
-  final int toCol;
-  final int middleRow;
-  final int middleCol;
+class _BitMove {
+  final int fromBit;
+  final int middleBit;
+  final int targetBit;
+  final double targetDist;
 
-  Move({
-    required this.fromRow,
-    required this.fromCol,
-    required this.toRow,
-    required this.toCol,
-    required this.middleRow,
-    required this.middleCol,
+  const _BitMove({
+    required this.fromBit,
+    required this.middleBit,
+    required this.targetBit,
+    required this.targetDist,
   });
 }

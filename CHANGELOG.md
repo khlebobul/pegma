@@ -1,3 +1,9 @@
+## [1.11.0]
+
+#### New Features
+
+- Added 10 new game levels (111–120).
+
 ## [1.10.0]
 
 #### New Features
