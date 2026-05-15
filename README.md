@@ -24,8 +24,6 @@ A free and cross-platform version of the classic Peg solitaire! Enjoy the timele
 
 [![CONTRIBUTING.md](https://img.shields.io/badge/CONTRIBUTING.md-414141?style=for-the-badge&logo=md&logoColor=F1F1F1)](https://github.com/khlebobul/pegma/blob/main/CONTRIBUTING.md) [![CODE_OF_CONDUCT.md](https://img.shields.io/badge/CODE_OF_CONDUCT.md-414141?style=for-the-badge&logo=md&logoColor=F1F1F1)](https://github.com/khlebobul/pegma/blob/main/CODE_OF_CONDUCT.md)
 
-<img width="500" alt="931_1x_shots_so" src="https://github.com/user-attachments/assets/271f414d-adf4-4a93-976a-6aacbaa2ef4b" />
-
 ## Credits
 
 [shared_preferences](https://pub.dev/packages/shared_preferences) / [intl](https://pub.dev/packages/intl) / [url_launcher](https://pub.dev/packages/url_launcher) / [flutter_svg](https://pub.dev/packages/flutter_svg) / [talker](https://pub.dev/packages/talker) / [flutter_riverpod]( https://pub.dev/packages/flutter_riverpod) / [gaimon](https://pub.dev/packages/gaimon) / [sqflite](https://pub.dev/packages/sqflite) / [in_app_review](https://pub.dev/packages/in_app_review) / [upgrader](https://pub.dev/packages/upgrader)
