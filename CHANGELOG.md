@@ -1,3 +1,9 @@
+## [1.11.1]
+
+#### Technical Improvements
+
+- Updated package dependencies
+
 ## [1.11.0]
 
 #### New Features
