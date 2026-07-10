@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'it';
 
-  static String m0(String appName) =>
+  static String m0(appName) =>
       "il nome ${appName} è un gioco di parole che combina: \"peg\" (piolo, pedina) - l’elemento principale del gioco - e \"theorema\", associato al rigore e alla logica matematica.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);

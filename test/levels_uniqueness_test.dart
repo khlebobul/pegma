@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,16 +8,18 @@ void main() {
 
   group('Levels Uniqueness Test', () {
     test('all levels should be unique', () async {
-      // Load manifest to get list of all levels
-      final manifestContent = await rootBundle.loadString('AssetManifest.json');
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-
-      final levelPaths = manifestMap.keys
+      final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      final levelPaths = manifest
+          .listAssets()
           .where((String key) => key.contains('lib/data/levels/level_'))
           .toList();
 
       final levelIds = levelPaths.map((path) {
-        final levelId = path.split('/').last.replaceAll('level_', '').replaceAll('.json', '');
+        final levelId = path
+            .split('/')
+            .last
+            .replaceAll('level_', '')
+            .replaceAll('.json', '');
         return levelId;
       }).toList();
 
@@ -84,11 +85,9 @@ void main() {
     });
 
     test('should load all level files correctly', () async {
-      // Check that all level files can be loaded and parsed
-      final manifestContent = await rootBundle.loadString('AssetManifest.json');
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-
-      final levelPaths = manifestMap.keys
+      final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      final levelPaths = manifest
+          .listAssets()
           .where((String key) => key.contains('lib/data/levels/level_'))
           .toList();
 
