@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/presentation/widgets/common/pressable.dart';
 import '../../../core/router/app_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -39,14 +40,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       return AppBar(
         backgroundColor: theme.bgColor,
         elevation: 0,
+        scrolledUnderElevation: 0,
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
         leading: showLeftArrowButton
             ? Padding(
                 padding: const EdgeInsets.only(
                   left: GeneralConsts.horizontalPadding,
                 ),
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
+                child: Pressable(
                   onTap: onBackButtonPressed,
                   child: Container(
                     width: 44,
@@ -90,14 +92,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: theme.bgColor,
       elevation: 0,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
       centerTitle: false,
       leading: showLeftArrowButton
           ? Padding(
               padding: const EdgeInsets.only(
                 left: GeneralConsts.horizontalPadding,
               ),
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              child: Pressable(
                 onTap: () {
                   if (context.canPop()) {
                     context.pop();
@@ -161,8 +164,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }) {
     return Padding(
       padding: const EdgeInsets.only(right: GeneralConsts.horizontalPadding),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+      child: Pressable(
         onTap: isEnabled ? onTap : null,
         child: Container(
           width: 44,

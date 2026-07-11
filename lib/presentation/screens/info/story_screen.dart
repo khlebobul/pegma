@@ -3,6 +3,7 @@ import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/generated/l10n.dart';
 import '../../widgets/common/app_bar_widget.dart';
+import '../../widgets/common/edgy.dart';
 import '../../widgets/common/info_paragraph.dart';
 
 class StoryScreen extends StatelessWidget {
@@ -19,33 +20,39 @@ class StoryScreen extends StatelessWidget {
         showBackButton: true,
         showMenuButton: false,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InfoParagraph(
-              text: S
-                  .of(context)
-                  .pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn,
-            ),
-            InfoParagraph(
-              text: S.of(context).theEarliestDocumentedMentionOfTheGameIsIn1687,
-            ),
-            InfoParagraph(
-              text: S.of(context).theClassicBoardHasACrossShape77Squares33,
-            ),
-            InfoParagraph(
-              text: S.of(context).theGoalIsToRemoveAllPegsLeavingOnlyOne,
-            ),
-            InfoParagraph(
-              text: S.of(context).pegSolitaireIsNotOnlyAGameButAlsoA,
-            ),
-            InfoParagraph(
-              text: S.of(context).inThe19thCenturyTheGameSpreadAcrossEuropeAnd,
-            ),
-            SizedBox(height: 50),
-          ],
+      body: Edgy(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(GeneralConsts.horizontalPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InfoParagraph(
+                text: S
+                    .of(context)
+                    .pegSolitaireOrSolitaireOnPegsOriginatedInEuropeIn,
+              ),
+              InfoParagraph(
+                text: S
+                    .of(context)
+                    .theEarliestDocumentedMentionOfTheGameIsIn1687,
+              ),
+              InfoParagraph(
+                text: S.of(context).theClassicBoardHasACrossShape77Squares33,
+              ),
+              InfoParagraph(
+                text: S.of(context).theGoalIsToRemoveAllPegsLeavingOnlyOne,
+              ),
+              InfoParagraph(
+                text: S.of(context).pegSolitaireIsNotOnlyAGameButAlsoA,
+              ),
+              InfoParagraph(
+                text: S
+                    .of(context)
+                    .inThe19thCenturyTheGameSpreadAcrossEuropeAnd,
+              ),
+              SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );
