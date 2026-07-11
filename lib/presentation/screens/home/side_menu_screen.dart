@@ -7,6 +7,7 @@ import 'package:pegma/generated/l10n.dart';
 import '../../../core/router/app_router.dart';
 import '../../providers/first_launch_provider.dart';
 import '../../widgets/common/app_bar_widget.dart';
+import '../../widgets/common/pressable.dart';
 
 class SideMenuScreen extends ConsumerWidget {
   const SideMenuScreen({super.key});
@@ -73,16 +74,18 @@ class _MenuListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = UIThemes.of(context);
-    return ListTile(
-      title: Text(title, style: theme.menuTextStyle),
+    return Pressable(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: GeneralConsts.horizontalPadding,
-        vertical: GeneralConsts.verticalPadding,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: GeneralConsts.horizontalPadding,
+          vertical: GeneralConsts.verticalPadding,
+        ),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(title, style: theme.menuTextStyle),
+        ),
       ),
-      hoverColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      splashColor: Colors.transparent,
     );
   }
 }

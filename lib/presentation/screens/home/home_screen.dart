@@ -9,6 +9,8 @@ import 'package:pegma/core/router/app_router.dart';
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:pegma/presentation/providers/levels_provider.dart';
 import 'package:pegma/presentation/providers/completed_levels_provider.dart';
+import 'package:pegma/presentation/widgets/common/edgy.dart';
+import 'package:pegma/presentation/widgets/common/pressable.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../widgets/common/app_bar_widget.dart';
 
@@ -46,61 +48,62 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 900),
-          child: GridView.builder(
-            padding: const EdgeInsets.fromLTRB(
-              GeneralConsts.horizontalPadding,
-              0,
-              GeneralConsts.horizontalPadding,
-              50,
-            ),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 120,
-              crossAxisSpacing: 12.0,
-              mainAxisSpacing: 12.0,
-              childAspectRatio: 1.0,
-            ),
-            itemCount: levels.length,
-            itemBuilder: (context, index) {
-              final assetLevelId = levels[index];
-              final isCompleted = completedLevels.contains(assetLevelId);
+          child: Edgy(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(
+                GeneralConsts.horizontalPadding,
+                0,
+                GeneralConsts.horizontalPadding,
+                50,
+              ),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 120,
+                crossAxisSpacing: 12.0,
+                mainAxisSpacing: 12.0,
+                childAspectRatio: 1.0,
+              ),
+              itemCount: levels.length,
+              itemBuilder: (context, index) {
+                final assetLevelId = levels[index];
+                final isCompleted = completedLevels.contains(assetLevelId);
 
-              return GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () async {
-                  if (_isNavigating) return;
-                  setState(() => _isNavigating = true);
-                  await context.push('${AppRouter.game}/$assetLevelId');
-                  if (mounted) {
-                    setState(() => _isNavigating = false);
-                  }
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Center(
-                      child: Text(
-                        assetLevelId,
-                        style: theme.menuTextStyle.copyWith(
-                          color: theme.textColor,
-                        ),
-                      ),
-                    ),
-                    if (isCompleted)
-                      Positioned(
-                        top: 6,
-                        child: SvgPicture.asset(
-                          CustomIcons.star,
-                          height: 15,
-                          colorFilter: ColorFilter.mode(
-                            theme.textColor,
-                            BlendMode.srcIn,
+                return Pressable(
+                  onTap: () async {
+                    if (_isNavigating) return;
+                    setState(() => _isNavigating = true);
+                    await context.push('${AppRouter.game}/$assetLevelId');
+                    if (mounted) {
+                      setState(() => _isNavigating = false);
+                    }
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          assetLevelId,
+                          style: theme.menuTextStyle.copyWith(
+                            color: theme.textColor,
                           ),
                         ),
                       ),
-                  ],
-                ),
-              );
-            },
+                      if (isCompleted)
+                        Positioned(
+                          top: 6,
+                          child: SvgPicture.asset(
+                            CustomIcons.star,
+                            height: 15,
+                            colorFilter: ColorFilter.mode(
+                              theme.textColor,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

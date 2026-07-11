@@ -1,8 +1,23 @@
+## [1.11.2]
+
+#### Improvements
+
+- Added fading edges to scrollable level, about, and story screens.
+- Added spring press animations for level tiles, app bar buttons, game controls, and side menu items.
+- Fixed app bar color changes while scrolling.
+
+#### Technical Improvements
+
+- Updated package dependencies.
+- Migrated iOS plugin integration from CocoaPods to Swift Package Manager.
+- Raised the iOS deployment target to 15.0 for current Xcode compatibility.
+- Updated Gradle, Android Gradle Plugin, and Kotlin versions.
+
 ## [1.11.1]
 
 #### Technical Improvements
 
-- Updated package dependencies
+- Updated package dependencies.
 
 ## [1.11.0]
 

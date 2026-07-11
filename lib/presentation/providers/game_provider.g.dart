@@ -10,10 +10,10 @@ part of 'game_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(Game)
-const gameProvider = GameFamily._();
+final gameProvider = GameFamily._();
 
 final class GameProvider extends $NotifierProvider<Game, GameState> {
-  const GameProvider._({
+  GameProvider._({
     required GameFamily super.from,
     required String super.argument,
   }) : super(
@@ -61,7 +61,7 @@ String _$gameHash() => r'67b0add8aa53b4aa6af3c2089014dc02eb4f6e64';
 
 final class GameFamily extends $Family
     with $ClassFamilyOverride<Game, GameState, GameState, GameState, String> {
-  const GameFamily._()
+  GameFamily._()
     : super(
         retry: null,
         name: r'gameProvider',
@@ -84,8 +84,7 @@ abstract class _$Game extends $Notifier<GameState> {
   GameState build(String levelId);
   @$mustCallSuper
   @override
-  void runBuild() {
-    final created = build(_$args);
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<GameState, GameState>;
     final element =
         ref.element
@@ -95,6 +94,6 @@ abstract class _$Game extends $Notifier<GameState> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,16 +8,18 @@ void main() {
 
   group('Levels Solvability Test', () {
     test('all levels should be solvable', () async {
-      // Load manifest to get list of all levels
-      final manifestContent = await rootBundle.loadString('AssetManifest.json');
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-
-      final levelPaths = manifestMap.keys
+      final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      final levelPaths = manifest
+          .listAssets()
           .where((String key) => key.contains('lib/data/levels/level_'))
           .toList();
 
       final levelIds = levelPaths.map((path) {
-        final levelId = path.split('/').last.replaceAll('level_', '').replaceAll('.json', '');
+        final levelId = path
+            .split('/')
+            .last
+            .replaceAll('level_', '')
+            .replaceAll('.json', '');
         return levelId;
       }).toList();
 
@@ -154,7 +155,10 @@ class PegSolitaireSolver {
 
     // Precompute all possible jump templates sorted by target centrality
     const directions = [
-      [0, 2], [0, -2], [2, 0], [-2, 0],
+      [0, 2],
+      [0, -2],
+      [2, 0],
+      [-2, 0],
     ];
 
     _allMoves = [];
@@ -171,12 +175,14 @@ class PegSolitaireSolver {
         if (midIdx != null && tarIdx != null) {
           final dr = tr - centerR;
           final dc = tc - centerC;
-          _allMoves.add(_BitMove(
-            fromBit: 1 << i,
-            middleBit: 1 << midIdx,
-            targetBit: 1 << tarIdx,
-            targetDist: dr * dr + dc * dc,
-          ));
+          _allMoves.add(
+            _BitMove(
+              fromBit: 1 << i,
+              middleBit: 1 << midIdx,
+              targetBit: 1 << tarIdx,
+              targetDist: dr * dr + dc * dc,
+            ),
+          );
         }
       }
     }

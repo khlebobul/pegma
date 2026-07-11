@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gaimon/gaimon.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/themes/app_theme.dart';
+import 'package:pegma/presentation/widgets/common/pressable.dart';
 
 class GameBottomBar extends StatelessWidget {
   final VoidCallback? onUndoPressed;
@@ -34,8 +35,7 @@ class GameBottomBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              child: Pressable(
                 onTap: canRedo
                     ? () {
                         onRedoPressed?.call();
@@ -56,8 +56,7 @@ class GameBottomBar extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              child: Pressable(
                 onTap: () {
                   onTutorialPressed?.call();
                   Gaimon.soft();
@@ -76,8 +75,7 @@ class GameBottomBar extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              child: Pressable(
                 onTap: canUndo
                     ? () {
                         onUndoPressed?.call();
