@@ -10,7 +10,7 @@ Future<void> sendEmail(
   final Uri emailLaunchUri = Uri(
     scheme: 'mailto',
     path: email,
-    queryParameters: {'subject': '$subject - pegma'},
+    query: 'subject=${Uri.encodeComponent('$subject pegma')}',
   );
 
   if (await canLaunchUrl(emailLaunchUri)) {
