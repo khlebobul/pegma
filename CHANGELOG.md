@@ -1,3 +1,9 @@
+## [1.11.3]
+
+#### Bug Fixes
+
+- Fixed email subject formatting for feedback actions.
+
 ## [1.11.2]
 
 #### Improvements
