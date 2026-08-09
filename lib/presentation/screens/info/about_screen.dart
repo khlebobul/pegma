@@ -67,10 +67,6 @@ class AboutScreen extends StatelessWidget {
                 title: S.of(context).projectWebsite,
                 onTap: () => launchLinkUrl(GeneralConsts.projectWebsite),
               ),
-              ActionButton(
-                title: S.of(context).telegram,
-                onTap: () => launchLinkUrl(GeneralConsts.telegramUrl),
-              ),
 
               const SizedBox(height: 12),
 

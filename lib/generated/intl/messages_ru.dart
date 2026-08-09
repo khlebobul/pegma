@@ -96,7 +96,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("начать заново?"),
     "story": MessageLookupByLibrary.simpleMessage("история"),
-    "telegram": MessageLookupByLibrary.simpleMessage("телеграм"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "классическая доска имеет форму креста: 7×7 клеток, 33 из них заняты фишками, центральная клетка пустая. кроме классической формы, существуют круглые, треугольные и другие нестандартные доски с разным количеством фишек.",

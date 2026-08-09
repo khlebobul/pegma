@@ -102,7 +102,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("ricominciare?"),
     "story": MessageLookupByLibrary.simpleMessage("storia"),
-    "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "il tabellone classico ha la forma di una croce: 7×7 caselle, 33 riempite con pioli e quella centrale vuota. oltre alla forma classica, esistono tavole circolari, triangolari e altre forme non standard con diversi numeri di pioli.",

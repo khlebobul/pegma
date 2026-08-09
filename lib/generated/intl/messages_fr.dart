@@ -100,7 +100,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("recommencer ?"),
     "story": MessageLookupByLibrary.simpleMessage("histoire"),
-    "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "le plateau classique a une forme de croix : 7×7 cases, 33 remplies de chevilles, la case centrale vide. outre la forme classique, il existe des plateaux circulaires, triangulaires et d\'autres plateaux non standard avec différents nombres de chevilles.",

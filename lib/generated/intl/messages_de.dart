@@ -96,7 +96,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("nochmal starten?"),
     "story": MessageLookupByLibrary.simpleMessage("geschichte"),
-    "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "das klassische brett hat eine kreuzform: 7×7 felder, 33 davon mit stiften gefüllt, das mittlere feld ist leer. neben der klassischen form gibt es runde, dreieckige und andere ungewöhnliche bretter mit unterschiedlicher anzahl von stiften.",

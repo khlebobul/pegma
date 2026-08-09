@@ -94,7 +94,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("start again?"),
     "story": MessageLookupByLibrary.simpleMessage("story"),
-    "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "the classic board has a cross shape: 7×7 squares, 33 filled with pegs, the center square empty. besides the classic shape, there are circular, triangular, and other non-standard boards with different numbers of pegs.",
