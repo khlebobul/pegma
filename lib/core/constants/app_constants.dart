@@ -29,7 +29,6 @@ class GeneralConsts {
 
   // URLs
   static const String projectWebsite = 'https://pegma.vercel.app';
-  static const String telegramUrl = 'https://t.me/khlebobul_dev';
   static const String githubRepository = 'https://github.com/khlebobul/pegma';
   static const String twitterUrl = 'https://twitter.com/khlebobul';
   static const String personalWebsite = 'https://khlebobul.github.io';

@@ -102,7 +102,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startAgain": MessageLookupByLibrary.simpleMessage("¿empezar de nuevo?"),
     "story": MessageLookupByLibrary.simpleMessage("historia"),
-    "telegram": MessageLookupByLibrary.simpleMessage("telegram"),
     "theClassicBoardHasACrossShape77Squares33":
         MessageLookupByLibrary.simpleMessage(
           "el tablero clásico tiene forma de cruz: 7×7 casillas, 33 llenas de clavijas y la casilla central vacía. además de la forma clásica, existen tableros circulares, triangulares y otros no estándar con diferentes números de clavijas.",

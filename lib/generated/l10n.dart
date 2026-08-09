@@ -94,11 +94,6 @@ class S {
     );
   }
 
-  /// `telegram`
-  String get telegram {
-    return Intl.message('telegram', name: 'telegram', desc: '', args: []);
-  }
-
   /// `fun fact: i made the font specifically for this app myself for uniqueness and fun with `
   String get funFact {
     return Intl.message(
