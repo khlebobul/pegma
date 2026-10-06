@@ -1,3 +1,9 @@
+## [1.11.5]
+
+#### Technical Improvements
+
+- Updated package dependencies.
+
 ## [1.11.4]
 
 - Updated links
