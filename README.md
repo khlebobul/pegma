@@ -2,7 +2,7 @@
 
 [![App Store](https://img.shields.io/badge/App_Store-414141?style=for-the-badge&logo=App+Store&logoColor=F1F1F1)](https://apps.apple.com/ru/app/pegma-peg-solitaire/id6754343848) [![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=Google+Play&logoColor=F1F1F1)](https://play.google.com/store/apps/details?id=com.khlebobul.pegma) [![RuStore](https://img.shields.io/badge/RuStore-414141?style=for-the-badge&logo=RuSrore&logoColor=F1F1F1)](https://www.rustore.ru/catalog/app/com.khlebobul.pegma) [![Website](https://img.shields.io/badge/Website-414141?style=for-the-badge&logo=Website&logoColor=F1F1F1)](https://pegma.vercel.app)
 
-<img width="700" alt="Frame 1" src="https://github.com/user-attachments/assets/3a537b38-fbca-45e0-898d-60fac2ff68a5" />
+<img width="1200" alt="Pegma screenshots: peg solitaire, 120+ levels, available moves, dark theme, interactive tutorial, undo and redo" src="screenshots/github.jpg" />
 
 A free and cross-platform version of the classic Peg solitaire! Enjoy the timeless puzzle on your mobile device!
 
@@ -20,6 +20,10 @@ A free and cross-platform version of the classic Peg solitaire! Enjoy the timele
 
 ## Credits
 
+App Store and Google Play screenshots are made with the [App Store Screenshots](https://www.parthjadhav.com/products/app-store-screenshots) skill by [Parth Jadhav](https://x.com/parthjadhav8). Thanks for the great editor template.
+
+App Store metadata is prepared with [App Store Connect CLI](https://github.com/rorkai/App-Store-Connect-CLI) and its [asc-metadata-sync agent skill](https://github.com/rorkai/app-store-connect-cli-skills), created by [Rudrank Riyam](https://x.com/rudrank). Thanks to Rudrank and all maintainers and contributors.
+
 [shared_preferences](https://pub.dev/packages/shared_preferences) / [intl](https://pub.dev/packages/intl) / [url_launcher](https://pub.dev/packages/url_launcher) / [flutter_svg](https://pub.dev/packages/flutter_svg) / [talker](https://pub.dev/packages/talker) / [flutter_riverpod]( https://pub.dev/packages/flutter_riverpod) / [gaimon](https://pub.dev/packages/gaimon) / [sqflite](https://pub.dev/packages/sqflite) / [in_app_review](https://pub.dev/packages/in_app_review) / [upgrader](https://pub.dev/packages/upgrader) / [motor](https://pub.dev/packages/motor)
 
 > [!NOTE]
@@ -32,4 +36,3 @@ A free and cross-platform version of the classic Peg solitaire! Enjoy the timele
 ## License
 
 [![LICENCE - MIT](https://img.shields.io/badge/LICENCE-MIT-414141?style=for-the-badge&logo=Licence&logoColor=F1F1F1)](https://github.com/khlebobul/pegma/blob/main/LICENSE)
-

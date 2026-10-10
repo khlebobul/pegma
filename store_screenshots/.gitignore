@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+
+# Generated screenshots, exports and local image assets stay out of Git.
+/export/
+/public/screenshots/
+/public/**/*.png
+/public/**/*.jpg
+/public/**/*.jpeg
+/public/**/*.webp
+
+/public/fonts/capture-fallback.ttf
