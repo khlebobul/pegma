@@ -29,6 +29,10 @@ From Flutter app root on macOS:
 rtk proxy flutter test test/store_screenshots/capture_test.dart
 ```
 
+Capture tests carry the `store-screenshots` tag. Linux CI runs
+`flutter test --coverage --exclude-tags store-screenshots` because capture uses
+macOS system fonts and generates local images.
+
 Production game, level list and tutorial widgets rendered offline. Legal moves run
 through the real game provider. Mock preferences and database reads never use personal
 saves. Flutter assertions check legal moves, loaded boards and layout errors.

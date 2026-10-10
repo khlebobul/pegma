@@ -1,5 +1,8 @@
 // Offline captures of production widgets; no personal preferences or saves.
 // Run from app root: flutter test test/store_screenshots/capture_test.dart
+@Tags(['store-screenshots'])
+library;
+
 import 'dart:io';
 import 'dart:ui' as ui;
 
