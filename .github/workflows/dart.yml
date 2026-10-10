@@ -35,4 +35,4 @@ jobs:
 
       # Step 5: Run tests
       - name: Run tests
-        run: flutter test --coverage
+        run: flutter test --coverage --exclude-tags store-screenshots

@@ -1,0 +1,1242 @@
+{
+  "schemaVersion": 2,
+  "appName": "pegma",
+  "themeId": "pegma",
+  "connectedCanvas": false,
+  "locales": [
+    "en",
+    "ru",
+    "es",
+    "it",
+    "fr",
+    "de"
+  ],
+  "locale": "it",
+  "device": "iphone",
+  "orientation": "portrait",
+  "appIcon": "/app-icon.png",
+  "slidesByDevice": {
+    "iphone": [
+      {
+        "id": "iphone-1",
+        "layout": "hero",
+        "label": {
+          "en": "peg solitaire",
+          "ru": "солитер с фишками",
+          "es": "solitario de clavijas",
+          "it": "solitario con pioli",
+          "fr": "solitaire à pions",
+          "de": "steckhalma"
+        },
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/01-classic.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 178,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 198,
+            "y": 746,
+            "width": 924,
+            "height": 1882,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "offline. no ads.",
+              "ru": "без интернета и рекламы.",
+              "es": "sin conexión. sin anuncios.",
+              "it": "offline. senza pubblicità.",
+              "fr": "hors ligne. sans publicité.",
+              "de": "offline. ohne werbung."
+            },
+            "transform": {
+              "x": 92,
+              "y": 591,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "iphone-2",
+        "layout": "device-bottom",
+        "label": {
+          "en": "120+ levels",
+          "ru": "120+ уровней",
+          "es": "más de 120 niveles",
+          "it": "oltre 120 livelli",
+          "fr": "plus de 120 niveaux",
+          "de": "über 120 level"
+        },
+        "headline": {
+          "en": "find your\nnext challenge.",
+          "ru": "найди новую\nзадачу.",
+          "es": "encuentra tu\npróximo reto.",
+          "it": "trova la tua\nprossima sfida.",
+          "fr": "trouvez votre\nprochain défi.",
+          "de": "finde deine\nnächste aufgabe."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/02-levels.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 178,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 198,
+            "y": 746,
+            "width": 924,
+            "height": 1882,
+            "rotation": -5
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "a new board, a new solution.",
+              "ru": "новое поле — новое решение.",
+              "es": "otro tablero, otra solución.",
+              "it": "un tabellone, una nuova soluzione.",
+              "fr": "un plateau, une nouvelle solution.",
+              "de": "ein neues brett, ein neuer weg."
+            },
+            "transform": {
+              "x": 92,
+              "y": 591,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "iphone-3",
+        "layout": "hero",
+        "label": {
+          "en": "available moves",
+          "ru": "доступные ходы",
+          "es": "movimientos posibles",
+          "it": "mosse disponibili",
+          "fr": "coups possibles",
+          "de": "mögliche züge"
+        },
+        "headline": {
+          "en": "see where\nyou can jump.",
+          "ru": "выбери свой\nпрыжок.",
+          "es": "elige dónde\nsaltar.",
+          "it": "scegli dove\nsaltare.",
+          "fr": "choisissez\nvotre saut.",
+          "de": "wähle deinen\nsprung."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/03-hints.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 178,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 198,
+            "y": 746,
+            "width": 924,
+            "height": 1882,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "tap a peg. choose your move.",
+              "ru": "нажми на фишку и сделай ход.",
+              "es": "toca una clavija y mueve.",
+              "it": "tocca un piolo e fai la tua mossa.",
+              "fr": "touchez un pion et jouez.",
+              "de": "tippe einen stein an und ziehe."
+            },
+            "transform": {
+              "x": 92,
+              "y": 591,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "iphone-4",
+        "layout": "device-top",
+        "label": {
+          "en": "light & dark",
+          "ru": "светлая и тёмная",
+          "es": "claro y oscuro",
+          "it": "chiaro e scuro",
+          "fr": "clair et sombre",
+          "de": "hell und dunkel"
+        },
+        "headline": {
+          "en": "a puzzle for\nevery mood.",
+          "ru": "играй под\nнастроение.",
+          "es": "juega a\ntu manera.",
+          "it": "gioca come\npreferisci.",
+          "fr": "jouez selon\nvotre humeur.",
+          "de": "spiele nach\ndeiner stimmung."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/04-dark.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 1979,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 290,
+            "y": 100,
+            "width": 739,
+            "height": 1506,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "your pace. your theme.",
+              "ru": "твой темп. твоя тема.",
+              "es": "tu ritmo. tu tema.",
+              "it": "il tuo ritmo. il tuo tema.",
+              "fr": "votre rythme. votre thème.",
+              "de": "dein tempo. dein design."
+            },
+            "transform": {
+              "x": 92,
+              "y": 2452,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#E8B1F4",
+            "align": "center"
+          }
+        ],
+        "inverted": true
+      },
+      {
+        "id": "iphone-5",
+        "layout": "hero",
+        "label": {
+          "en": "interactive tutorial",
+          "ru": "обучение в игре",
+          "es": "tutorial interactivo",
+          "it": "tutorial interattivo",
+          "fr": "tutoriel interactif",
+          "de": "interaktives tutorial"
+        },
+        "headline": {
+          "en": "learn by\nplaying.",
+          "ru": "учись,\nиграя.",
+          "es": "aprende\njugando.",
+          "it": "impara\ngiocando.",
+          "fr": "apprenez\nen jouant.",
+          "de": "lerne beim\nspielen."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/05-tutorial.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 178,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 198,
+            "y": 746,
+            "width": 924,
+            "height": 1882,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "simple rules. thoughtful moves.",
+              "ru": "простые правила. точные ходы.",
+              "es": "reglas simples. piensa cada salto.",
+              "it": "regole semplici. mosse ragionate.",
+              "fr": "règles simples. coups réfléchis.",
+              "de": "einfache regeln. kluge züge."
+            },
+            "transform": {
+              "x": 92,
+              "y": 591,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "iphone-6",
+        "layout": "two-devices",
+        "label": {
+          "en": "undo & redo",
+          "ru": "отмена и возврат",
+          "es": "deshacer y rehacer",
+          "it": "annulla e ripristina",
+          "fr": "annuler et rétablir",
+          "de": "zurück und vor"
+        },
+        "headline": {
+          "en": "try another\nway.",
+          "ru": "попробуй\nдругой путь.",
+          "es": "prueba otro\ncamino.",
+          "it": "prova\nun’altra strada.",
+          "fr": "essayez une\nautre voie.",
+          "de": "probiere\neinen neuen weg."
+        },
+        "screenshot": "/screenshots/apple/iphone/{locale}/06-undo.png",
+        "transforms": {
+          "caption": {
+            "x": 92,
+            "y": 178,
+            "width": 1135,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 535,
+            "y": 1147,
+            "width": 686,
+            "height": 1398,
+            "rotation": 6
+          },
+          "deviceSecondary": {
+            "x": 86,
+            "y": 832,
+            "width": 686,
+            "height": 1398,
+            "rotation": -6
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "undo. rethink. keep playing.",
+              "ru": "отмени ход. найди решение.",
+              "es": "deshaz. piensa. sigue jugando.",
+              "it": "annulla. ripensa. continua.",
+              "fr": "annulez. réfléchissez. continuez.",
+              "de": "zurücknehmen. nachdenken. weiter."
+            },
+            "transform": {
+              "x": 92,
+              "y": 591,
+              "width": 1135,
+              "height": 201,
+              "rotation": 0
+            },
+            "fontSize": 69,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          },
+          {
+            "id": "extras",
+            "text": {
+              "en": "offline · no ads · no in-app purchases",
+              "ru": "офлайн · без рекламы · без покупок",
+              "es": "offline · sin anuncios · sin compras",
+              "it": "offline · senza pubblicità · senza acquisti",
+              "fr": "hors ligne · sans publicité · sans achats",
+              "de": "offline · ohne werbung · ohne käufe"
+            },
+            "transform": {
+              "x": 92,
+              "y": 2696,
+              "width": 1135,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ],
+        "screenshotSecondary": "/screenshots/apple/iphone/{locale}/01-classic.png"
+      }
+    ],
+    "ipad": [
+      {
+        "id": "ipad-1",
+        "layout": "hero",
+        "label": {
+          "en": "peg solitaire",
+          "ru": "солитер с фишками",
+          "es": "solitario de clavijas",
+          "it": "solitario con pioli",
+          "fr": "solitaire à pions",
+          "de": "steckhalma"
+        },
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/01-classic.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 171,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 413,
+            "y": 894,
+            "width": 1238,
+            "height": 1608,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "offline. no ads.",
+              "ru": "без интернета и рекламы.",
+              "es": "sin conexión. sin anuncios.",
+              "it": "offline. senza pubblicità.",
+              "fr": "hors ligne. sans publicité.",
+              "de": "offline. ohne werbung."
+            },
+            "transform": {
+              "x": 144,
+              "y": 647,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "ipad-2",
+        "layout": "device-bottom",
+        "label": {
+          "en": "120+ levels",
+          "ru": "120+ уровней",
+          "es": "más de 120 niveles",
+          "it": "oltre 120 livelli",
+          "fr": "plus de 120 niveaux",
+          "de": "über 120 level"
+        },
+        "headline": {
+          "en": "find your\nnext challenge.",
+          "ru": "найди новую\nзадачу.",
+          "es": "encuentra tu\npróximo reto.",
+          "it": "trova la tua\nprossima sfida.",
+          "fr": "trouvez votre\nprochain défi.",
+          "de": "finde deine\nnächste aufgabe."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/02-levels.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 171,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 413,
+            "y": 894,
+            "width": 1238,
+            "height": 1608,
+            "rotation": -5
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "a new board, a new solution.",
+              "ru": "новое поле — новое решение.",
+              "es": "otro tablero, otra solución.",
+              "it": "un tabellone, una nuova soluzione.",
+              "fr": "un plateau, une nouvelle solution.",
+              "de": "ein neues brett, ein neuer weg."
+            },
+            "transform": {
+              "x": 144,
+              "y": 647,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "ipad-3",
+        "layout": "hero",
+        "label": {
+          "en": "available moves",
+          "ru": "доступные ходы",
+          "es": "movimientos posibles",
+          "it": "mosse disponibili",
+          "fr": "coups possibles",
+          "de": "mögliche züge"
+        },
+        "headline": {
+          "en": "see where\nyou can jump.",
+          "ru": "выбери свой\nпрыжок.",
+          "es": "elige dónde\nsaltar.",
+          "it": "scegli dove\nsaltare.",
+          "fr": "choisissez\nvotre saut.",
+          "de": "wähle deinen\nsprung."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/03-hints.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 171,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 413,
+            "y": 894,
+            "width": 1238,
+            "height": 1608,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "tap a peg. choose your move.",
+              "ru": "нажми на фишку и сделай ход.",
+              "es": "toca una clavija y mueve.",
+              "it": "tocca un piolo e fai la tua mossa.",
+              "fr": "touchez un pion et jouez.",
+              "de": "tippe einen stein an und ziehe."
+            },
+            "transform": {
+              "x": 144,
+              "y": 647,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "ipad-4",
+        "layout": "device-top",
+        "label": {
+          "en": "light & dark",
+          "ru": "светлая и тёмная",
+          "es": "claro y oscuro",
+          "it": "chiaro e scuro",
+          "fr": "clair et sombre",
+          "de": "hell und dunkel"
+        },
+        "headline": {
+          "en": "a puzzle for\nevery mood.",
+          "ru": "играй под\nнастроение.",
+          "es": "juega a\ntu manera.",
+          "it": "gioca come\npreferisci.",
+          "fr": "jouez selon\nvotre humeur.",
+          "de": "spiele nach\ndeiner stimmung."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/04-dark.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 1844,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 444,
+            "y": 96,
+            "width": 1176,
+            "height": 1528,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "your pace. your theme.",
+              "ru": "твой темп. твоя тема.",
+              "es": "tu ritmo. tu tema.",
+              "it": "il tuo ritmo. il tuo tema.",
+              "fr": "votre rythme. votre thème.",
+              "de": "dein tempo. dein design."
+            },
+            "transform": {
+              "x": 144,
+              "y": 2380,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#E8B1F4",
+            "align": "center"
+          }
+        ],
+        "inverted": true
+      },
+      {
+        "id": "ipad-5",
+        "layout": "hero",
+        "label": {
+          "en": "interactive tutorial",
+          "ru": "обучение в игре",
+          "es": "tutorial interactivo",
+          "it": "tutorial interattivo",
+          "fr": "tutoriel interactif",
+          "de": "interaktives tutorial"
+        },
+        "headline": {
+          "en": "learn by\nplaying.",
+          "ru": "учись,\nиграя.",
+          "es": "aprende\njugando.",
+          "it": "impara\ngiocando.",
+          "fr": "apprenez\nen jouant.",
+          "de": "lerne beim\nspielen."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/05-tutorial.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 171,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 413,
+            "y": 894,
+            "width": 1238,
+            "height": 1608,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "simple rules. thoughtful moves.",
+              "ru": "простые правила. точные ходы.",
+              "es": "reglas simples. piensa cada salto.",
+              "it": "regole semplici. mosse ragionate.",
+              "fr": "règles simples. coups réfléchis.",
+              "de": "einfache regeln. kluge züge."
+            },
+            "transform": {
+              "x": 144,
+              "y": 647,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "ipad-6",
+        "layout": "two-devices",
+        "label": {
+          "en": "undo & redo",
+          "ru": "отмена и возврат",
+          "es": "deshacer y rehacer",
+          "it": "annulla e ripristina",
+          "fr": "annuler et rétablir",
+          "de": "zurück und vor"
+        },
+        "headline": {
+          "en": "try another\nway.",
+          "ru": "попробуй\nдругой путь.",
+          "es": "prueba otro\ncamino.",
+          "it": "prova\nun’altra strada.",
+          "fr": "essayez une\nautre voie.",
+          "de": "probiere\neinen neuen weg."
+        },
+        "screenshot": "/screenshots/apple/ipad/{locale}/06-undo.png",
+        "transforms": {
+          "caption": {
+            "x": 144,
+            "y": 171,
+            "width": 1775,
+            "height": 550,
+            "rotation": 0
+          },
+          "device": {
+            "x": 836,
+            "y": 1101,
+            "width": 991,
+            "height": 1287,
+            "rotation": 6
+          },
+          "deviceSecondary": {
+            "x": 134,
+            "y": 798,
+            "width": 991,
+            "height": 1287,
+            "rotation": -6
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "undo. rethink. keep playing.",
+              "ru": "отмени ход. найди решение.",
+              "es": "deshaz. piensa. sigue jugando.",
+              "it": "annulla. ripensa. continua.",
+              "fr": "annulez. réfléchissez. continuez.",
+              "de": "zurücknehmen. nachdenken. weiter."
+            },
+            "transform": {
+              "x": 144,
+              "y": 647,
+              "width": 1775,
+              "height": 193,
+              "rotation": 0
+            },
+            "fontSize": 85,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          },
+          {
+            "id": "extras",
+            "text": {
+              "en": "offline · no ads · no in-app purchases",
+              "ru": "офлайн · без рекламы · без покупок",
+              "es": "offline · sin anuncios · sin compras",
+              "it": "offline · senza pubblicità · senza acquisti",
+              "fr": "hors ligne · sans publicité · sans achats",
+              "de": "offline · ohne werbung · ohne käufe"
+            },
+            "transform": {
+              "x": 144,
+              "y": 2587,
+              "width": 1775,
+              "height": 138,
+              "rotation": 0
+            },
+            "fontSize": 78,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ],
+        "screenshotSecondary": "/screenshots/apple/ipad/{locale}/01-classic.png"
+      }
+    ],
+    "android": [
+      {
+        "id": "android-1",
+        "layout": "hero",
+        "label": {
+          "en": "peg solitaire",
+          "ru": "солитер с фишками",
+          "es": "solitario de clavijas",
+          "it": "solitario con pioli",
+          "fr": "solitaire à pions",
+          "de": "steckhalma"
+        },
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/01-classic.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 119,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 238,
+            "y": 538,
+            "width": 605,
+            "height": 1310,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "offline. no ads.",
+              "ru": "без интернета и рекламы.",
+              "es": "sin conexión. sin anuncios.",
+              "it": "offline. senza pubblicità.",
+              "fr": "hors ligne. sans publicité.",
+              "de": "offline. ohne werbung."
+            },
+            "transform": {
+              "x": 75,
+              "y": 450,
+              "width": 929,
+              "height": 90,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "android-2",
+        "layout": "device-bottom",
+        "label": {
+          "en": "120+ levels",
+          "ru": "120+ уровней",
+          "es": "más de 120 niveles",
+          "it": "oltre 120 livelli",
+          "fr": "plus de 120 niveaux",
+          "de": "über 120 level"
+        },
+        "headline": {
+          "en": "find your\nnext challenge.",
+          "ru": "найди новую\nзадачу.",
+          "es": "encuentra tu\npróximo reto.",
+          "it": "trova la tua\nprossima sfida.",
+          "fr": "trouvez votre\nprochain défi.",
+          "de": "finde deine\nnächste aufgabe."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/02-levels.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 119,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 238,
+            "y": 538,
+            "width": 605,
+            "height": 1310,
+            "rotation": -5
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "a new board, a new solution.",
+              "ru": "новое поле — новое решение.",
+              "es": "otro tablero, otra solución.",
+              "it": "un tabellone, una nuova soluzione.",
+              "fr": "un plateau, une nouvelle solution.",
+              "de": "ein neues brett, ein neuer weg."
+            },
+            "transform": {
+              "x": 75,
+              "y": 450,
+              "width": 929,
+              "height": 90,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "android-3",
+        "layout": "hero",
+        "label": {
+          "en": "available moves",
+          "ru": "доступные ходы",
+          "es": "movimientos posibles",
+          "it": "mosse disponibili",
+          "fr": "coups possibles",
+          "de": "mögliche züge"
+        },
+        "headline": {
+          "en": "see where\nyou can jump.",
+          "ru": "выбери свой\nпрыжок.",
+          "es": "elige dónde\nsaltar.",
+          "it": "scegli dove\nsaltare.",
+          "fr": "choisissez\nvotre saut.",
+          "de": "wähle deinen\nsprung."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/03-hints.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 119,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 238,
+            "y": 538,
+            "width": 605,
+            "height": 1310,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "tap a peg. choose your move.",
+              "ru": "нажми на фишку и сделай ход.",
+              "es": "toca una clavija y mueve.",
+              "it": "tocca un piolo e fai la tua mossa.",
+              "fr": "touchez un pion et jouez.",
+              "de": "tippe einen stein an und ziehe."
+            },
+            "transform": {
+              "x": 75,
+              "y": 450,
+              "width": 929,
+              "height": 90,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "android-4",
+        "layout": "device-top",
+        "label": {
+          "en": "light & dark",
+          "ru": "светлая и тёмная",
+          "es": "claro y oscuro",
+          "it": "chiaro e scuro",
+          "fr": "clair et sombre",
+          "de": "hell und dunkel"
+        },
+        "headline": {
+          "en": "a puzzle for\nevery mood.",
+          "ru": "играй под\nнастроение.",
+          "es": "juega a\ntu manera.",
+          "it": "gioca come\npreferisci.",
+          "fr": "jouez selon\nvotre humeur.",
+          "de": "spiele nach\ndeiner stimmung."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/04-dark.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 1325,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 275,
+            "y": 67,
+            "width": 529,
+            "height": 1147,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "your pace. your theme.",
+              "ru": "твой темп. твоя тема.",
+              "es": "tu ritmo. tu tema.",
+              "it": "il tuo ritmo. il tuo tema.",
+              "fr": "votre rythme. votre thème.",
+              "de": "dein tempo. dein design."
+            },
+            "transform": {
+              "x": 75,
+              "y": 1642,
+              "width": 929,
+              "height": 135,
+              "rotation": 0
+            },
+            "fontSize": 56,
+            "fontWeight": 700,
+            "color": "#E8B1F4",
+            "align": "center"
+          }
+        ],
+        "inverted": true
+      },
+      {
+        "id": "android-5",
+        "layout": "hero",
+        "label": {
+          "en": "interactive tutorial",
+          "ru": "обучение в игре",
+          "es": "tutorial interactivo",
+          "it": "tutorial interattivo",
+          "fr": "tutoriel interactif",
+          "de": "interaktives tutorial"
+        },
+        "headline": {
+          "en": "learn by\nplaying.",
+          "ru": "учись,\nиграя.",
+          "es": "aprende\njugando.",
+          "it": "impara\ngiocando.",
+          "fr": "apprenez\nen jouant.",
+          "de": "lerne beim\nspielen."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/05-tutorial.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 119,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 238,
+            "y": 538,
+            "width": 605,
+            "height": 1310,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "simple rules. thoughtful moves.",
+              "ru": "простые правила. точные ходы.",
+              "es": "reglas simples. piensa cada salto.",
+              "it": "regole semplici. mosse ragionate.",
+              "fr": "règles simples. coups réfléchis.",
+              "de": "einfache regeln. kluge züge."
+            },
+            "transform": {
+              "x": 75,
+              "y": 450,
+              "width": 929,
+              "height": 90,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "android-6",
+        "layout": "two-devices",
+        "label": {
+          "en": "undo & redo",
+          "ru": "отмена и возврат",
+          "es": "deshacer y rehacer",
+          "it": "annulla e ripristina",
+          "fr": "annuler et rétablir",
+          "de": "zurück und vor"
+        },
+        "headline": {
+          "en": "try another\nway.",
+          "ru": "попробуй\nдругой путь.",
+          "es": "prueba otro\ncamino.",
+          "it": "prova\nun’altra strada.",
+          "fr": "essayez une\nautre voie.",
+          "de": "probiere\neinen neuen weg."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/06-undo.png",
+        "transforms": {
+          "caption": {
+            "x": 75,
+            "y": 119,
+            "width": 929,
+            "height": 400,
+            "rotation": 0
+          },
+          "device": {
+            "x": 497,
+            "y": 768,
+            "width": 454,
+            "height": 983,
+            "rotation": 6
+          },
+          "deviceSecondary": {
+            "x": 140,
+            "y": 557,
+            "width": 454,
+            "height": 983,
+            "rotation": -6
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "undo. rethink. keep playing.",
+              "ru": "отмени ход. найди решение.",
+              "es": "deshaz. piensa. sigue jugando.",
+              "it": "annulla. ripensa. continua.",
+              "fr": "annulez. réfléchissez. continuez.",
+              "de": "zurücknehmen. nachdenken. weiter."
+            },
+            "transform": {
+              "x": 75,
+              "y": 450,
+              "width": 929,
+              "height": 90,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          },
+          {
+            "id": "extras",
+            "text": {
+              "en": "offline · no ads · no in-app purchases",
+              "ru": "офлайн · без рекламы · без покупок",
+              "es": "offline · sin anuncios · sin compras",
+              "it": "offline · senza pubblicità · senza acquisti",
+              "fr": "hors ligne · sans publicité · sans achats",
+              "de": "offline · ohne werbung · ohne käufe"
+            },
+            "transform": {
+              "x": 75,
+              "y": 1805,
+              "width": 929,
+              "height": 96,
+              "rotation": 0
+            },
+            "fontSize": 41,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ],
+        "screenshotSecondary": "/screenshots/android/phone/{locale}/01-classic.png"
+      }
+    ],
+    "android-7": [],
+    "android-10": [],
+    "feature-graphic": [
+      {
+        "id": "pegma-feature-graphic",
+        "layout": "feature-graphic",
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "label": {
+          "en": "offline. no ads.",
+          "ru": "без интернета и рекламы.",
+          "es": "sin conexión. sin anuncios.",
+          "it": "offline. senza pubblicità.",
+          "fr": "hors ligne. sans publicité.",
+          "de": "offline. ohne werbung."
+        },
+        "screenshot": "/screenshots/android/phone/{locale}/01-classic.png"
+      }
+    ]
+  }
+}
