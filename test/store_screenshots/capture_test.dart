@@ -40,6 +40,14 @@ void main() {
           ),
         ))
         .load();
+    await (FontLoader('StatusBar')..addFont(
+          Future.value(
+            ByteData.sublistView(
+              File('/System/Library/Fonts/SFNS.ttf').readAsBytesSync(),
+            ),
+          ),
+        ))
+        .load();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(const MethodChannel('com.tekartik.sqflite'), (
           call,
@@ -66,26 +74,52 @@ void main() {
         });
   });
 
+  const duoOnly = bool.fromEnvironment('DUO_ONLY');
   testWidgets('capture every supported locale and device', (tester) async {
     addTearDown(() {
       tester.view.reset();
       debugDefaultTargetPlatformOverride = null;
     });
     for (final locale in S.delegate.supportedLocales) {
-      for (final device in ['iphone', 'ipad', 'android']) {
+      for (final device
+          in duoOnly
+              ? ['duo-outer', 'duo-inner']
+              : ['iphone', 'ipad', 'android']) {
         debugPrint('Capturing ${locale.languageCode} $device');
+        final outer = device == 'duo-outer';
+        final inner = device == 'duo-inner';
+        final duo = outer || inner;
         final android = device == 'android';
         final phone = device != 'ipad';
         final ratio = phone ? 3.0 : 2.0;
-        tester.view.physicalSize = android
+        tester.view.physicalSize = outer
+            ? const Size(1398, 2034)
+            : inner
+            ? const Size(2007, 2853)
+            : android
             ? const Size(1080, 2340)
             : phone
             ? const Size(1320, 2868)
             : const Size(2064, 2752);
         tester.view.devicePixelRatio = ratio;
         tester.view.padding = FakeViewPadding(
-          top: (phone ? 62 : 24) * ratio,
-          bottom: (phone ? 34 : 20) * ratio,
+          top:
+              (outer
+                  ? 24
+                  : inner
+                  ? 48
+                  : phone
+                  ? 62
+                  : 24) *
+              ratio,
+          right: (outer ? 84 : 0) * ratio,
+          bottom:
+              (duo
+                  ? 24
+                  : phone
+                  ? 34
+                  : 20) *
+              ratio,
         );
         tester.view.viewPadding = tester.view.padding;
         final platform = android ? TargetPlatform.android : TargetPlatform.iOS;
@@ -122,6 +156,29 @@ void main() {
                     GlobalCupertinoLocalizations.delegate,
                   ],
                   supportedLocales: S.delegate.supportedLocales,
+                  builder: duo
+                      ? (context, child) => Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            ColoredBox(
+                              color: dark
+                                  ? const Color(0xFF202020)
+                                  : const Color(0xFFF1F1F1),
+                              child: SafeArea(
+                                top: false,
+                                bottom: false,
+                                left: false,
+                                child: child!,
+                              ),
+                            ),
+                            IgnorePointer(
+                              child: CustomPaint(
+                                painter: DuoStatusBar(outer: outer, dark: dark),
+                              ),
+                            ),
+                          ],
+                        )
+                      : null,
                   home: home ? const HomeScreen() : GameScreen(levelId: level),
                 ),
               ),
@@ -209,4 +266,113 @@ void main() {
       }
     }
   });
+}
+
+// System chrome only; app content is rendered by the production widgets above.
+class DuoStatusBar extends CustomPainter {
+  final bool outer;
+  final bool dark;
+  DuoStatusBar({required this.outer, required this.dark});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final color = dark ? const Color(0xFFF1F1F1) : const Color(0xFF202020);
+    final paint = Paint()..color = color;
+    void time(Offset offset) {
+      final text = TextPainter(
+        text: TextSpan(
+          text: '9:41',
+          style: TextStyle(
+            fontFamily: 'StatusBar',
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: color,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      text.paint(canvas, offset);
+    }
+
+    void wifi(Offset offset) {
+      canvas.save();
+      canvas.translate(offset.dx, offset.dy);
+      for (final radius in [9.0, 6.0, 3.0]) {
+        canvas.drawArc(
+          Rect.fromCircle(center: const Offset(10, 11), radius: radius),
+          -2.35,
+          1.56,
+          false,
+          Paint()
+            ..color = color
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 2,
+        );
+      }
+      canvas.drawCircle(const Offset(10, 11), 1.1, paint);
+      canvas.restore();
+    }
+
+    void battery(Offset offset) {
+      final rect = offset & const Size(25, 12);
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(rect, const Radius.circular(3)),
+        Paint()
+          ..color = color.withValues(alpha: 0.5)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1,
+      );
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(rect.deflate(2), const Radius.circular(1)),
+        paint,
+      );
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(offset.dx + 26, offset.dy + 4, 2, 4),
+          const Radius.circular(1),
+        ),
+        paint,
+      );
+    }
+
+    if (outer) {
+      final x = size.width - 48;
+      canvas.drawCircle(
+        Offset(x, 42.5),
+        18.5,
+        Paint()..color = const Color(0xFF09090B),
+      );
+      canvas.drawCircle(
+        Offset(x, 42.5),
+        8,
+        Paint()..color = const Color(0xFF171D29),
+      );
+      time(Offset(x - 17, 82));
+      wifi(Offset(x - 10, 114));
+      battery(Offset(x - 13, 149));
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(x - 2.5, size.height - 137, 5, 100),
+          const Radius.circular(3),
+        ),
+        paint,
+      );
+    } else {
+      final x = size.width - 116;
+      time(Offset(x, 16));
+      wifi(Offset(x + 43, 18));
+      battery(Offset(x + 66, 20));
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(size.width / 2 - 67, size.height - 13, 134, 5),
+          const Radius.circular(3),
+        ),
+        paint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(DuoStatusBar oldDelegate) =>
+      outer != oldDelegate.outer || dark != oldDelegate.dark;
 }

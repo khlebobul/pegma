@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 async def main(device='android'):
     state = json.loads((ROOT / 'app-store-screenshots.json').read_text())
     state.update(device=device, locales=['en'], locale='en')
-    expected_size = (1024, 500) if device == 'feature-graphic' else (1080, 1920)
+    expected_size = {'android': (1080, 1920), 'feature-graphic': (1024, 500), 'duo-outer': (1398, 2034), 'duo-inner': (2007, 2853)}[device]
     async with async_playwright() as p:
         browser = await p.chromium.launch(
             executable_path=os.environ.get('CHROME', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'),
@@ -56,5 +56,5 @@ async def main(device='android'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--device', choices=['android', 'feature-graphic'], default='android')
+    parser.add_argument('--device', choices=['android', 'feature-graphic', 'duo-outer', 'duo-inner'], default='android')
     asyncio.run(main(parser.parse_args().device))

@@ -4,6 +4,8 @@ import type { Device, Orientation, SlideLayout, Theme, ThemeId } from "./types";
 export const CANVAS: Record<Device, { w: number; h: number; wL?: number; hL?: number }> = {
   iphone:        { w: 1320, h: 2868 },
   ipad:          { w: 2064, h: 2752 },
+  "duo-outer": { w: 1398, h: 2034 },
+  "duo-inner": { w: 2007, h: 2853 },
   android:       { w: 1080, h: 1920 },
   "android-7":   { w: 1200, h: 1920, wL: 1920, hL: 1200 },
   "android-10":  { w: 1600, h: 2560, wL: 2560, hL: 1600 },
@@ -20,6 +22,8 @@ export const EXPORT_SIZES: Record<Device, ExportSize[]> = {
     { label: '6.3"', w: 1206, h: 2622 },
     { label: '6.1"', w: 1125, h: 2436 },
   ],
+  "duo-outer": [{ label: "Duo outer", w: 1398, h: 2034 }],
+  "duo-inner": [{ label: "Duo inner", w: 2007, h: 2853 }],
   ipad: [
     { label: '13" iPad',       w: 2064, h: 2752 },
     { label: '12.9" iPad Pro', w: 2048, h: 2732 },
@@ -154,6 +158,8 @@ export const PROJECT_SCHEMA_VERSION = 2;
 export const DEVICE_LABEL: Record<Device, string> = {
   iphone: "iPhone",
   ipad: "iPad",
+  "duo-outer": "iPhone Duo (outer)",
+  "duo-inner": "iPhone Duo (inner)",
   android: "Android Phone",
   "android-7": 'Android 7" Tablet',
   "android-10": 'Android 10" Tablet',

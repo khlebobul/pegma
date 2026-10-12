@@ -70,6 +70,37 @@ Restore fonts, icon and device mockup after a fresh checkout:
 Built with [app-store-screenshots](https://www.parthjadhav.com/products/app-store-screenshots).
 See the showcase; tag **@parthjadhav8** on Twitter to share your app.
 
+## iPhone Duo — all UI locales
+
+Duo outer and inner are additional devices in the same editor. Original iPhone,
+iPad and Android decks are preserved. Six slides per display use the iPhone copy and screen order in all six UI
+locales: en, ru, es, it, fr, de.
+
+```sh
+# From app root: real widgets, iOS platform, real fonts, @3x and Duo safe areas.
+rtk proxy flutter test --dart-define=DUO_ONLY=true test/store_screenshots/capture_test.dart
+# From store_screenshots, with the dev server running:
+rtk proxy python3 scripts/export-pngs.py --device duo-outer --locales en ru es it fr de
+rtk proxy python3 scripts/export-pngs.py --device duo-inner --locales en ru es it fr de
+rtk proxy python3 scripts/check-editor.py --device duo-outer
+rtk proxy python3 scripts/check-editor.py --device duo-inner
+```
+
+- Outer: 1398×2034 PNG; logical 466×678, top/bottom 24 pt, right 84 pt.
+- Inner: 2007×2853 PNG; logical 669×951, top 48 pt, bottom 24 pt.
+- Capture builder reserves the outer rail around the real navigator, including dialogs.
+- System chrome uses SFNS, 9:41, full Wi-Fi/battery, outer camera and vertical
+  home indicator; inner has no visible camera and a subtle horizontal crease.
+- Frames reuse the Duo geometry from `minimo_video`, with star white titanium,
+  a thin black bezel, asymmetric outer corners and soft shadows.
+- RGB exports: `export/apple/iphone-duo-outer/1398x2034/en/01.png`…`06.png`
+  and `export/apple/iphone-duo-inner/2007x2853/en/01.png`…`06.png`.
+- English contact sheets: `export/preview-duo-outer.jpg`, `export/preview-duo-inner.jpg`.
+  Other locales append `-<locale>`; all-locale sheets append `-all-locales`.
+
+These are offline Flutter widget captures, not an Xcode 27.1 build or simulator
+verification. Images and exports remain local and ignored by Git.
+
 ## Dependencies and checks
 
 Stable releases with exact versions in package.json and package-lock.json.

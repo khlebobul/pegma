@@ -9,12 +9,14 @@ from PIL import Image, ImageOps, ImageDraw
 from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-DECKS = [('iphone',1320,2868),('ipad',2064,2752),('android',1080,1920),('feature-graphic',1024,500)]
+DECKS = [('iphone',1320,2868),('ipad',2064,2752),('android',1080,1920),('feature-graphic',1024,500),('duo-outer',1398,2034),('duo-inner',2007,2853)]
 CREATIVES = [('header',3840,1646,'header'),('search',3840,2560,'search-results')]
-EXTRA_SIZES = {'iphone':[(1284,2778),(1206,2622),(1125,2436)], 'ipad':[(2048,2732)], 'android':[], 'feature-graphic':[]}
+EXTRA_SIZES = {'iphone':[(1284,2778),(1206,2622),(1125,2436)], 'ipad':[(2048,2732)], 'android':[], 'feature-graphic':[], 'duo-outer':[], 'duo-inner':[]}
 
 
 def deck_root(device):
+    if device.startswith('duo-'):
+        return ROOT / 'export/apple' / f'iphone-{device}'
     if device == 'feature-graphic':
         return ROOT / 'export/android/feature-graphic'
     return ROOT / 'export' / ('android/phone' if device == 'android' else f'apple/{device}')
@@ -183,7 +185,7 @@ async def main(device_filter=None, locale_filter=None, creatives_only=False):
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--device',choices=['iphone','ipad','android','feature-graphic'])
+    parser.add_argument('--device',choices=[d[0] for d in DECKS])
     parser.add_argument('--locales',nargs='+')
     parser.add_argument('--creatives-only',action='store_true',help='Export Apple Header / Search Results, reuse existing device PNGs in ZIPs')
     args=parser.parse_args()

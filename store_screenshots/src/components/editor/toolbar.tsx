@@ -129,6 +129,8 @@ export function Toolbar(props: Props) {
             <>
               <SelectItem value="iphone">{DEVICE_LABEL.iphone}</SelectItem>
               <SelectItem value="ipad">{DEVICE_LABEL.ipad}</SelectItem>
+              <SelectItem value="duo-outer">{DEVICE_LABEL["duo-outer"]}</SelectItem>
+              <SelectItem value="duo-inner">{DEVICE_LABEL["duo-inner"]}</SelectItem>
             </>
           ) : (
             <>

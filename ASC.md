@@ -5,7 +5,14 @@
 - Auth: `minimo`, System Keychain. Always use `--profile minimo`; leave global settings untouched.
 - Read current version/build from `pubspec.yaml`: prepared locally for `1.11.5+41`.
 - Remote `1.11.5`: `80b871de-d4cb-49fe-9f0a-bbd664274819`, published (`READY_FOR_DISTRIBUTION`).
-  No editable version was created. Recheck version state before any future remote work.
+  Recheck version state before any future remote work.
+- Test `Pegma Duo screenshots — all UI locales` on current `1.11.5`:
+  `3d09db1b-dee2-4887-a49f-92fddd34db74`, treatment `Duo localized`, en-US, ru, es-ES, it, fr-FR, de-DE.
+  Ten Duo screenshots per locale: five outer + five inner, alternating displays.
+  Draft PPO experiment; not submitted or started. Proposed traffic: 50%.
+- A mistaken `1.11.6` draft was created during test setup:
+  `cec979f6-8ad0-4060-8449-5386bb82e36f`. Apple rejected deletion.
+  Its newly uploaded Duo screenshots were removed; no build attached or review sent.
 - Canonical local copy: `metadata/app-info/<locale>.json` and
   `metadata/version/1.11.5/<locale>.json`. Original ASC copy: `.asc/baseline/`.
 - Prepared locales: en-US, ru, es-ES, it, fr-FR, de-DE, ja, ko, nl-NL, pl, pt-BR, tr, zh-Hans, zh-Hant.

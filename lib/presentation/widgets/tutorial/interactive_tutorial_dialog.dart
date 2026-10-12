@@ -138,7 +138,7 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
               Expanded(
                 child: Column(
@@ -154,7 +154,7 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
                         ),
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 16),
 
                     SlideTransition(
                       position: _slideAnimation,
@@ -172,14 +172,14 @@ class _InteractiveTutorialDialogState extends State<InteractiveTutorialDialog>
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
               TutorialStepIndicator(
                 totalSteps: TutorialBoardStates.states.length,
                 currentStep: _currentStep,
                 theme: theme,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
               TutorialNavigation(
                 currentStep: _currentStep,

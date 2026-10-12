@@ -1237,6 +1237,776 @@
         },
         "screenshot": "/screenshots/android/phone/{locale}/01-classic.png"
       }
+    ],
+    "duo-outer": [
+      {
+        "id": "duo-outer-1",
+        "layout": "hero",
+        "label": {
+          "en": "peg solitaire",
+          "ru": "солитер с фишками",
+          "es": "solitario de clavijas",
+          "it": "solitario con pioli",
+          "fr": "solitaire à pions",
+          "de": "steckhalma"
+        },
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/01-classic.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 210,
+            "y": 631,
+            "width": 979,
+            "height": 1364,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "offline. no ads.",
+              "ru": "без интернета и рекламы.",
+              "es": "sin conexión. sin anuncios.",
+              "it": "offline. senza pubblicità.",
+              "fr": "hors ligne. sans publicité.",
+              "de": "offline. ohne werbung."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-outer-2",
+        "layout": "device-bottom",
+        "label": {
+          "en": "120+ levels",
+          "ru": "120+ уровней",
+          "es": "más de 120 niveles",
+          "it": "oltre 120 livelli",
+          "fr": "plus de 120 niveaux",
+          "de": "über 120 level"
+        },
+        "headline": {
+          "en": "find your\nnext challenge.",
+          "ru": "найди новую\nзадачу.",
+          "es": "encuentra tu\npróximo reto.",
+          "it": "trova la tua\nprossima sfida.",
+          "fr": "trouvez votre\nprochain défi.",
+          "de": "finde deine\nnächste aufgabe."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/02-levels.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 238,
+            "y": 631,
+            "width": 923,
+            "height": 1286,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "a new board, a new solution.",
+              "ru": "новое поле — новое решение.",
+              "es": "otro tablero, otra solución.",
+              "it": "un tabellone, una nuova soluzione.",
+              "fr": "un plateau, une nouvelle solution.",
+              "de": "ein neues brett, ein neuer weg."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-outer-3",
+        "layout": "hero",
+        "label": {
+          "en": "available moves",
+          "ru": "доступные ходы",
+          "es": "movimientos posibles",
+          "it": "mosse disponibili",
+          "fr": "coups possibles",
+          "de": "mögliche züge"
+        },
+        "headline": {
+          "en": "see where\nyou can jump.",
+          "ru": "выбери свой\nпрыжок.",
+          "es": "elige dónde\nsaltar.",
+          "it": "scegli dove\nsaltare.",
+          "fr": "choisissez\nvotre saut.",
+          "de": "wähle deinen\nsprung."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/03-hints.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 210,
+            "y": 631,
+            "width": 979,
+            "height": 1364,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "tap a peg. choose your move.",
+              "ru": "нажми на фишку и сделай ход.",
+              "es": "toca una clavija y mueve.",
+              "it": "tocca un piolo e fai la tua mossa.",
+              "fr": "touchez un pion et jouez.",
+              "de": "tippe einen stein an und ziehe."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-outer-4",
+        "layout": "device-bottom",
+        "label": {
+          "en": "light & dark",
+          "ru": "светлая и тёмная",
+          "es": "claro y oscuro",
+          "it": "chiaro e scuro",
+          "fr": "clair et sombre",
+          "de": "hell und dunkel"
+        },
+        "headline": {
+          "en": "a puzzle for\nevery mood.",
+          "ru": "играй под\nнастроение.",
+          "es": "juega a\ntu manera.",
+          "it": "gioca come\npreferisci.",
+          "fr": "jouez selon\nvotre humeur.",
+          "de": "spiele nach\ndeiner stimmung."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/04-dark.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 238,
+            "y": 631,
+            "width": 923,
+            "height": 1286,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "your pace. your theme.",
+              "ru": "твой темп. твоя тема.",
+              "es": "tu ritmo. tu tema.",
+              "it": "il tuo ritmo. il tuo tema.",
+              "fr": "votre rythme. votre thème.",
+              "de": "dein tempo. dein design."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#E8B1F4",
+            "align": "center"
+          }
+        ],
+        "inverted": true
+      },
+      {
+        "id": "duo-outer-5",
+        "layout": "hero",
+        "label": {
+          "en": "interactive tutorial",
+          "ru": "обучение в игре",
+          "es": "tutorial interactivo",
+          "it": "tutorial interattivo",
+          "fr": "tutoriel interactif",
+          "de": "interaktives tutorial"
+        },
+        "headline": {
+          "en": "learn by\nplaying.",
+          "ru": "учись,\nиграя.",
+          "es": "aprende\njugando.",
+          "it": "impara\ngiocando.",
+          "fr": "apprenez\nen jouant.",
+          "de": "lerne beim\nspielen."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/05-tutorial.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 210,
+            "y": 631,
+            "width": 979,
+            "height": 1364,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "simple rules. thoughtful moves.",
+              "ru": "простые правила. точные ходы.",
+              "es": "reglas simples. piensa cada salto.",
+              "it": "regole semplici. mosse ragionate.",
+              "fr": "règles simples. coups réfléchis.",
+              "de": "einfache regeln. kluge züge."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-outer-6",
+        "layout": "device-bottom",
+        "label": {
+          "en": "undo & redo",
+          "ru": "отмена и возврат",
+          "es": "deshacer y rehacer",
+          "it": "annulla e ripristina",
+          "fr": "annuler et rétablir",
+          "de": "zurück und vor"
+        },
+        "headline": {
+          "en": "try another\nway.",
+          "ru": "попробуй\nдругой путь.",
+          "es": "prueba otro\ncamino.",
+          "it": "prova\nun’altra strada.",
+          "fr": "essayez une\nautre voie.",
+          "de": "probiere\neinen neuen weg."
+        },
+        "screenshot": "/screenshots/apple/duo-outer/{locale}/06-undo.png",
+        "transforms": {
+          "caption": {
+            "x": 98,
+            "y": 122,
+            "width": 1202,
+            "height": 427
+          },
+          "device": {
+            "x": 238,
+            "y": 631,
+            "width": 923,
+            "height": 1286,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "undo. rethink. keep playing.",
+              "ru": "отмени ход. найди решение.",
+              "es": "deshaz. piensa. sigue jugando.",
+              "it": "annulla. ripensa. continua.",
+              "fr": "annulez. réfléchissez. continuez.",
+              "de": "zurücknehmen. nachdenken. weiter."
+            },
+            "transform": {
+              "x": 98,
+              "y": 498,
+              "width": 1202,
+              "height": 102,
+              "rotation": 0
+            },
+            "fontSize": 57,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          },
+          {
+            "id": "extras",
+            "text": {
+              "en": "offline · no ads · no in-app purchases",
+              "ru": "офлайн · без рекламы · без покупок",
+              "es": "offline · sin anuncios · sin compras",
+              "it": "offline · senza pubblicità · senza acquisti",
+              "fr": "hors ligne · sans publicité · sans achats",
+              "de": "offline · ohne werbung · ohne käufe"
+            },
+            "transform": {
+              "x": 98,
+              "y": 1926,
+              "width": 1202,
+              "height": 81,
+              "rotation": 0
+            },
+            "fontSize": 35,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "duo-inner": [
+      {
+        "id": "duo-inner-1",
+        "layout": "hero",
+        "label": {
+          "en": "peg solitaire",
+          "ru": "солитер с фишками",
+          "es": "solitario de clavijas",
+          "it": "solitario con pioli",
+          "fr": "solitaire à pions",
+          "de": "steckhalma"
+        },
+        "headline": {
+          "en": "leave just\none peg.",
+          "ru": "оставь всего\nодну фишку.",
+          "es": "deja una\nsola clavija.",
+          "it": "lascia un\nsolo piolo.",
+          "fr": "gardez un\nseul pion.",
+          "de": "lass einen\nstein übrig."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/01-classic.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 301,
+            "y": 884,
+            "width": 1405,
+            "height": 1934,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "offline. no ads.",
+              "ru": "без интернета и рекламы.",
+              "es": "sin conexión. sin anuncios.",
+              "it": "offline. senza pubblicità.",
+              "fr": "hors ligne. sans publicité.",
+              "de": "offline. ohne werbung."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-inner-2",
+        "layout": "device-bottom",
+        "label": {
+          "en": "120+ levels",
+          "ru": "120+ уровней",
+          "es": "más de 120 niveles",
+          "it": "oltre 120 livelli",
+          "fr": "plus de 120 niveaux",
+          "de": "über 120 level"
+        },
+        "headline": {
+          "en": "find your\nnext challenge.",
+          "ru": "найди новую\nзадачу.",
+          "es": "encuentra tu\npróximo reto.",
+          "it": "trova la tua\nprossima sfida.",
+          "fr": "trouvez votre\nprochain défi.",
+          "de": "finde deine\nnächste aufgabe."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/02-levels.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 341,
+            "y": 884,
+            "width": 1325,
+            "height": 1823,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "a new board, a new solution.",
+              "ru": "новое поле — новое решение.",
+              "es": "otro tablero, otra solución.",
+              "it": "un tabellone, una nuova soluzione.",
+              "fr": "un plateau, une nouvelle solution.",
+              "de": "ein neues brett, ein neuer weg."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-inner-3",
+        "layout": "hero",
+        "label": {
+          "en": "available moves",
+          "ru": "доступные ходы",
+          "es": "movimientos posibles",
+          "it": "mosse disponibili",
+          "fr": "coups possibles",
+          "de": "mögliche züge"
+        },
+        "headline": {
+          "en": "see where\nyou can jump.",
+          "ru": "выбери свой\nпрыжок.",
+          "es": "elige dónde\nsaltar.",
+          "it": "scegli dove\nsaltare.",
+          "fr": "choisissez\nvotre saut.",
+          "de": "wähle deinen\nsprung."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/03-hints.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 301,
+            "y": 884,
+            "width": 1405,
+            "height": 1934,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "tap a peg. choose your move.",
+              "ru": "нажми на фишку и сделай ход.",
+              "es": "toca una clavija y mueve.",
+              "it": "tocca un piolo e fai la tua mossa.",
+              "fr": "touchez un pion et jouez.",
+              "de": "tippe einen stein an und ziehe."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-inner-4",
+        "layout": "device-bottom",
+        "label": {
+          "en": "light & dark",
+          "ru": "светлая и тёмная",
+          "es": "claro y oscuro",
+          "it": "chiaro e scuro",
+          "fr": "clair et sombre",
+          "de": "hell und dunkel"
+        },
+        "headline": {
+          "en": "a puzzle for\nevery mood.",
+          "ru": "играй под\nнастроение.",
+          "es": "juega a\ntu manera.",
+          "it": "gioca come\npreferisci.",
+          "fr": "jouez selon\nvotre humeur.",
+          "de": "spiele nach\ndeiner stimmung."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/04-dark.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 341,
+            "y": 884,
+            "width": 1325,
+            "height": 1823,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "your pace. your theme.",
+              "ru": "твой темп. твоя тема.",
+              "es": "tu ritmo. tu tema.",
+              "it": "il tuo ritmo. il tuo tema.",
+              "fr": "votre rythme. votre thème.",
+              "de": "dein tempo. dein design."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#E8B1F4",
+            "align": "center"
+          }
+        ],
+        "inverted": true
+      },
+      {
+        "id": "duo-inner-5",
+        "layout": "hero",
+        "label": {
+          "en": "interactive tutorial",
+          "ru": "обучение в игре",
+          "es": "tutorial interactivo",
+          "it": "tutorial interattivo",
+          "fr": "tutoriel interactif",
+          "de": "interaktives tutorial"
+        },
+        "headline": {
+          "en": "learn by\nplaying.",
+          "ru": "учись,\nиграя.",
+          "es": "aprende\njugando.",
+          "it": "impara\ngiocando.",
+          "fr": "apprenez\nen jouant.",
+          "de": "lerne beim\nspielen."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/05-tutorial.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 301,
+            "y": 884,
+            "width": 1405,
+            "height": 1934,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "simple rules. thoughtful moves.",
+              "ru": "простые правила. точные ходы.",
+              "es": "reglas simples. piensa cada salto.",
+              "it": "regole semplici. mosse ragionate.",
+              "fr": "règles simples. coups réfléchis.",
+              "de": "einfache regeln. kluge züge."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "id": "duo-inner-6",
+        "layout": "device-bottom",
+        "label": {
+          "en": "undo & redo",
+          "ru": "отмена и возврат",
+          "es": "deshacer y rehacer",
+          "it": "annulla e ripristina",
+          "fr": "annuler et rétablir",
+          "de": "zurück und vor"
+        },
+        "headline": {
+          "en": "try another\nway.",
+          "ru": "попробуй\nдругой путь.",
+          "es": "prueba otro\ncamino.",
+          "it": "prova\nun’altra strada.",
+          "fr": "essayez une\nautre voie.",
+          "de": "probiere\neinen neuen weg."
+        },
+        "screenshot": "/screenshots/apple/duo-inner/{locale}/06-undo.png",
+        "transforms": {
+          "caption": {
+            "x": 140,
+            "y": 171,
+            "width": 1726,
+            "height": 599
+          },
+          "device": {
+            "x": 341,
+            "y": 884,
+            "width": 1325,
+            "height": 1823,
+            "rotation": 0
+          }
+        },
+        "textElements": [
+          {
+            "id": "subline",
+            "text": {
+              "en": "undo. rethink. keep playing.",
+              "ru": "отмени ход. найди решение.",
+              "es": "deshaz. piensa. sigue jugando.",
+              "it": "annulla. ripensa. continua.",
+              "fr": "annulez. réfléchissez. continuez.",
+              "de": "zurücknehmen. nachdenken. weiter."
+            },
+            "transform": {
+              "x": 140,
+              "y": 699,
+              "width": 1726,
+              "height": 143,
+              "rotation": 0
+            },
+            "fontSize": 82,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          },
+          {
+            "id": "extras",
+            "text": {
+              "en": "offline · no ads · no in-app purchases",
+              "ru": "офлайн · без рекламы · без покупок",
+              "es": "offline · sin anuncios · sin compras",
+              "it": "offline · senza pubblicità · senza acquisti",
+              "fr": "hors ligne · sans publicité · sans achats",
+              "de": "offline · ohne werbung · ohne käufe"
+            },
+            "transform": {
+              "x": 140,
+              "y": 2702,
+              "width": 1726,
+              "height": 114,
+              "rotation": 0
+            },
+            "fontSize": 50,
+            "fontWeight": 700,
+            "color": "#663475",
+            "align": "center"
+          }
+        ]
+      }
     ]
   }
 }

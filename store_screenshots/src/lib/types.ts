@@ -1,6 +1,8 @@
 export type Device =
   | "iphone"
   | "ipad"
+  | "duo-outer"
+  | "duo-inner"
   | "android"
   | "android-7"
   | "android-10"
