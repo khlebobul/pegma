@@ -1,3 +1,13 @@
+## [1.11.6]
+
+#### Technical Improvements
+
+- Updated Flutter dependencies to the latest compatible stable versions.
+- Updated the Riverpod runtime, code generator, and lint packages.
+- Updated screenshot editor dependencies, including Next.js, React, and Radix UI.
+- Updated CI to Flutter 3.47.9 and raised the minimum Dart SDK to 3.13.
+- Bumped the app and iOS version to 1.11.6 (build 42).
+
 ## [1.11.5]
 
 #### Technical Improvements

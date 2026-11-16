@@ -102,9 +102,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "the earliest documented mention of the game is in 1687 in a book by french writer bernard lebonn, describing a board with 33 holes.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "the goal is to remove all pegs, leaving only one in the center. interesting fact: for the classic 33-peg board, there is only one perfect solution path, although players often find many intermediate variations.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "this is the board. pegs (filled circles) can jump over each other into empty holes.",
     ),

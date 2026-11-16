@@ -52,6 +52,8 @@ app.*.map.json
 /.asc/reports/
 /.asc/config.json
 /.asc/signing/
+/.asc/release-*/
+/.asc/release-*-copy.md
 *.p8
 *.p12
 *.mobileprovision

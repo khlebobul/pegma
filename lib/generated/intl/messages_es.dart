@@ -110,9 +110,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "la mención documentada más antigua del juego es de 1687 en un libro del escritor francés bernard lebonn, que describe un tablero con 33 agujeros.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "el objetivo es eliminar todas las clavijas dejando solo una en el centro. dato interesante: para el tablero clásico de 33 clavijas, solo existe una ruta de solución perfecta, aunque los jugadores suelen encontrar muchas variaciones intermedias.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "el objetivo es eliminar todas las clavijas dejando solo una en el centro. dato interesante: para el tablero clásico de 33 clavijas, solo existe una ruta de solución perfecta, aunque los jugadores suelen encontrar muchas variaciones intermedias.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "este es el tablero. las clavijas (círculos llenos) pueden saltar unas sobre otras hacia agujeros vacíos.",
     ),
