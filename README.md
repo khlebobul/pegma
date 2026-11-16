@@ -24,7 +24,7 @@ App Store and Google Play screenshots are made with the [App Store Screenshots](
 
 App Store metadata is prepared with [App Store Connect CLI](https://github.com/rorkai/App-Store-Connect-CLI) and its [asc-metadata-sync agent skill](https://github.com/rorkai/app-store-connect-cli-skills), created by [Rudrank Riyam](https://x.com/rudrank). Thanks to Rudrank and all maintainers and contributors.
 
-[shared_preferences](https://pub.dev/packages/shared_preferences) / [intl](https://pub.dev/packages/intl) / [url_launcher](https://pub.dev/packages/url_launcher) / [flutter_svg](https://pub.dev/packages/flutter_svg) / [talker](https://pub.dev/packages/talker) / [flutter_riverpod]( https://pub.dev/packages/flutter_riverpod) / [gaimon](https://pub.dev/packages/gaimon) / [sqflite](https://pub.dev/packages/sqflite) / [in_app_review](https://pub.dev/packages/in_app_review) / [upgrader](https://pub.dev/packages/upgrader) / [motor](https://pub.dev/packages/motor)
+[shared_preferences](https://pub.dev/packages/shared_preferences) / [intl](https://pub.dev/packages/intl) / [url_launcher](https://pub.dev/packages/url_launcher) / [flutter_svg](https://pub.dev/packages/flutter_svg) / [talker](https://pub.dev/packages/talker) / [flutter_riverpod]( https://pub.dev/packages/flutter_riverpod) / [gaimon](https://pub.dev/packages/gaimon) / [sqflite](https://pub.dev/packages/sqflite) / [rate_my_app](https://pub.dev/packages/rate_my_app) / [upgrader](https://pub.dev/packages/upgrader) / [motor](https://pub.dev/packages/motor)
 
 > [!NOTE]
 > Fun fact: I made the font specifically for this app myself for uniqueness and fun with [fontstruct](https://fontstruct.com/fontstructions/show/2728315/pegma-app). Feel free to use it
