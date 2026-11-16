@@ -110,9 +110,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "la prima menzione documentata del gioco risale al 1687 in un libro dello scrittore francese bernard lebonn, che descrive una tavola con 33 fori.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "l\'obiettivo è rimuovere tutti i pioli, lasciandone solo uno al centro. fatto interessante: per il tabellone classico con 33 pioli esiste un solo percorso di soluzione perfetta, anche se i giocatori spesso trovano molte varianti intermedie.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "l\'obiettivo è rimuovere tutti i pioli, lasciandone solo uno al centro. fatto interessante: per il tabellone classico con 33 pioli esiste un solo percorso di soluzione perfetta, anche se i giocatori spesso trovano molte varianti intermedie.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "questa è la tavola. i pioli (cerchi pieni) possono saltare uno sopra l’altro in fori vuoti.",
     ),

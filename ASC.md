@@ -3,7 +3,7 @@
 - Bundle ID / Android application ID: `com.khlebobul.pegma`.
 - ASC app ID: `6754343848`, Pegma - Peg Solitaire. Verified by bundle ID.
 - Auth: `minimo`, System Keychain. Always use `--profile minimo`; leave global settings untouched.
-- Read current version/build from `pubspec.yaml`: prepared locally for `1.11.5+41`.
+- Read current version/build from `pubspec.yaml`: prepared locally for `1.11.6+42`.
 - Remote `1.11.5`: `80b871de-d4cb-49fe-9f0a-bbd664274819`, published (`READY_FOR_DISTRIBUTION`).
   Recheck version state before any future remote work.
 - Test `Pegma Duo screenshots — all UI locales` on current `1.11.5`:

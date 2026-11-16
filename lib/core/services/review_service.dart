@@ -1,10 +1,17 @@
-import 'package:in_app_review/in_app_review.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rate_my_app/rate_my_app.dart';
 import 'package:pegma/core/constants/app_constants.dart';
 import 'package:pegma/core/utils/market_helper.dart';
 
 class ReviewService {
-  final InAppReview _inAppReview = InAppReview.instance;
+  final RateMyApp _rateMyApp = RateMyApp.customConditions(
+    googlePlayIdentifier: Uri.parse(
+      GeneralConsts.rateGooglePlay,
+    ).queryParameters['id'],
+    appStoreIdentifier: RegExp(
+      r'id(\d+)',
+    ).firstMatch(GeneralConsts.rateAppStore)!.group(1),
+    conditions: const [],
+  );
 
   Future<bool> onLevelEntry() async {
     if (!MarketHelper.shouldShowRating()) {
@@ -21,7 +28,7 @@ class ReviewService {
   }
 
   Future<bool> _requestReviewIfAllowed(SharedPreferences prefs) async {
-    if (!await _inAppReview.isAvailable()) {
+    if ((await _rateMyApp.isNativeReviewDialogSupported) != true) {
       return false;
     }
     final lastRequestDateString = prefs.getString(
@@ -36,7 +43,7 @@ class ReviewService {
       }
     }
     try {
-      await _inAppReview.requestReview();
+      await _rateMyApp.launchNativeReviewDialog();
       await prefs.setString(
         ReviewConsts.lastReviewRequestDateKey,
         DateTime.now().toIso8601String(),

@@ -104,9 +104,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "самое раннее упоминание об игре датируется 1687 годом — в книге французского писателя бернара лебонна, где описана доска с 33 отверстиями.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "цель — убрать все фишки, оставив только одну в центре. интересный факт: для классической доски с 33 фишками существует только один идеальный путь решения, хотя игроки часто находят множество промежуточных вариаций.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "цель — убрать все фишки, оставив только одну в центре. интересный факт: для классической доски с 33 фишками существует только один идеальный путь решения, хотя игроки часто находят множество промежуточных вариаций.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "это игровая доска. фишки (заполненные круги) могут прыгать друг через друга в пустые лунки.",
     ),

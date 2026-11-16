@@ -108,9 +108,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "la première mention documentée du jeu date de 1687 dans un livre de l\'écrivain français bernard lebonn, décrivant un plateau avec 33 trous.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "l\'objectif est de retirer toutes les chevilles, n\'en laissant qu\'une au centre. fait intéressant : pour le plateau classique à 33 chevilles, il n\'existe qu\'un seul chemin de solution parfait, bien que les joueurs trouvent souvent de nombreuses variations intermédiaires.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "l\'objectif est de retirer toutes les chevilles, n\'en laissant qu\'une au centre. fait intéressant : pour le plateau classique à 33 chevilles, il n\'existe qu\'un seul chemin de solution parfait, bien que les joueurs trouvent souvent de nombreuses variations intermédiaires.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "ceci est le plateau. les chevilles (cercles pleins) peuvent sauter les unes par-dessus les autres dans des trous vides.",
     ),

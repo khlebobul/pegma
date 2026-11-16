@@ -104,9 +104,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "die früheste dokumentierte erwähnung des spiels stammt aus dem jahr 1687 in einem buch des französischen schriftstellers bernard lebonn, das ein brett mit 33 löchern beschreibt.",
         ),
-    "theGoalIsToRemoveAllPegsLeavingOnlyOne": MessageLookupByLibrary.simpleMessage(
-      "das ziel ist, alle stifte zu entfernen, sodass nur einer in der mitte übrig bleibt. interessante tatsache: für das klassische brett mit 33 stiften gibt es nur einen perfekten lösungsweg, obwohl spieler oft viele zwischenvarianten entdecken.",
-    ),
+    "theGoalIsToRemoveAllPegsLeavingOnlyOne":
+        MessageLookupByLibrary.simpleMessage(
+          "das ziel ist, alle stifte zu entfernen, sodass nur einer in der mitte übrig bleibt. interessante tatsache: für das klassische brett mit 33 stiften gibt es nur einen perfekten lösungsweg, obwohl spieler oft viele zwischenvarianten entdecken.",
+        ),
     "tutorialStep1": MessageLookupByLibrary.simpleMessage(
       "das ist das brett. stifte (gefüllte kreise) können über andere in leere löcher springen.",
     ),
