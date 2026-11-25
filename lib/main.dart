@@ -1,7 +1,9 @@
+import 'package:cupertino_ui/cupertino_ui.dart' as cupertino_ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart' as material_ui;
 import 'package:pegma/core/themes/app_theme.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger.dart';
 import 'core/router/app_router.dart';
@@ -60,6 +62,9 @@ class MainApp extends ConsumerWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        // upgrader 14 reads these types; the delegates above stay for framework widgets.
+        material_ui.GlobalMaterialLocalizations.delegate,
+        cupertino_ui.GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
       title: 'Pegma',

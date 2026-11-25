@@ -1,7 +1,7 @@
 name: pegma
 description: "A free and cross-platform version of the classic Peg solitaire! Enjoy the timeless puzzle on your mobile device!"
 publish_to: 'none'
-version: 1.11.6+42
+version: 1.11.7+43
 
 environment:
   sdk: ^3.13.0
@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   intl: ^0.20.3
   go_router: ^18.1.4
-  flutter_svg: ^2.4.0
+  flutter_svg: ^2.5.0
   share_plus: ^13.3.1
   url_launcher: ^6.3.3
   url_launcher_ios: ^6.4.2
@@ -29,7 +29,9 @@ dependencies:
   sqflite: ^2.4.6
   path: ^1.9.1
   rate_my_app: ^2.4.2
-  upgrader: ^13.8.0
+  upgrader: ^14.0.0
+  material_ui: ^1.11.1
+  cupertino_ui: ^1.1.6
   motor: ^1.1.0
 
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart' as material_ui;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -123,11 +124,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
 
     if (!Platform.isIOS) {
+      final brightness = Theme.of(context).brightness;
+      final materialTheme = brightness == Brightness.dark
+          ? material_ui.ThemeData.dark(useMaterial3: true)
+          : material_ui.ThemeData.light(useMaterial3: true);
       return Theme(
-        data: Theme.of(context).brightness == Brightness.dark
+        data: brightness == Brightness.dark
             ? ThemeData.dark(useMaterial3: true)
             : ThemeData.light(useMaterial3: true),
-        child: upgradeAlert,
+        child: material_ui.Theme(data: materialTheme, child: upgradeAlert),
       );
     }
 

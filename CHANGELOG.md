@@ -1,3 +1,9 @@
+## [1.11.7]
+
+#### Technical Improvements
+
+- Updated upgrader to 14.0.0. The update dialog now uses material_ui and cupertino_ui localizations, and the Android dialog follows the current light or dark theme.
+
 ## [1.11.6]
 
 #### Technical Improvements
